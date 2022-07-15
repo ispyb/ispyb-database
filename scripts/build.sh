@@ -31,7 +31,7 @@ then
   mysql --defaults-file=.my.cnf -D $DB < grants/ispyb_web.sql
   mysql --defaults-file=.my.cnf -D $DB < grants/ispyb_import.sql
 
-  arr=$(bin/missed_updates.sh)
+  arr=$(scripts/missed_updates.sh)
 
   if [ -n "$arr" ]; then
     echo "Running schemas/updates/*.sql files that haven't yet been run:"
