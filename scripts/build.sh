@@ -21,11 +21,11 @@ mysql --defaults-file=.my.cnf -e "DROP DATABASE IF EXISTS $DB; CREATE DATABASE $
 
 if [[ $? -eq 0 ]]
 then
-  mysql --defaults-file=.my.cnf -D $DB < schemas/1_tables.sql
-  mysql --defaults-file=.my.cnf -D $DB < schemas/2_lookups.sql
-  mysql --defaults-file=.my.cnf -D $DB < schemas/3_data.sql
-  mysql --defaults-file=.my.cnf -D $DB < schemas/4_data_user_portal.sql
-  mysql --defaults-file=.my.cnf -D $DB < schemas/5_routines.sql
+  mysql --defaults-file=.my.cnf -D $DB < schema/1_tables.sql
+  mysql --defaults-file=.my.cnf -D $DB < schema/2_lookups.sql
+  mysql --defaults-file=.my.cnf -D $DB < schema/3_data.sql
+  mysql --defaults-file=.my.cnf -D $DB < schema/4_data_user_portal.sql
+  mysql --defaults-file=.my.cnf -D $DB < schema/5_routines.sql
   mysql --defaults-file=.my.cnf -D $DB < grants/ispyb_acquisition.sql
   mysql --defaults-file=.my.cnf -D $DB < grants/ispyb_processing.sql
   mysql --defaults-file=.my.cnf -D $DB < grants/ispyb_web.sql
