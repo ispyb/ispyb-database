@@ -14,7 +14,7 @@ GRANT SELECT, UPDATE, INSERT ON Crystal TO 'acquisition';
 GRANT SELECT, UPDATE, INSERT ON BLSample TO 'acquisition';
 GRANT SELECT, UPDATE, INSERT ON BLSampleImage TO 'acquisition';
 GRANT SELECT, UPDATE, INSERT, DELETE ON BLSubSample TO 'acquisition';
-GRANT SELECT, UPDATE, INSERT, DELETE ON BLSubSample_has_Positioner TO 'acquisition';
+-- GRANT SELECT, UPDATE, INSERT, DELETE ON BLSubSample_has_Positioner TO 'acquisition';
 GRANT SELECT, UPDATE, INSERT, DELETE ON Position TO 'acquisition';
 GRANT SELECT, UPDATE, INSERT, DELETE ON Positioner TO 'acquisition';
 
