@@ -27,11 +27,11 @@ Run this on the command-line to create a database and import the schema stored i
 
 ```bash
 mysql -e "CREATE DATABASE ispyb"
-mysql ispyb < schemas/1_tables.sql
-mysql ispyb < schemas/2_lookups.sql
-mysql ispyb < schemas/3_data.sql
-mysql ispyb < schemas/4_data_user_portal.sql
-mysql ispyb < schemas/5_routines.sql
+mysql ispyb < schema/1_tables.sql
+mysql ispyb < schema/2_lookups.sql
+mysql ispyb < schema/3_data.sql
+mysql ispyb < schema/4_data_user_portal.sql
+mysql ispyb < schema/5_routines.sql
 ```
 
 Note that the `3_data.sql` and `4_data_user_portal.sql` files contains test data, so is only useful in a development environment.
