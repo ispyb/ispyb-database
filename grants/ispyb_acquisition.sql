@@ -38,4 +38,4 @@ GRANT SELECT, UPDATE, INSERT ON ImageQualityIndicators TO 'acquisition';
 
 GRANT SELECT, UPDATE, INSERT, DELETE ON XRFFluorescenceMapping TO 'acquisition';
 GRANT SELECT, UPDATE, INSERT, DELETE ON XRFFluorescenceMappingROI TO 'acquisition';
-GRANT SELECT, UPDATE, INSERT, DELETE ON XFEFluorescenceComposite TO 'acquisition';
+-- GRANT SELECT, UPDATE, INSERT, DELETE ON XFEFluorescenceComposite TO 'acquisition';

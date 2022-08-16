@@ -18,7 +18,7 @@ GRANT INSERT ON DataCollectionGroup TO 'ispyb_web';
 GRANT SELECT, UPDATE ON EnergyScan TO 'ispyb_web';
 GRANT SELECT, UPDATE ON XFEFluorescenceSpectrum TO 'ispyb_web';
 GRANT UPDATE ON DataCollectionGroup TO 'ispyb_web';
-GRANT INSERT, UPDATE, DELETE ON DataCollectionComment TO 'ispyb_web';
+-- GRANT INSERT, UPDATE, DELETE ON DataCollectionComment TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON Shipping TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON ShippingHasSession TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON Dewar TO 'ispyb_web';
