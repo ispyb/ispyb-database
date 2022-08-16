@@ -65,13 +65,13 @@ SHOW PLUGINS SONAME WHERE Name = 'SQL_ERROR_LOG';
 
 In order to update a production database, please follow this procedure:
 
-1. For all .sql files in `schemas/updates` that have not already been run, read any comments inside the files to decide if/when you should run them. Run a file e.g. like this:
+1. For all .sql files in `schema/updates` that have not already been run, read any comments inside the files to decide if/when you should run them. Run a file e.g. like this:
 ```bash
-mysql ispyb < schemas/updates/2019_03_29_BLSession_archived.sql
+mysql ispyb < schema/updates/2019_03_29_BLSession_archived.sql
 ```
-2. If `schemas/routines.sql` has been updated since you installed it, you can simply re-run it. E.g.:
+2. If `schema/routines.sql` has been updated since you installed it, you can simply re-run it. E.g.:
 ```bash
-mysql ispyb < schemas/routines.sql
+mysql ispyb < schema/routines.sql
 ```
 3. If you ran the `routines.sql`, then re-apply the grants for the routines. E.g.:
 ```bash
@@ -84,4 +84,4 @@ mysql ispyb < grants/ispyb_import.sql
 ## Useful scripts
 
 * `scripts/build.sh`: Creates a development `ispyb_build` database and imports all the schema and grants files into it.
-* `scripts/missed_updates.sh`: Generates a list of files in the `schemas/updates/` folder that haven't been applied.
+* `scripts/missed_updates.sh`: Generates a list of files in the `schema/updates/` folder that haven't been applied.

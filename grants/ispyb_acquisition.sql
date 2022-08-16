@@ -16,7 +16,7 @@ GRANT SELECT, UPDATE, INSERT ON BLSampleImage TO 'acquisition';
 GRANT SELECT, UPDATE, INSERT, DELETE ON BLSubSample TO 'acquisition';
 -- GRANT SELECT, UPDATE, INSERT, DELETE ON BLSubSample_has_Positioner TO 'acquisition';
 GRANT SELECT, UPDATE, INSERT, DELETE ON Position TO 'acquisition';
-GRANT SELECT, UPDATE, INSERT, DELETE ON Positioner TO 'acquisition';
+-- GRANT SELECT, UPDATE, INSERT, DELETE ON Positioner TO 'acquisition';
 
 GRANT SELECT, UPDATE, INSERT ON Shipping TO 'acquisition';
 GRANT SELECT, UPDATE, INSERT ON Dewar TO 'acquisition';
@@ -31,7 +31,7 @@ GRANT SELECT, UPDATE, INSERT, DELETE ON DiffractionPlan TO 'acquisition';
 GRANT SELECT, UPDATE, INSERT ON DataCollectionGroup TO 'acquisition';
 GRANT SELECT, UPDATE, INSERT ON DataCollection TO 'acquisition';
 GRANT SELECT, UPDATE, INSERT ON DataCollectionFileAttachment TO 'acquisition';
-GRANT SELECT, UPDATE, INSERT ON DataCollectionComment TO 'acquisition';
+-- GRANT SELECT, UPDATE, INSERT ON DataCollectionComment TO 'acquisition';
 GRANT SELECT, UPDATE, INSERT ON GridInfo TO 'acquisition';
 GRANT SELECT, UPDATE, INSERT ON RobotAction TO 'acquisition';
 GRANT SELECT, UPDATE, INSERT ON ImageQualityIndicators TO 'acquisition';

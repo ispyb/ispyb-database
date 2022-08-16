@@ -9,7 +9,7 @@
 
 # Author: Karl Levik
 
-source bin/functions.sh
+source functions.sh
 
 if [ -z "${DB}" ]
 then
@@ -31,16 +31,16 @@ then
   mysql --defaults-file=.my.cnf -D $DB < grants/ispyb_web.sql
   mysql --defaults-file=.my.cnf -D $DB < grants/ispyb_import.sql
 
-  arr=$(scripts/missed_updates.sh)
+  arr=$(./missed_updates.sh)
 
   if [ -n "$arr" ]; then
-    echo "Running schemas/updates/*.sql files that haven't yet been run:"
+    echo "Running schema/updates/*.sql files that haven't yet been run:"
     for sql_file in ${arr[@]}; do
       echo "$sql_file"
-      mysql --defaults-file=.my.cnf -D ${DB} < "schemas/updates/${sql_file}"
+      mysql --defaults-file=.my.cnf -D ${DB} < "schema/updates/${sql_file}"
     done
   else
-    echo "No new schemas/updates/*.sql files."
+    echo "No new schema/updates/*.sql files."
   fi
 
   # Generate table and sproc documentation
