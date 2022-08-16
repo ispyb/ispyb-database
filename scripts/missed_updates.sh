@@ -13,7 +13,7 @@ dir=$(dirname $(realpath ${0}))
 project_root=$(dirname "${dir}")
 
 # Load some function definitions in case we need them
-source ${project_root}/scripts/functions.sh
+source ${dir}/functions.sh
 
 # Get a list of all update files
 all_sql_files=`cd ${project_root}/schema/updates && ls *.sql && cd ../..`

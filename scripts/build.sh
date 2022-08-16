@@ -9,7 +9,10 @@
 
 # Author: Karl Levik
 
-source functions.sh
+# Get this scripts dir
+dir=$(dirname $(realpath ${0}))
+
+source ${dir}/functions.sh
 
 if [ -z "${DB}" ]
 then
@@ -31,7 +34,7 @@ then
   mysql --defaults-file=.my.cnf -D $DB < grants/ispyb_web.sql
   mysql --defaults-file=.my.cnf -D $DB < grants/ispyb_import.sql
 
-  arr=$(./missed_updates.sh)
+  arr=$(${dir}/missed_updates.sh)
 
   if [ -n "$arr" ]; then
     echo "Running schema/updates/*.sql files that haven't yet been run:"

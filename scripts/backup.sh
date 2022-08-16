@@ -5,6 +5,9 @@
 # Author: Karl Levik
 # Date: 20160314
 
+# Get this scripts dir
+dir=$(dirname $(realpath ${0}))
+
 OUT_DIR=$1
 
 if [ -z "${DB}" ]
@@ -21,7 +24,7 @@ ${DUMP_W_OPTS} --skip-triggers --routines --no-create-info --no-data "${DB}" | s
 
 ${DUMP_W_OPTS} --no-create-info --no-data --add-drop-trigger "${DB}" | sed -e 's/DEFINER=[^*]*\*/\*/' >> ${OUT_DIR}/routines.sql
 
-source lookup_tables.sh
+source ${dir}/lookup_tables.sh
 
 ${DUMP_W_OPTS} --skip-triggers --no-create-info --complete-insert ${DB} ${LOOKUP_TABLES_STRING} | sed -e 's/DEFINER=[^*]*\*/SQL SECURITY INVOKER \*/' > ${OUT_DIR}/lookups.sql
 
