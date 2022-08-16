@@ -21,4 +21,4 @@ jobs:
       - name: Build database
         run: |
           cp examples/.my.cnf .my.cnf
-          bash build.sh
+          bash scripts/build.sh
