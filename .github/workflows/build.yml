@@ -25,10 +25,8 @@ jobs:
 
       - name: Regenerate sql files
         run: |
-          bash scripts/backup.sh
-
+          bash scripts/backup.sh schema/
           rm .my.cnf
-          mv *.sql schema/
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
