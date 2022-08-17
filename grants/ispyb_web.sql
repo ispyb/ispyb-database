@@ -74,9 +74,9 @@ GRANT INSERT, UPDATE, DELETE ON AdminVar TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON DewarRegistry TO 'ispyb_web';
 -- GRANT INSERT, UPDATE, DELETE ON DewarReport TO 'ispyb_web';
 
-GRANT INSERT, UPDATE, DELETE ON ContainerRegistry TO 'ispyb_web';
-GRANT INSERT, UPDATE, DELETE ON ContainerRegistry_has_Proposal TO 'ispyb_web';
-GRANT INSERT, UPDATE, DELETE ON ContainerReport TO 'ispyb_web';
+-- GRANT INSERT, UPDATE, DELETE ON ContainerRegistry TO 'ispyb_web';
+-- GRANT INSERT, UPDATE, DELETE ON ContainerRegistry_has_Proposal TO 'ispyb_web';
+-- GRANT INSERT, UPDATE, DELETE ON ContainerReport TO 'ispyb_web';
 
 GRANT INSERT, UPDATE, DELETE ON BF_component TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON BF_component_beamline TO 'ispyb_web';
@@ -105,14 +105,14 @@ GRANT INSERT, UPDATE, DELETE ON ConcentrationType TO 'ispyb_web';
 
 GRANT INSERT, UPDATE, DELETE ON BLSampleImageScore TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON BLSampleImage TO 'ispyb_web';
-GRANT SELECT, INSERT, UPDATE, DELETE ON BLSampleImageMeasurement TO 'ispyb_web';
+-- GRANT SELECT, INSERT, UPDATE, DELETE ON BLSampleImageMeasurement TO 'ispyb_web';
 
 GRANT SELECT, INSERT, UPDATE ON Log4Stat TO 'ispyb_web';
 GRANT SELECT, INSERT, UPDATE, DELETE ON SW_onceToken TO 'ispyb_web';
 
-GRANT SELECT, INSERT, UPDATE, DELETE ON BLSample_has_DataCollectionPlan TO 'ispyb_web';
+-- GRANT SELECT, INSERT, UPDATE, DELETE ON BLSample_has_DataCollectionPlan TO 'ispyb_web';
 GRANT SELECT, INSERT, UPDATE ON Detector TO 'ispyb_web';
-GRANT SELECT, INSERT, UPDATE, DELETE ON DataCollectionPlan_has_Detector TO 'ispyb_web';
+-- GRANT SELECT, INSERT, UPDATE, DELETE ON DataCollectionPlan_has_Detector TO 'ispyb_web';
 GRANT SELECT, INSERT, UPDATE, DELETE ON ScanParametersModel TO 'ispyb_web';
 GRANT SELECT, INSERT, UPDATE, DELETE ON ScanParametersService TO 'ispyb_web';
 
