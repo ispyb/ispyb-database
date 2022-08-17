@@ -86,7 +86,7 @@ GRANT INSERT, UPDATE, DELETE ON BF_subcomponent_beamline TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON BF_system TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON BF_system_beamline TO 'ispyb_web';
 
-GRANT INSERT, UPDATE, DELETE ON CourierTermsAccepted TO 'ispyb_web';
+-- GRANT INSERT, UPDATE, DELETE ON CourierTermsAccepted TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON CalendarHash TO 'ispyb_web';
 
 GRANT INSERT, UPDATE, DELETE ON Schedule TO 'ispyb_web';
