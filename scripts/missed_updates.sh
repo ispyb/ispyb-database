@@ -13,10 +13,10 @@ dir=$(dirname $(realpath ${0}))
 project_root=$(dirname "${dir}")
 
 # Load some function definitions in case we need them
-source ${project_root}/bin/functions.sh
+source ${dir}/functions.sh
 
 # Get a list of all update files
-all_sql_files=`cd ${project_root}/schemas/updates && ls *.sql && cd ../..`
+all_sql_files=`cd ${project_root}/schema/updates && ls *.sql && cd ../..`
 
 # Get a list of all update files recorded in the SchemaStatus table
 done_sql_files=`mysql --defaults-file=${project_root}/.my.cnf -D $DB --skip-column-names --silent --raw -e "SELECT scriptName FROM SchemaStatus WHERE schemaStatus = 'DONE' ORDER BY recordTimeStamp;"`

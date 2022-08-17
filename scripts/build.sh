@@ -9,7 +9,10 @@
 
 # Author: Karl Levik
 
-source bin/functions.sh
+# Get this scripts dir
+dir=$(dirname $(realpath ${0}))
+
+source ${dir}/functions.sh
 
 if [ -z "${DB}" ]
 then
@@ -24,23 +27,27 @@ then
   mysql --defaults-file=.my.cnf -D $DB < schema/1_tables.sql
   mysql --defaults-file=.my.cnf -D $DB < schema/2_lookups.sql
   mysql --defaults-file=.my.cnf -D $DB < schema/3_data.sql
-  mysql --defaults-file=.my.cnf -D $DB < schema/4_data_user_portal.sql
+  if [ -z "${NO_USERPORTAL_DATA}" ]
+  then
+    mysql --defaults-file=.my.cnf -D $DB < schema/4_data_user_portal.sql
+    echo "Importing User Portal Data"
+  fi
   mysql --defaults-file=.my.cnf -D $DB < schema/5_routines.sql
   mysql --defaults-file=.my.cnf -D $DB < grants/ispyb_acquisition.sql
   mysql --defaults-file=.my.cnf -D $DB < grants/ispyb_processing.sql
   mysql --defaults-file=.my.cnf -D $DB < grants/ispyb_web.sql
   mysql --defaults-file=.my.cnf -D $DB < grants/ispyb_import.sql
 
-  arr=$(scripts/missed_updates.sh)
+  arr=$(${dir}/missed_updates.sh)
 
   if [ -n "$arr" ]; then
-    echo "Running schemas/updates/*.sql files that haven't yet been run:"
+    echo "Running schema/updates/*.sql files that haven't yet been run:"
     for sql_file in ${arr[@]}; do
       echo "$sql_file"
-      mysql --defaults-file=.my.cnf -D ${DB} < "schemas/updates/${sql_file}"
+      mysql --defaults-file=.my.cnf -D ${DB} < "schema/updates/${sql_file}"
     done
   else
-    echo "No new schemas/updates/*.sql files."
+    echo "No new schema/updates/*.sql files."
   fi
 
   # Generate table and sproc documentation

@@ -18,7 +18,7 @@ GRANT INSERT ON DataCollectionGroup TO 'ispyb_web';
 GRANT SELECT, UPDATE ON EnergyScan TO 'ispyb_web';
 GRANT SELECT, UPDATE ON XFEFluorescenceSpectrum TO 'ispyb_web';
 GRANT UPDATE ON DataCollectionGroup TO 'ispyb_web';
-GRANT INSERT, UPDATE, DELETE ON DataCollectionComment TO 'ispyb_web';
+-- GRANT INSERT, UPDATE, DELETE ON DataCollectionComment TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON Shipping TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON ShippingHasSession TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON Dewar TO 'ispyb_web';
@@ -66,17 +66,17 @@ GRANT INSERT, UPDATE, DELETE ON BLSampleType_has_Component TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON ComponentSubType TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON ConcentrationType TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON ComponentType TO 'ispyb_web';
-GRANT INSERT, UPDATE, DELETE ON ComponentLattice TO 'ispyb_web';
+-- GRANT INSERT, UPDATE, DELETE ON ComponentLattice TO 'ispyb_web';
 
 GRANT INSERT, UPDATE, DELETE ON AdminActivity TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON AdminVar TO 'ispyb_web';
 
 GRANT INSERT, UPDATE, DELETE ON DewarRegistry TO 'ispyb_web';
-GRANT INSERT, UPDATE, DELETE ON DewarReport TO 'ispyb_web';
+-- GRANT INSERT, UPDATE, DELETE ON DewarReport TO 'ispyb_web';
 
-GRANT INSERT, UPDATE, DELETE ON ContainerRegistry TO 'ispyb_web';
-GRANT INSERT, UPDATE, DELETE ON ContainerRegistry_has_Proposal TO 'ispyb_web';
-GRANT INSERT, UPDATE, DELETE ON ContainerReport TO 'ispyb_web';
+-- GRANT INSERT, UPDATE, DELETE ON ContainerRegistry TO 'ispyb_web';
+-- GRANT INSERT, UPDATE, DELETE ON ContainerRegistry_has_Proposal TO 'ispyb_web';
+-- GRANT INSERT, UPDATE, DELETE ON ContainerReport TO 'ispyb_web';
 
 GRANT INSERT, UPDATE, DELETE ON BF_component TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON BF_component_beamline TO 'ispyb_web';
@@ -86,7 +86,7 @@ GRANT INSERT, UPDATE, DELETE ON BF_subcomponent_beamline TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON BF_system TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON BF_system_beamline TO 'ispyb_web';
 
-GRANT INSERT, UPDATE, DELETE ON CourierTermsAccepted TO 'ispyb_web';
+-- GRANT INSERT, UPDATE, DELETE ON CourierTermsAccepted TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON CalendarHash TO 'ispyb_web';
 
 GRANT INSERT, UPDATE, DELETE ON Schedule TO 'ispyb_web';
@@ -105,14 +105,14 @@ GRANT INSERT, UPDATE, DELETE ON ConcentrationType TO 'ispyb_web';
 
 GRANT INSERT, UPDATE, DELETE ON BLSampleImageScore TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON BLSampleImage TO 'ispyb_web';
-GRANT SELECT, INSERT, UPDATE, DELETE ON BLSampleImageMeasurement TO 'ispyb_web';
+-- GRANT SELECT, INSERT, UPDATE, DELETE ON BLSampleImageMeasurement TO 'ispyb_web';
 
 GRANT SELECT, INSERT, UPDATE ON Log4Stat TO 'ispyb_web';
 GRANT SELECT, INSERT, UPDATE, DELETE ON SW_onceToken TO 'ispyb_web';
 
-GRANT SELECT, INSERT, UPDATE, DELETE ON BLSample_has_DataCollectionPlan TO 'ispyb_web';
+-- GRANT SELECT, INSERT, UPDATE, DELETE ON BLSample_has_DataCollectionPlan TO 'ispyb_web';
 GRANT SELECT, INSERT, UPDATE ON Detector TO 'ispyb_web';
-GRANT SELECT, INSERT, UPDATE, DELETE ON DataCollectionPlan_has_Detector TO 'ispyb_web';
+-- GRANT SELECT, INSERT, UPDATE, DELETE ON DataCollectionPlan_has_Detector TO 'ispyb_web';
 GRANT SELECT, INSERT, UPDATE, DELETE ON ScanParametersModel TO 'ispyb_web';
 GRANT SELECT, INSERT, UPDATE, DELETE ON ScanParametersService TO 'ispyb_web';
 
@@ -122,7 +122,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON XRFFluorescenceMapping TO 'ispyb_web';
 GRANT SELECT ON Movie TO 'ispyb_web';
 GRANT SELECT ON `CTF` TO 'ispyb_web';
 GRANT SELECT ON `MotionCorrection` TO 'ispyb_web';
-GRANT SELECT ON `MotionCorrectionDrift` TO 'ispyb_web';
+-- GRANT SELECT ON `MotionCorrectionDrift` TO 'ispyb_web';
 
 GRANT SELECT, INSERT ON Session_has_Person TO 'ispyb_web';
 
