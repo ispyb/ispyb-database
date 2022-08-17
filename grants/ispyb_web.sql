@@ -66,7 +66,7 @@ GRANT INSERT, UPDATE, DELETE ON BLSampleType_has_Component TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON ComponentSubType TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON ConcentrationType TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON ComponentType TO 'ispyb_web';
-GRANT INSERT, UPDATE, DELETE ON ComponentLattice TO 'ispyb_web';
+-- GRANT INSERT, UPDATE, DELETE ON ComponentLattice TO 'ispyb_web';
 
 GRANT INSERT, UPDATE, DELETE ON AdminActivity TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON AdminVar TO 'ispyb_web';
