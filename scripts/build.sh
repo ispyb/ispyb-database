@@ -9,6 +9,8 @@
 
 # Author: Karl Levik
 
+set -e
+
 # Get this scripts dir
 dir=$(dirname $(realpath ${0}))
 
