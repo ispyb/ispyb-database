@@ -72,7 +72,7 @@ GRANT INSERT, UPDATE, DELETE ON AdminActivity TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON AdminVar TO 'ispyb_web';
 
 GRANT INSERT, UPDATE, DELETE ON DewarRegistry TO 'ispyb_web';
-GRANT INSERT, UPDATE, DELETE ON DewarReport TO 'ispyb_web';
+-- GRANT INSERT, UPDATE, DELETE ON DewarReport TO 'ispyb_web';
 
 GRANT INSERT, UPDATE, DELETE ON ContainerRegistry TO 'ispyb_web';
 GRANT INSERT, UPDATE, DELETE ON ContainerRegistry_has_Proposal TO 'ispyb_web';
