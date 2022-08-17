@@ -2,7 +2,6 @@ name: Build database
 
 on: 
   - push
-  - pull_request
 
 jobs:
   build:
@@ -28,13 +27,11 @@ jobs:
           bash scripts/build.sh
 
       - name: Regenerate sql files
-        if: ${{ github.event_name == 'pull_request' }}
         run: |
           bash scripts/backup.sh schema/
           rm .my.cnf
 
       - name: Create Pull Request
-        if: ${{ github.event_name == 'pull_request' }}
         uses: peter-evans/create-pull-request@v3
         with:
             token: ${{ secrets.GITHUB_TOKEN }}
