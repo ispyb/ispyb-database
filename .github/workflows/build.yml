@@ -1,7 +1,9 @@
 name: Build database
 
 on: 
-  - push
+  push:
+    tags-ignore:
+      - '**'
 
 jobs:
   build:
