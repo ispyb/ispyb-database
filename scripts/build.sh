@@ -27,7 +27,10 @@ then
   mysql --defaults-file=.my.cnf -D $DB < schema/1_tables.sql
   mysql --defaults-file=.my.cnf -D $DB < schema/2_lookups.sql
   mysql --defaults-file=.my.cnf -D $DB < schema/3_data.sql
-  mysql --defaults-file=.my.cnf -D $DB < schema/4_data_user_portal.sql
+  if [ -z "${NO_USERPORTAL_DATA}" ]
+  then
+    mysql --defaults-file=.my.cnf -D $DB < schema/4_data_user_portal.sql
+  fi
   mysql --defaults-file=.my.cnf -D $DB < schema/5_routines.sql
   mysql --defaults-file=.my.cnf -D $DB < grants/ispyb_acquisition.sql
   mysql --defaults-file=.my.cnf -D $DB < grants/ispyb_processing.sql

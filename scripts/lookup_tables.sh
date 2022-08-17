@@ -4,8 +4,8 @@ SchemaStatus
 ComponentType
 ComponentSubType
 ConcentrationType
-ContainerType
-ExperimentType
+# ContainerType
+# ExperimentType
 InspectionType
 PlateType
 WorkflowType
@@ -17,13 +17,13 @@ DewarLocationList
 BF_component
 BF_subcomponent
 BF_system
-BLSampleImageAutoScoreSchema
-BLSampleImageAutoScoreClass
+# BLSampleImageAutoScoreSchema
+# BLSampleImageAutoScoreClass
 SpaceGroup
-ProcessingPipelineCategory
-ProcessingPipeline
-BLSampleType
-PurificationColumn
+# ProcessingPipelineCategory
+# ProcessingPipeline
+# BLSampleType
+# PurificationColumn
 UserGroup
 Permission
 UserGroup_has_Permission
