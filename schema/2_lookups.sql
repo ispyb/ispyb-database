@@ -20,7 +20,7 @@
 --
 
 /*!40000 ALTER TABLE `AdminVar` DISABLE KEYS */;
-INSERT INTO `AdminVar` (`varId`, `name`, `value`) VALUES (4,'schemaVersion','1.27.0');
+INSERT INTO `AdminVar` (`varId`, `name`, `value`) VALUES (4,'schemaVersion','1.0.1');
 /*!40000 ALTER TABLE `AdminVar` ENABLE KEYS */;
 
 --
@@ -28,6 +28,7 @@ INSERT INTO `AdminVar` (`varId`, `name`, `value`) VALUES (4,'schemaVersion','1.2
 --
 
 /*!40000 ALTER TABLE `SchemaStatus` DISABLE KEYS */;
+INSERT INTO `SchemaStatus` (`schemaStatusId`, `scriptName`, `schemaStatus`, `recordTimeStamp`) VALUES (1,'2022_08_17_AdminVar_bump_version.sql','DONE','2022-08-17 08:47:30');
 /*!40000 ALTER TABLE `SchemaStatus` ENABLE KEYS */;
 
 --
