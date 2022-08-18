@@ -1,16 +1,15 @@
--- MySQL dump 10.13  Distrib 8.0.30, for Linux (x86_64)
+-- MariaDB dump 10.19  Distrib 10.8.3-MariaDB, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: ispyb_build
 -- ------------------------------------------------------
--- Server version	5.5.5-10.7.4-MariaDB-1:10.7.4+maria~focal
+-- Server version	10.8.3-MariaDB-1:10.8.3+maria~jammy
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
@@ -83,7 +82,9 @@
 --
 
 /*!40000 ALTER TABLE `AutoProcProgram` DISABLE KEYS */;
-INSERT INTO `AutoProcProgram` (`autoProcProgramId`, `dataCollectionId`, `processingCommandLine`, `processingPrograms`, `processingStatus`, `processingMessage`, `processingStartTime`, `processingEndTime`, `processingEnvironment`, `recordTimeStamp`) VALUES (1,NULL,'test program (auto)','test program',NULL,NULL,NULL,NULL,NULL,'2020-12-28 18:12:16'),(2,NULL,'test program (auto)','test program','','processing failure','2020-12-28 18:21:52','2020-12-28 18:21:52',NULL,'2020-12-28 18:21:51'),(3,NULL,'test program (auto)','test program','RUNNING','processing successful','2020-12-30 15:40:28','2020-12-30 15:40:33',NULL,'2020-12-30 15:40:27');
+INSERT INTO `AutoProcProgram` (`autoProcProgramId`, `dataCollectionId`, `processingCommandLine`, `processingPrograms`, `processingStatus`, `processingMessage`, `processingStartTime`, `processingEndTime`, `processingEnvironment`, `recordTimeStamp`) VALUES (1,NULL,'test program (auto)','test program',NULL,NULL,NULL,NULL,NULL,'2020-12-28 18:12:16'),
+(2,NULL,'test program (auto)','test program','','processing failure','2020-12-28 18:21:52','2020-12-28 18:21:52',NULL,'2020-12-28 18:21:51'),
+(3,NULL,'test program (auto)','test program','RUNNING','processing successful','2020-12-30 15:40:28','2020-12-30 15:40:33',NULL,'2020-12-30 15:40:27');
 /*!40000 ALTER TABLE `AutoProcProgram` ENABLE KEYS */;
 
 --
@@ -248,7 +249,9 @@ INSERT INTO `BLSession` (`sessionId`, `expSessionPk`, `beamLineSetupId`, `propos
 --
 
 /*!40000 ALTER TABLE `BLSubSample` DISABLE KEYS */;
-INSERT INTO `BLSubSample` (`blSubSampleId`, `blSampleId`, `diffractionPlanId`, `positionId`, `position2Id`, `blSubSampleUUID`, `imgFileName`, `imgFilePath`, `comments`, `recordTimeStamp`, `motorPositionId`) VALUES (1,1,NULL,2,3,NULL,NULL,NULL,NULL,'2020-06-16 13:43:22',NULL),(2,1,NULL,4,NULL,NULL,NULL,NULL,NULL,'2020-06-16 13:57:47',NULL),(3,1,NULL,5,6,NULL,NULL,NULL,NULL,'2020-06-16 13:57:49',NULL);
+INSERT INTO `BLSubSample` (`blSubSampleId`, `blSampleId`, `diffractionPlanId`, `positionId`, `position2Id`, `blSubSampleUUID`, `imgFileName`, `imgFilePath`, `comments`, `recordTimeStamp`, `motorPositionId`) VALUES (1,1,NULL,2,3,NULL,NULL,NULL,NULL,'2020-06-16 13:43:22',NULL),
+(2,1,NULL,4,NULL,NULL,NULL,NULL,NULL,'2020-06-16 13:57:47',NULL),
+(3,1,NULL,5,6,NULL,NULL,NULL,NULL,'2020-06-16 13:57:49',NULL);
 /*!40000 ALTER TABLE `BLSubSample` ENABLE KEYS */;
 
 --
@@ -834,7 +837,8 @@ INSERT INTO `GridInfo` (`gridInfoId`, `workflowMeshId`, `xOffset`, `yOffset`, `d
 --
 
 /*!40000 ALTER TABLE `Person` DISABLE KEYS */;
-INSERT INTO `Person` (`personId`, `laboratoryId`, `siteId`, `personUUID`, `familyName`, `givenName`, `title`, `emailAddress`, `phoneNumber`, `login`, `passwd`, `faxNumber`, `recordTimeStamp`, `externalId`, `cache`) VALUES (1,NULL,NULL,NULL,'User','Test',NULL,NULL,NULL,'abcd',NULL,NULL,'2022-08-17 08:39:10',NULL,NULL),(2,NULL,NULL,NULL,'User','Admin',NULL,NULL,NULL,'efgh',NULL,NULL,'2022-08-17 08:39:10',NULL,NULL);
+INSERT INTO `Person` (`personId`, `laboratoryId`, `siteId`, `personUUID`, `familyName`, `givenName`, `title`, `emailAddress`, `phoneNumber`, `login`, `passwd`, `faxNumber`, `recordTimeStamp`, `externalId`, `cache`) VALUES (1,NULL,NULL,NULL,'User','Test',NULL,NULL,NULL,'abcd',NULL,NULL,'2022-08-17 08:39:10',NULL,NULL),
+(2,NULL,NULL,NULL,'User','Admin',NULL,NULL,NULL,'efgh',NULL,NULL,'2022-08-17 08:39:10',NULL,NULL);
 /*!40000 ALTER TABLE `Person` ENABLE KEYS */;
 
 --
@@ -898,7 +902,12 @@ INSERT INTO `Person` (`personId`, `laboratoryId`, `siteId`, `personUUID`, `famil
 --
 
 /*!40000 ALTER TABLE `Position` DISABLE KEYS */;
-INSERT INTO `Position` (`positionId`, `relativePositionId`, `posX`, `posY`, `posZ`, `scale`, `recordTimeStamp`) VALUES (1,NULL,0,0,NULL,NULL,NULL),(2,NULL,7410327,907061,NULL,NULL,NULL),(3,NULL,7610327,1107061,NULL,NULL,NULL),(4,NULL,8331997,467086,NULL,NULL,NULL),(5,NULL,8613623,1668137,NULL,NULL,NULL),(6,NULL,9077477,1311963,NULL,NULL,NULL);
+INSERT INTO `Position` (`positionId`, `relativePositionId`, `posX`, `posY`, `posZ`, `scale`, `recordTimeStamp`) VALUES (1,NULL,0,0,NULL,NULL,NULL),
+(2,NULL,7410327,907061,NULL,NULL,NULL),
+(3,NULL,7610327,1107061,NULL,NULL,NULL),
+(4,NULL,8331997,467086,NULL,NULL,NULL),
+(5,NULL,8613623,1668137,NULL,NULL,NULL),
+(6,NULL,9077477,1311963,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `Position` ENABLE KEYS */;
 
 --
@@ -1315,7 +1324,6 @@ INSERT INTO `UserGroup_has_Person` (`userGroupId`, `personId`) VALUES (9999,2);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

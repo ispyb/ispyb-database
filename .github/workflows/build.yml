@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       mariadb:
-        image: mariadb:10.7
+        image: mariadb:10.8
         env:
           MYSQL_USER: test
           MYSQL_PASSWORD: test
@@ -21,6 +21,11 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - uses: actions/checkout@v3
+      - uses: shogo82148/actions-setup-mysql@v1
+        with:
+          distribution: 'mariadb'
+          mysql-version: '10.8'
+          auto-start: false
       - name: Build database
         env:
           NO_USERPORTAL_DATA: 1
