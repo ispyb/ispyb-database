@@ -111,7 +111,7 @@ INSERT INTO `SchemaStatus` (`schemaStatusId`, `scriptName`, `schemaStatus`, `rec
 (102,'2021_01_12_Person_newCollation.sql','DONE','2021-01-12 09:59:44'),
 (104,'2021_02_19_LabContact_newCollation.sql','DONE','2021-02-19 11:47:27'),
 (105,'2021_07_05_New_EM_tables_and_view.sql','DONE','2021-07-05 06:54:18'),
-(107,'2021_08_25_New_column_for_Structure.sql','DONE','2021-08-25 10:44:17');
+(107,'2021_08_25_New_column_for_Structure.sql','DONE','2021-08-25 10:44:17'),
 (108,'2022_08_17_AdminVar_bump_version.sql','DONE','2022-08-17 08:47:30'),
 (109,'2022_08_17_User_Portal_Sync_permission.sql','DONE','2022-08-17 13:13:52');
 /*!40000 ALTER TABLE `SchemaStatus` ENABLE KEYS */;
