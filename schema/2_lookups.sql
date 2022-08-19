@@ -68,7 +68,7 @@ INSERT INTO `SchemaStatus` (`schemaStatusId`, `scriptName`, `schemaStatus`, `rec
 (52,'2017_09_21_new_diffractionplan_types.sql','DONE','2017-09-21 07:27:52'),
 (54,'2017_10_22_EM.sql','DONE','2017-11-23 14:14:16'),
 (55,'2017_12_05_DataCollectionFileAttachment_fileType.sql','DONE','2017-12-06 10:46:19'),
-(56,'2017_12_05_fluorescence_maps.sql','ONGOING','2017-12-06 10:46:35'),
+(56,'2017_12_05_fluorescence_maps.sql','DONE','2017-12-06 10:46:35'),
 (57,'2017_12_08_sample_mx_view_update.sql','DONE','2017-12-11 08:50:58'),
 (58,'2017_12_19_RankingResolution.sql','DONE','2017-12-19 09:34:21'),
 (60,'2018_02_03_updateSessionTable.sql','DONE','2018-02-09 17:41:24'),
