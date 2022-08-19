@@ -27,8 +27,8 @@ INSERT INTO `AdminVar` (`varId`, `name`, `value`) VALUES (4,'schemaVersion','1.0
 --
 
 /*!40000 ALTER TABLE `SchemaStatus` DISABLE KEYS */;
-INSERT INTO `SchemaStatus` (`schemaStatusId`, `scriptName`, `schemaStatus`, `recordTimeStamp`) VALUES (1,'2016_11_18_1_CreateComponentType','DONE','2016-11-22 10:09:29'),
-(2,'2016_11_18_2_CreateRobotAction','DONE','2016-11-22 10:10:29'),
+INSERT INTO `SchemaStatus` (`schemaStatusId`, `scriptName`, `schemaStatus`, `recordTimeStamp`) VALUES (1,'2016_11_18_1_CreateComponentType.sql','DONE','2016-11-22 10:09:29'),
+(2,'2016_11_18_2_CreateRobotAction.sql','DONE','2016-11-22 10:10:29'),
 (3,'2016_11_22_phasing_view.sql','DONE','2016-11-22 10:11:12'),
 (4,'2016_11_23_alterLogin.sql','DONE','2016-11-28 14:38:39'),
 (5,'2016_12_07_alterLaboratory.sql','DONE','2016-12-06 15:18:28'),
