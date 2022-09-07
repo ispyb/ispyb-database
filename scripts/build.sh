@@ -46,6 +46,14 @@ then
     echo "Running schema/updates/*.sql files that haven't yet been run:"
     for sql_file in ${arr[@]}; do
       echo "$sql_file"
+      if ! grep -Fxq "INSERT INTO SchemaStatus (scriptName, schemaStatus) VALUES ('${sql_file}', 'ONGOING');" "$sql_file"; then
+        echo "${sql_file} does not match SchemaStatus.scriptName INSERT value"
+        exit(1)
+      fi
+      if ! grep -Fxq "UPDATE SchemaStatus SET schemaStatus = 'DONE' WHERE scriptName = '${sql_file}';" "$sql_file"; then
+        echo "${sql_file} does not match SchemaStatus.scriptName UPDATE value"
+        exit(1)
+      fi
       mysql --defaults-file=.my.cnf -D ${DB} < "schema/updates/${sql_file}"
     done
   else
