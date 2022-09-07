@@ -2,7 +2,10 @@
 
 This package provides everything needed to create the official flavour of the ISPyB database schema. As the schema evolves the update scripts will also be published here, so other users of the schema should be able to stay up-to-date.
 
-This repository is mostly  copied from [ispyb-database](https://github.com/DiamondLightSource/ispyb-database). Thanks to @karl.levik
+Browsable documentaion with relation diagrams is available on dbdocs:
+[https://dbdocs.io/ispyb/ISPyB](https://dbdocs.io/ispyb/ISPyB)
+
+This repository is mostly copied from [ispyb-database](https://github.com/DiamondLightSource/ispyb-database). Thanks to [@karl.levik](https://github.com/KarlLevik)
 
 ## Requirements
 
