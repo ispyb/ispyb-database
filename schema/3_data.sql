@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: ispyb_build
 -- ------------------------------------------------------
--- Server version	10.8.3-MariaDB-1:10.8.3+maria~jammy
+-- Server version	10.8.4-MariaDB-1:10.8.4+maria~ubu2204
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
