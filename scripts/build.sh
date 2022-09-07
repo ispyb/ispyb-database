@@ -48,12 +48,12 @@ then
       echo "$sql_file"
       if ! grep -Fxq "INSERT INTO SchemaStatus (scriptName, schemaStatus) VALUES ('${sql_file}', 'ONGOING');" "schema/updates/${sql_file}"; then
         echo "** ${sql_file} does not match SchemaStatus.scriptName INSERT value **"
-        echo "  Looking for: `INSERT INTO SchemaStatus (scriptName, schemaStatus) VALUES ('${sql_file}', 'ONGOING');`"
+        echo "  Looking for: INSERT INTO SchemaStatus (scriptName, schemaStatus) VALUES ('${sql_file}', 'ONGOING');"
         exit 1
       fi
       if ! grep -Fxq "UPDATE SchemaStatus SET schemaStatus = 'DONE' WHERE scriptName = '${sql_file}';" "schema/updates/${sql_file}"; then
         echo "** ${sql_file} does not match SchemaStatus.scriptName UPDATE value **"
-        echo "  Looking for: `UPDATE SchemaStatus SET schemaStatus = 'DONE' WHERE scriptName = '${sql_file}';`"        
+        echo "  Looking for: UPDATE SchemaStatus SET schemaStatus = 'DONE' WHERE scriptName = '${sql_file}';"        
         exit 1
       fi
       mysql --defaults-file=.my.cnf -D ${DB} < "schema/updates/${sql_file}"
