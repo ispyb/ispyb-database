@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.8.3-MariaDB, for Linux (x86_64)
+-- MariaDB dump 10.19  Distrib 10.8.5-MariaDB, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: ispyb_build
 -- ------------------------------------------------------
--- Server version	10.8.3-MariaDB-1:10.8.3+maria~jammy
+-- Server version	10.8.5-MariaDB-1:10.8.5+maria~ubu2204
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -113,7 +113,8 @@ INSERT INTO `SchemaStatus` (`schemaStatusId`, `scriptName`, `schemaStatus`, `rec
 (105,'2021_07_05_New_EM_tables_and_view.sql','DONE','2021-07-05 06:54:18'),
 (107,'2021_08_25_New_column_for_Structure.sql','DONE','2021-08-25 10:44:17'),
 (108,'2022_08_17_AdminVar_bump_version.sql','DONE','2022-08-17 08:47:30'),
-(109,'2022_08_17_User_Portal_Sync_permission.sql','DONE','2022-08-17 13:13:52');
+(109,'2022_08_17_User_Portal_Sync_permission.sql','DONE','2022-08-17 13:13:52'),
+(110,'2022_10_06_ProcessingJob.sql','DONE','2022-10-06 14:43:49');
 /*!40000 ALTER TABLE `SchemaStatus` ENABLE KEYS */;
 
 --
