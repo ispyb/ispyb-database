@@ -1,4 +1,4 @@
-INSERT IGNORE INTO SchemaStatus (scriptName, schemaStatus) VALUES ('2022_10_06_AutoProcProgramMessage.sql', 'ONGOING');
+INSERT INTO SchemaStatus (scriptName, schemaStatus) VALUES ('2022_10_06_AutoProcProgramMessage.sql', 'ONGOING');
 
 CREATE TABLE AutoProcProgramMessage (
   autoProcProgramMessageId int(10) unsigned NOT NULL auto_increment; PRIMARY KEY,
