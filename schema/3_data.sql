@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.8.3-MariaDB, for Linux (x86_64)
+-- MariaDB dump 10.19  Distrib 10.8.5-MariaDB, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: ispyb_build
 -- ------------------------------------------------------
--- Server version	10.8.3-MariaDB-1:10.8.3+maria~jammy
+-- Server version	10.8.5-MariaDB-1:10.8.5+maria~ubu2204
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -82,9 +82,9 @@
 --
 
 /*!40000 ALTER TABLE `AutoProcProgram` DISABLE KEYS */;
-INSERT INTO `AutoProcProgram` (`autoProcProgramId`, `dataCollectionId`, `processingCommandLine`, `processingPrograms`, `processingStatus`, `processingMessage`, `processingStartTime`, `processingEndTime`, `processingEnvironment`, `recordTimeStamp`) VALUES (1,NULL,'test program (auto)','test program',NULL,NULL,NULL,NULL,NULL,'2020-12-28 18:12:16'),
-(2,NULL,'test program (auto)','test program','','processing failure','2020-12-28 18:21:52','2020-12-28 18:21:52',NULL,'2020-12-28 18:21:51'),
-(3,NULL,'test program (auto)','test program','RUNNING','processing successful','2020-12-30 15:40:28','2020-12-30 15:40:33',NULL,'2020-12-30 15:40:27');
+INSERT INTO `AutoProcProgram` (`autoProcProgramId`, `dataCollectionId`, `processingCommandLine`, `processingPrograms`, `processingStatus`, `processingMessage`, `processingStartTime`, `processingEndTime`, `processingEnvironment`, `recordTimeStamp`, `processingJobId`) VALUES (1,NULL,'test program (auto)','test program',NULL,NULL,NULL,NULL,NULL,'2020-12-28 18:12:16',NULL),
+(2,NULL,'test program (auto)','test program','','processing failure','2020-12-28 18:21:52','2020-12-28 18:21:52',NULL,'2020-12-28 18:21:51',NULL),
+(3,NULL,'test program (auto)','test program','RUNNING','processing successful','2020-12-30 15:40:28','2020-12-30 15:40:33',NULL,'2020-12-30 15:40:27',NULL);
 /*!40000 ALTER TABLE `AutoProcProgram` ENABLE KEYS */;
 
 --
@@ -916,6 +916,27 @@ INSERT INTO `Position` (`positionId`, `relativePositionId`, `posX`, `posY`, `pos
 
 /*!40000 ALTER TABLE `PreparePhasingData` DISABLE KEYS */;
 /*!40000 ALTER TABLE `PreparePhasingData` ENABLE KEYS */;
+
+--
+-- Dumping data for table `ProcessingJob`
+--
+
+/*!40000 ALTER TABLE `ProcessingJob` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ProcessingJob` ENABLE KEYS */;
+
+--
+-- Dumping data for table `ProcessingJobImageSweep`
+--
+
+/*!40000 ALTER TABLE `ProcessingJobImageSweep` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ProcessingJobImageSweep` ENABLE KEYS */;
+
+--
+-- Dumping data for table `ProcessingJobParameter`
+--
+
+/*!40000 ALTER TABLE `ProcessingJobParameter` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ProcessingJobParameter` ENABLE KEYS */;
 
 --
 -- Dumping data for table `Project`
