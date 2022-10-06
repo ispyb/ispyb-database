@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.8.3-MariaDB, for Linux (x86_64)
+-- MariaDB dump 10.19  Distrib 10.8.5-MariaDB, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: ispyb_build
 -- ------------------------------------------------------
--- Server version	10.8.3-MariaDB-1:10.8.3+maria~jammy
+-- Server version	10.8.5-MariaDB-1:10.8.5+maria~ubu2204
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -94,6 +94,13 @@ INSERT INTO `AutoProcProgram` (`autoProcProgramId`, `dataCollectionId`, `process
 /*!40000 ALTER TABLE `AutoProcProgramAttachment` DISABLE KEYS */;
 INSERT INTO `AutoProcProgramAttachment` (`autoProcProgramAttachmentId`, `autoProcProgramId`, `fileType`, `fileName`, `filePath`, `recordTimeStamp`) VALUES (1,3,'Result','moo.txt','/data',NULL);
 /*!40000 ALTER TABLE `AutoProcProgramAttachment` ENABLE KEYS */;
+
+--
+-- Dumping data for table `AutoProcProgramMessage`
+--
+
+/*!40000 ALTER TABLE `AutoProcProgramMessage` DISABLE KEYS */;
+/*!40000 ALTER TABLE `AutoProcProgramMessage` ENABLE KEYS */;
 
 --
 -- Dumping data for table `AutoProcScaling`
