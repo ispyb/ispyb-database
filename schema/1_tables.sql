@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.8.3-MariaDB, for Linux (x86_64)
+-- MariaDB dump 10.19  Distrib 10.8.5-MariaDB, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: ispyb_build
 -- ------------------------------------------------------
--- Server version	10.8.3-MariaDB-1:10.8.3+maria~jammy
+-- Server version	10.8.5-MariaDB-1:10.8.5+maria~ubu2204
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -270,6 +270,26 @@ CREATE TABLE `AutoProcProgramAttachment` (
   KEY `AutoProcProgramAttachmentIdx1` (`autoProcProgramId`),
   CONSTRAINT `AutoProcProgramAttachmentFk1` FOREIGN KEY (`autoProcProgramId`) REFERENCES `AutoProcProgram` (`autoProcProgramId`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `AutoProcProgramMessage`
+--
+
+DROP TABLE IF EXISTS `AutoProcProgramMessage`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `AutoProcProgramMessage` (
+  `autoProcProgramMessageId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `autoProcProgramId` int(10) unsigned DEFAULT NULL,
+  `recordTimeStamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `severity` enum('ERROR','WARNING','INFO') DEFAULT NULL,
+  `message` varchar(200) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  PRIMARY KEY (`autoProcProgramMessageId`),
+  KEY `AutoProcProgramMessage_fk1` (`autoProcProgramId`),
+  CONSTRAINT `AutoProcProgramMessage_fk1` FOREIGN KEY (`autoProcProgramId`) REFERENCES `AutoProcProgram` (`autoProcProgramId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4574,67 +4594,66 @@ DROP TABLE IF EXISTS `V_AnalysisInfo`;
 /*!50001 DROP VIEW IF EXISTS `V_AnalysisInfo`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `V_AnalysisInfo` (
-  `experimentCreationDate` tinyint NOT NULL,
-  `timeStart` tinyint NOT NULL,
-  `dataCollectionId` tinyint NOT NULL,
-  `measurementId` tinyint NOT NULL,
-  `proposalId` tinyint NOT NULL,
-  `proposalCode` tinyint NOT NULL,
-  `proposalNumber` tinyint NOT NULL,
-  `priorityLevelId` tinyint NOT NULL,
-  `code` tinyint NOT NULL,
-  `exposureTemperature` tinyint NOT NULL,
-  `transmission` tinyint NOT NULL,
-  `measurementComments` tinyint NOT NULL,
-  `experimentComments` tinyint NOT NULL,
-  `experimentId` tinyint NOT NULL,
-  `experimentType` tinyint NOT NULL,
-  `conc` tinyint NOT NULL,
-  `bufferAcronym` tinyint NOT NULL,
-  `macromoleculeAcronym` tinyint NOT NULL,
-  `bufferId` tinyint NOT NULL,
-  `macromoleculeId` tinyint NOT NULL,
-  `subtractedFilePath` tinyint NOT NULL,
-  `rgGuinier` tinyint NOT NULL,
-  `firstPointUsed` tinyint NOT NULL,
-  `lastPointUsed` tinyint NOT NULL,
-  `I0` tinyint NOT NULL,
-  `isagregated` tinyint NOT NULL,
-  `subtractionId` tinyint NOT NULL,
-  `rgGnom` tinyint NOT NULL,
-  `total` tinyint NOT NULL,
-  `dmax` tinyint NOT NULL,
-  `volume` tinyint NOT NULL,
-  `i0stdev` tinyint NOT NULL,
-  `quality` tinyint NOT NULL,
-  `substractionCreationTime` tinyint NOT NULL,
-  `bufferBeforeMeasurementId` tinyint NOT NULL,
-  `bufferAfterMeasurementId` tinyint NOT NULL,
-  `bufferBeforeFramesMerged` tinyint NOT NULL,
-  `bufferBeforeMergeId` tinyint NOT NULL,
-  `bufferBeforeAverageFilePath` tinyint NOT NULL,
-  `sampleMeasurementId` tinyint NOT NULL,
-  `sampleMergeId` tinyint NOT NULL,
-  `averageFilePath` tinyint NOT NULL,
-  `framesMerge` tinyint NOT NULL,
-  `framesCount` tinyint NOT NULL,
-  `bufferAfterFramesMerged` tinyint NOT NULL,
-  `bufferAfterMergeId` tinyint NOT NULL,
-  `bufferAfterAverageFilePath` tinyint NOT NULL,
-  `modelListId1` tinyint NOT NULL,
-  `nsdFilePath` tinyint NOT NULL,
-  `modelListId2` tinyint NOT NULL,
-  `chi2RgFilePath` tinyint NOT NULL,
-  `averagedModel` tinyint NOT NULL,
-  `averagedModelId` tinyint NOT NULL,
-  `rapidShapeDeterminationModel` tinyint NOT NULL,
-  `rapidShapeDeterminationModelId` tinyint NOT NULL,
-  `shapeDeterminationModel` tinyint NOT NULL,
-  `shapeDeterminationModelId` tinyint NOT NULL,
-  `abInitioModelId` tinyint NOT NULL,
-  `comments` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `V_AnalysisInfo` AS SELECT
+ 1 AS `experimentCreationDate`,
+  1 AS `timeStart`,
+  1 AS `dataCollectionId`,
+  1 AS `measurementId`,
+  1 AS `proposalId`,
+  1 AS `proposalCode`,
+  1 AS `proposalNumber`,
+  1 AS `priorityLevelId`,
+  1 AS `code`,
+  1 AS `exposureTemperature`,
+  1 AS `transmission`,
+  1 AS `measurementComments`,
+  1 AS `experimentComments`,
+  1 AS `experimentId`,
+  1 AS `experimentType`,
+  1 AS `conc`,
+  1 AS `bufferAcronym`,
+  1 AS `macromoleculeAcronym`,
+  1 AS `bufferId`,
+  1 AS `macromoleculeId`,
+  1 AS `subtractedFilePath`,
+  1 AS `rgGuinier`,
+  1 AS `firstPointUsed`,
+  1 AS `lastPointUsed`,
+  1 AS `I0`,
+  1 AS `isagregated`,
+  1 AS `subtractionId`,
+  1 AS `rgGnom`,
+  1 AS `total`,
+  1 AS `dmax`,
+  1 AS `volume`,
+  1 AS `i0stdev`,
+  1 AS `quality`,
+  1 AS `substractionCreationTime`,
+  1 AS `bufferBeforeMeasurementId`,
+  1 AS `bufferAfterMeasurementId`,
+  1 AS `bufferBeforeFramesMerged`,
+  1 AS `bufferBeforeMergeId`,
+  1 AS `bufferBeforeAverageFilePath`,
+  1 AS `sampleMeasurementId`,
+  1 AS `sampleMergeId`,
+  1 AS `averageFilePath`,
+  1 AS `framesMerge`,
+  1 AS `framesCount`,
+  1 AS `bufferAfterFramesMerged`,
+  1 AS `bufferAfterMergeId`,
+  1 AS `bufferAfterAverageFilePath`,
+  1 AS `modelListId1`,
+  1 AS `nsdFilePath`,
+  1 AS `modelListId2`,
+  1 AS `chi2RgFilePath`,
+  1 AS `averagedModel`,
+  1 AS `averagedModelId`,
+  1 AS `rapidShapeDeterminationModel`,
+  1 AS `rapidShapeDeterminationModelId`,
+  1 AS `shapeDeterminationModel`,
+  1 AS `shapeDeterminationModelId`,
+  1 AS `abInitioModelId`,
+  1 AS `comments` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -4836,14 +4855,13 @@ DROP TABLE IF EXISTS `v_Log4Stat`;
 /*!50001 DROP VIEW IF EXISTS `v_Log4Stat`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_Log4Stat` (
-  `id` tinyint NOT NULL,
-  `priority` tinyint NOT NULL,
-  `timestamp` tinyint NOT NULL,
-  `msg` tinyint NOT NULL,
-  `detail` tinyint NOT NULL,
-  `value` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_Log4Stat` AS SELECT
+ 1 AS `id`,
+  1 AS `priority`,
+  1 AS `timestamp`,
+  1 AS `msg`,
+  1 AS `detail`,
+  1 AS `value` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -4854,93 +4872,92 @@ DROP TABLE IF EXISTS `v_datacollection`;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_datacollection` (
-  `dataCollectionId` tinyint NOT NULL,
-  `dataCollectionGroupId` tinyint NOT NULL,
-  `strategySubWedgeOrigId` tinyint NOT NULL,
-  `detectorId` tinyint NOT NULL,
-  `blSubSampleId` tinyint NOT NULL,
-  `dataCollectionNumber` tinyint NOT NULL,
-  `startTime` tinyint NOT NULL,
-  `endTime` tinyint NOT NULL,
-  `runStatus` tinyint NOT NULL,
-  `axisStart` tinyint NOT NULL,
-  `axisEnd` tinyint NOT NULL,
-  `axisRange` tinyint NOT NULL,
-  `overlap` tinyint NOT NULL,
-  `numberOfImages` tinyint NOT NULL,
-  `startImageNumber` tinyint NOT NULL,
-  `numberOfPasses` tinyint NOT NULL,
-  `exposureTime` tinyint NOT NULL,
-  `imageDirectory` tinyint NOT NULL,
-  `imagePrefix` tinyint NOT NULL,
-  `imageSuffix` tinyint NOT NULL,
-  `fileTemplate` tinyint NOT NULL,
-  `wavelength` tinyint NOT NULL,
-  `resolution` tinyint NOT NULL,
-  `detectorDistance` tinyint NOT NULL,
-  `xBeam` tinyint NOT NULL,
-  `yBeam` tinyint NOT NULL,
-  `xBeamPix` tinyint NOT NULL,
-  `yBeamPix` tinyint NOT NULL,
-  `comments` tinyint NOT NULL,
-  `printableForReport` tinyint NOT NULL,
-  `slitGapVertical` tinyint NOT NULL,
-  `slitGapHorizontal` tinyint NOT NULL,
-  `transmission` tinyint NOT NULL,
-  `synchrotronMode` tinyint NOT NULL,
-  `xtalSnapshotFullPath1` tinyint NOT NULL,
-  `xtalSnapshotFullPath2` tinyint NOT NULL,
-  `xtalSnapshotFullPath3` tinyint NOT NULL,
-  `xtalSnapshotFullPath4` tinyint NOT NULL,
-  `rotationAxis` tinyint NOT NULL,
-  `phiStart` tinyint NOT NULL,
-  `kappaStart` tinyint NOT NULL,
-  `omegaStart` tinyint NOT NULL,
-  `resolutionAtCorner` tinyint NOT NULL,
-  `detector2Theta` tinyint NOT NULL,
-  `undulatorGap1` tinyint NOT NULL,
-  `undulatorGap2` tinyint NOT NULL,
-  `undulatorGap3` tinyint NOT NULL,
-  `beamSizeAtSampleX` tinyint NOT NULL,
-  `beamSizeAtSampleY` tinyint NOT NULL,
-  `centeringMethod` tinyint NOT NULL,
-  `averageTemperature` tinyint NOT NULL,
-  `actualCenteringPosition` tinyint NOT NULL,
-  `beamShape` tinyint NOT NULL,
-  `flux` tinyint NOT NULL,
-  `flux_end` tinyint NOT NULL,
-  `totalAbsorbedDose` tinyint NOT NULL,
-  `bestWilsonPlotPath` tinyint NOT NULL,
-  `imageQualityIndicatorsPlotPath` tinyint NOT NULL,
-  `imageQualityIndicatorsCSVPath` tinyint NOT NULL,
-  `sessionId` tinyint NOT NULL,
-  `proposalId` tinyint NOT NULL,
-  `workflowId` tinyint NOT NULL,
-  `AutoProcIntegration_dataCollectionId` tinyint NOT NULL,
-  `autoProcScalingId` tinyint NOT NULL,
-  `cell_a` tinyint NOT NULL,
-  `cell_b` tinyint NOT NULL,
-  `cell_c` tinyint NOT NULL,
-  `cell_alpha` tinyint NOT NULL,
-  `cell_beta` tinyint NOT NULL,
-  `cell_gamma` tinyint NOT NULL,
-  `anomalous` tinyint NOT NULL,
-  `scalingStatisticsType` tinyint NOT NULL,
-  `resolutionLimitHigh` tinyint NOT NULL,
-  `resolutionLimitLow` tinyint NOT NULL,
-  `completeness` tinyint NOT NULL,
-  `AutoProc_spaceGroup` tinyint NOT NULL,
-  `autoProcId` tinyint NOT NULL,
-  `rMerge` tinyint NOT NULL,
-  `ccHalf` tinyint NOT NULL,
-  `meanIOverSigI` tinyint NOT NULL,
-  `AutoProcIntegration_autoProcIntegrationId` tinyint NOT NULL,
-  `AutoProcProgram_processingPrograms` tinyint NOT NULL,
-  `AutoProcProgram_processingStatus` tinyint NOT NULL,
-  `AutoProcProgram_autoProcProgramId` tinyint NOT NULL,
-  `ScreeningOutput_rankingResolution` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_datacollection` AS SELECT
+ 1 AS `dataCollectionId`,
+  1 AS `dataCollectionGroupId`,
+  1 AS `strategySubWedgeOrigId`,
+  1 AS `detectorId`,
+  1 AS `blSubSampleId`,
+  1 AS `dataCollectionNumber`,
+  1 AS `startTime`,
+  1 AS `endTime`,
+  1 AS `runStatus`,
+  1 AS `axisStart`,
+  1 AS `axisEnd`,
+  1 AS `axisRange`,
+  1 AS `overlap`,
+  1 AS `numberOfImages`,
+  1 AS `startImageNumber`,
+  1 AS `numberOfPasses`,
+  1 AS `exposureTime`,
+  1 AS `imageDirectory`,
+  1 AS `imagePrefix`,
+  1 AS `imageSuffix`,
+  1 AS `fileTemplate`,
+  1 AS `wavelength`,
+  1 AS `resolution`,
+  1 AS `detectorDistance`,
+  1 AS `xBeam`,
+  1 AS `yBeam`,
+  1 AS `xBeamPix`,
+  1 AS `yBeamPix`,
+  1 AS `comments`,
+  1 AS `printableForReport`,
+  1 AS `slitGapVertical`,
+  1 AS `slitGapHorizontal`,
+  1 AS `transmission`,
+  1 AS `synchrotronMode`,
+  1 AS `xtalSnapshotFullPath1`,
+  1 AS `xtalSnapshotFullPath2`,
+  1 AS `xtalSnapshotFullPath3`,
+  1 AS `xtalSnapshotFullPath4`,
+  1 AS `rotationAxis`,
+  1 AS `phiStart`,
+  1 AS `kappaStart`,
+  1 AS `omegaStart`,
+  1 AS `resolutionAtCorner`,
+  1 AS `detector2Theta`,
+  1 AS `undulatorGap1`,
+  1 AS `undulatorGap2`,
+  1 AS `undulatorGap3`,
+  1 AS `beamSizeAtSampleX`,
+  1 AS `beamSizeAtSampleY`,
+  1 AS `centeringMethod`,
+  1 AS `averageTemperature`,
+  1 AS `actualCenteringPosition`,
+  1 AS `beamShape`,
+  1 AS `flux`,
+  1 AS `flux_end`,
+  1 AS `totalAbsorbedDose`,
+  1 AS `bestWilsonPlotPath`,
+  1 AS `imageQualityIndicatorsPlotPath`,
+  1 AS `imageQualityIndicatorsCSVPath`,
+  1 AS `sessionId`,
+  1 AS `proposalId`,
+  1 AS `workflowId`,
+  1 AS `AutoProcIntegration_dataCollectionId`,
+  1 AS `autoProcScalingId`,
+  1 AS `cell_a`,
+  1 AS `cell_b`,
+  1 AS `cell_c`,
+  1 AS `cell_alpha`,
+  1 AS `cell_beta`,
+  1 AS `cell_gamma`,
+  1 AS `anomalous`,
+  1 AS `scalingStatisticsType`,
+  1 AS `resolutionLimitHigh`,
+  1 AS `resolutionLimitLow`,
+  1 AS `completeness`,
+  1 AS `AutoProc_spaceGroup`,
+  1 AS `autoProcId`,
+  1 AS `rMerge`,
+  1 AS `ccHalf`,
+  1 AS `meanIOverSigI`,
+  1 AS `AutoProcIntegration_autoProcIntegrationId`,
+  1 AS `AutoProcProgram_processingPrograms`,
+  1 AS `AutoProcProgram_processingStatus`,
+  1 AS `AutoProcProgram_autoProcProgramId`,
+  1 AS `ScreeningOutput_rankingResolution` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -4951,36 +4968,35 @@ DROP TABLE IF EXISTS `v_datacollection_autoprocintegration`;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection_autoprocintegration`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_datacollection_autoprocintegration` (
-  `v_datacollection_summary_phasing_autoProcIntegrationId` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_dataCollectionId` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_cell_a` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_cell_b` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_cell_c` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_cell_alpha` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_cell_beta` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_cell_gamma` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_anomalous` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_autoproc_space_group` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_autoproc_autoprocId` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_autoProcScalingId` tinyint NOT NULL,
-  `v_datacollection_processingPrograms` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_autoProcProgramId` tinyint NOT NULL,
-  `v_datacollection_processingStatus` tinyint NOT NULL,
-  `v_datacollection_processingStartTime` tinyint NOT NULL,
-  `v_datacollection_processingEndTime` tinyint NOT NULL,
-  `v_datacollection_summary_session_sessionId` tinyint NOT NULL,
-  `v_datacollection_summary_session_proposalId` tinyint NOT NULL,
-  `AutoProcIntegration_dataCollectionId` tinyint NOT NULL,
-  `AutoProcIntegration_autoProcIntegrationId` tinyint NOT NULL,
-  `PhasingStep_phasing_phasingStepType` tinyint NOT NULL,
-  `SpaceGroup_spaceGroupShortName` tinyint NOT NULL,
-  `Protein_proteinId` tinyint NOT NULL,
-  `Protein_acronym` tinyint NOT NULL,
-  `BLSample_name` tinyint NOT NULL,
-  `DataCollection_dataCollectionNumber` tinyint NOT NULL,
-  `DataCollection_imagePrefix` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_datacollection_autoprocintegration` AS SELECT
+ 1 AS `v_datacollection_summary_phasing_autoProcIntegrationId`,
+  1 AS `v_datacollection_summary_phasing_dataCollectionId`,
+  1 AS `v_datacollection_summary_phasing_cell_a`,
+  1 AS `v_datacollection_summary_phasing_cell_b`,
+  1 AS `v_datacollection_summary_phasing_cell_c`,
+  1 AS `v_datacollection_summary_phasing_cell_alpha`,
+  1 AS `v_datacollection_summary_phasing_cell_beta`,
+  1 AS `v_datacollection_summary_phasing_cell_gamma`,
+  1 AS `v_datacollection_summary_phasing_anomalous`,
+  1 AS `v_datacollection_summary_phasing_autoproc_space_group`,
+  1 AS `v_datacollection_summary_phasing_autoproc_autoprocId`,
+  1 AS `v_datacollection_summary_phasing_autoProcScalingId`,
+  1 AS `v_datacollection_processingPrograms`,
+  1 AS `v_datacollection_summary_phasing_autoProcProgramId`,
+  1 AS `v_datacollection_processingStatus`,
+  1 AS `v_datacollection_processingStartTime`,
+  1 AS `v_datacollection_processingEndTime`,
+  1 AS `v_datacollection_summary_session_sessionId`,
+  1 AS `v_datacollection_summary_session_proposalId`,
+  1 AS `AutoProcIntegration_dataCollectionId`,
+  1 AS `AutoProcIntegration_autoProcIntegrationId`,
+  1 AS `PhasingStep_phasing_phasingStepType`,
+  1 AS `SpaceGroup_spaceGroupShortName`,
+  1 AS `Protein_proteinId`,
+  1 AS `Protein_acronym`,
+  1 AS `BLSample_name`,
+  1 AS `DataCollection_dataCollectionNumber`,
+  1 AS `DataCollection_imagePrefix` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -4991,37 +5007,36 @@ DROP TABLE IF EXISTS `v_datacollection_phasing`;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection_phasing`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_datacollection_phasing` (
-  `phasingStepId` tinyint NOT NULL,
-  `previousPhasingStepId` tinyint NOT NULL,
-  `phasingAnalysisId` tinyint NOT NULL,
-  `autoProcIntegrationId` tinyint NOT NULL,
-  `dataCollectionId` tinyint NOT NULL,
-  `anomalous` tinyint NOT NULL,
-  `spaceGroup` tinyint NOT NULL,
-  `autoProcId` tinyint NOT NULL,
-  `phasingStepType` tinyint NOT NULL,
-  `method` tinyint NOT NULL,
-  `solventContent` tinyint NOT NULL,
-  `enantiomorph` tinyint NOT NULL,
-  `lowRes` tinyint NOT NULL,
-  `highRes` tinyint NOT NULL,
-  `autoProcScalingId` tinyint NOT NULL,
-  `spaceGroupShortName` tinyint NOT NULL,
-  `processingPrograms` tinyint NOT NULL,
-  `processingStatus` tinyint NOT NULL,
-  `phasingPrograms` tinyint NOT NULL,
-  `phasingStatus` tinyint NOT NULL,
-  `phasingStartTime` tinyint NOT NULL,
-  `phasingEndTime` tinyint NOT NULL,
-  `sessionId` tinyint NOT NULL,
-  `proposalId` tinyint NOT NULL,
-  `blSampleId` tinyint NOT NULL,
-  `name` tinyint NOT NULL,
-  `code` tinyint NOT NULL,
-  `acronym` tinyint NOT NULL,
-  `proteinId` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_datacollection_phasing` AS SELECT
+ 1 AS `phasingStepId`,
+  1 AS `previousPhasingStepId`,
+  1 AS `phasingAnalysisId`,
+  1 AS `autoProcIntegrationId`,
+  1 AS `dataCollectionId`,
+  1 AS `anomalous`,
+  1 AS `spaceGroup`,
+  1 AS `autoProcId`,
+  1 AS `phasingStepType`,
+  1 AS `method`,
+  1 AS `solventContent`,
+  1 AS `enantiomorph`,
+  1 AS `lowRes`,
+  1 AS `highRes`,
+  1 AS `autoProcScalingId`,
+  1 AS `spaceGroupShortName`,
+  1 AS `processingPrograms`,
+  1 AS `processingStatus`,
+  1 AS `phasingPrograms`,
+  1 AS `phasingStatus`,
+  1 AS `phasingStartTime`,
+  1 AS `phasingEndTime`,
+  1 AS `sessionId`,
+  1 AS `proposalId`,
+  1 AS `blSampleId`,
+  1 AS `name`,
+  1 AS `code`,
+  1 AS `acronym`,
+  1 AS `proteinId` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5032,31 +5047,30 @@ DROP TABLE IF EXISTS `v_datacollection_phasing_program_run`;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection_phasing_program_run`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_datacollection_phasing_program_run` (
-  `phasingStepId` tinyint NOT NULL,
-  `previousPhasingStepId` tinyint NOT NULL,
-  `phasingAnalysisId` tinyint NOT NULL,
-  `autoProcIntegrationId` tinyint NOT NULL,
-  `dataCollectionId` tinyint NOT NULL,
-  `autoProcId` tinyint NOT NULL,
-  `phasingStepType` tinyint NOT NULL,
-  `method` tinyint NOT NULL,
-  `autoProcScalingId` tinyint NOT NULL,
-  `spaceGroupShortName` tinyint NOT NULL,
-  `phasingPrograms` tinyint NOT NULL,
-  `phasingStatus` tinyint NOT NULL,
-  `sessionId` tinyint NOT NULL,
-  `proposalId` tinyint NOT NULL,
-  `blSampleId` tinyint NOT NULL,
-  `name` tinyint NOT NULL,
-  `code` tinyint NOT NULL,
-  `acronym` tinyint NOT NULL,
-  `proteinId` tinyint NOT NULL,
-  `phasingProgramAttachmentId` tinyint NOT NULL,
-  `fileType` tinyint NOT NULL,
-  `fileName` tinyint NOT NULL,
-  `filePath` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_datacollection_phasing_program_run` AS SELECT
+ 1 AS `phasingStepId`,
+  1 AS `previousPhasingStepId`,
+  1 AS `phasingAnalysisId`,
+  1 AS `autoProcIntegrationId`,
+  1 AS `dataCollectionId`,
+  1 AS `autoProcId`,
+  1 AS `phasingStepType`,
+  1 AS `method`,
+  1 AS `autoProcScalingId`,
+  1 AS `spaceGroupShortName`,
+  1 AS `phasingPrograms`,
+  1 AS `phasingStatus`,
+  1 AS `sessionId`,
+  1 AS `proposalId`,
+  1 AS `blSampleId`,
+  1 AS `name`,
+  1 AS `code`,
+  1 AS `acronym`,
+  1 AS `proteinId`,
+  1 AS `phasingProgramAttachmentId`,
+  1 AS `fileType`,
+  1 AS `fileName`,
+  1 AS `filePath` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5067,194 +5081,193 @@ DROP TABLE IF EXISTS `v_datacollection_summary`;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection_summary`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_datacollection_summary` (
-  `DataCollectionGroup_dataCollectionGroupId` tinyint NOT NULL,
-  `DataCollectionGroup_blSampleId` tinyint NOT NULL,
-  `DataCollectionGroup_sessionId` tinyint NOT NULL,
-  `DataCollectionGroup_workflowId` tinyint NOT NULL,
-  `DataCollectionGroup_experimentType` tinyint NOT NULL,
-  `DataCollectionGroup_startTime` tinyint NOT NULL,
-  `DataCollectionGroup_endTime` tinyint NOT NULL,
-  `DataCollectionGroup_comments` tinyint NOT NULL,
-  `DataCollectionGroup_actualSampleBarcode` tinyint NOT NULL,
-  `DataCollectionGroup_xtalSnapshotFullPath` tinyint NOT NULL,
-  `DataCollectionGroup_crystalClass` tinyint NOT NULL,
-  `BLSample_blSampleId` tinyint NOT NULL,
-  `BLSample_crystalId` tinyint NOT NULL,
-  `BLSample_name` tinyint NOT NULL,
-  `BLSample_code` tinyint NOT NULL,
-  `BLSample_location` tinyint NOT NULL,
-  `BLSample_blSampleStatus` tinyint NOT NULL,
-  `BLSample_comments` tinyint NOT NULL,
-  `Container_containerId` tinyint NOT NULL,
-  `BLSession_sessionId` tinyint NOT NULL,
-  `BLSession_proposalId` tinyint NOT NULL,
-  `BLSession_protectedData` tinyint NOT NULL,
-  `Dewar_dewarId` tinyint NOT NULL,
-  `Dewar_code` tinyint NOT NULL,
-  `Dewar_storageLocation` tinyint NOT NULL,
-  `Container_containerType` tinyint NOT NULL,
-  `Container_code` tinyint NOT NULL,
-  `Container_capacity` tinyint NOT NULL,
-  `Container_beamlineLocation` tinyint NOT NULL,
-  `Container_sampleChangerLocation` tinyint NOT NULL,
-  `Protein_proteinId` tinyint NOT NULL,
-  `Protein_name` tinyint NOT NULL,
-  `Protein_acronym` tinyint NOT NULL,
-  `DataCollection_dataCollectionId` tinyint NOT NULL,
-  `DataCollection_dataCollectionGroupId` tinyint NOT NULL,
-  `DataCollection_startTime` tinyint NOT NULL,
-  `DataCollection_endTime` tinyint NOT NULL,
-  `DataCollection_runStatus` tinyint NOT NULL,
-  `DataCollection_numberOfImages` tinyint NOT NULL,
-  `DataCollection_startImageNumber` tinyint NOT NULL,
-  `DataCollection_numberOfPasses` tinyint NOT NULL,
-  `DataCollection_exposureTime` tinyint NOT NULL,
-  `DataCollection_imageDirectory` tinyint NOT NULL,
-  `DataCollection_wavelength` tinyint NOT NULL,
-  `DataCollection_resolution` tinyint NOT NULL,
-  `DataCollection_detectorDistance` tinyint NOT NULL,
-  `DataCollection_xBeam` tinyint NOT NULL,
-  `transmission` tinyint NOT NULL,
-  `DataCollection_yBeam` tinyint NOT NULL,
-  `DataCollection_imagePrefix` tinyint NOT NULL,
-  `DataCollection_comments` tinyint NOT NULL,
-  `DataCollection_xtalSnapshotFullPath1` tinyint NOT NULL,
-  `DataCollection_xtalSnapshotFullPath2` tinyint NOT NULL,
-  `DataCollection_xtalSnapshotFullPath3` tinyint NOT NULL,
-  `DataCollection_xtalSnapshotFullPath4` tinyint NOT NULL,
-  `DataCollection_phiStart` tinyint NOT NULL,
-  `DataCollection_kappaStart` tinyint NOT NULL,
-  `DataCollection_omegaStart` tinyint NOT NULL,
-  `DataCollection_flux` tinyint NOT NULL,
-  `DataCollection_flux_end` tinyint NOT NULL,
-  `DataCollection_resolutionAtCorner` tinyint NOT NULL,
-  `DataCollection_bestWilsonPlotPath` tinyint NOT NULL,
-  `DataCollection_dataCollectionNumber` tinyint NOT NULL,
-  `DataCollection_axisRange` tinyint NOT NULL,
-  `DataCollection_axisStart` tinyint NOT NULL,
-  `DataCollection_axisEnd` tinyint NOT NULL,
-  `DataCollection_rotationAxis` tinyint NOT NULL,
-  `DataCollection_undulatorGap1` tinyint NOT NULL,
-  `DataCollection_undulatorGap2` tinyint NOT NULL,
-  `DataCollection_undulatorGap3` tinyint NOT NULL,
-  `beamSizeAtSampleX` tinyint NOT NULL,
-  `beamSizeAtSampleY` tinyint NOT NULL,
-  `DataCollection_slitGapVertical` tinyint NOT NULL,
-  `DataCollection_slitGapHorizontal` tinyint NOT NULL,
-  `DataCollection_beamShape` tinyint NOT NULL,
-  `DataCollection_voltage` tinyint NOT NULL,
-  `DataCollection_xBeamPix` tinyint NOT NULL,
-  `Workflow_workflowTitle` tinyint NOT NULL,
-  `Workflow_workflowType` tinyint NOT NULL,
-  `Workflow_status` tinyint NOT NULL,
-  `Workflow_workflowId` tinyint NOT NULL,
-  `AutoProcIntegration_dataCollectionId` tinyint NOT NULL,
-  `autoProcScalingId` tinyint NOT NULL,
-  `cell_a` tinyint NOT NULL,
-  `cell_b` tinyint NOT NULL,
-  `cell_c` tinyint NOT NULL,
-  `cell_alpha` tinyint NOT NULL,
-  `cell_beta` tinyint NOT NULL,
-  `cell_gamma` tinyint NOT NULL,
-  `anomalous` tinyint NOT NULL,
-  `scalingStatisticsType` tinyint NOT NULL,
-  `resolutionLimitHigh` tinyint NOT NULL,
-  `resolutionLimitLow` tinyint NOT NULL,
-  `completeness` tinyint NOT NULL,
-  `AutoProc_spaceGroup` tinyint NOT NULL,
-  `autoProcId` tinyint NOT NULL,
-  `rMerge` tinyint NOT NULL,
-  `AutoProcIntegration_autoProcIntegrationId` tinyint NOT NULL,
-  `AutoProcProgram_processingPrograms` tinyint NOT NULL,
-  `AutoProcProgram_processingStatus` tinyint NOT NULL,
-  `AutoProcProgram_autoProcProgramId` tinyint NOT NULL,
-  `Screening_screeningId` tinyint NOT NULL,
-  `Screening_dataCollectionId` tinyint NOT NULL,
-  `Screening_dataCollectionGroupId` tinyint NOT NULL,
-  `ScreeningOutput_strategySuccess` tinyint NOT NULL,
-  `ScreeningOutput_indexingSuccess` tinyint NOT NULL,
-  `ScreeningOutput_rankingResolution` tinyint NOT NULL,
-  `ScreeningOutput_mosaicity` tinyint NOT NULL,
-  `ScreeningOutputLattice_spaceGroup` tinyint NOT NULL,
-  `ScreeningOutputLattice_unitCell_a` tinyint NOT NULL,
-  `ScreeningOutputLattice_unitCell_b` tinyint NOT NULL,
-  `ScreeningOutputLattice_unitCell_c` tinyint NOT NULL,
-  `ScreeningOutputLattice_unitCell_alpha` tinyint NOT NULL,
-  `ScreeningOutputLattice_unitCell_beta` tinyint NOT NULL,
-  `ScreeningOutputLattice_unitCell_gamma` tinyint NOT NULL,
-  `ScreeningOutput_totalExposureTime` tinyint NOT NULL,
-  `ScreeningOutput_totalRotationRange` tinyint NOT NULL,
-  `ScreeningOutput_totalNumberOfImages` tinyint NOT NULL,
-  `ScreeningStrategySubWedge_exposureTime` tinyint NOT NULL,
-  `ScreeningStrategySubWedge_transmission` tinyint NOT NULL,
-  `ScreeningStrategySubWedge_oscillationRange` tinyint NOT NULL,
-  `ScreeningStrategySubWedge_numberOfImages` tinyint NOT NULL,
-  `ScreeningStrategySubWedge_multiplicity` tinyint NOT NULL,
-  `ScreeningStrategySubWedge_completeness` tinyint NOT NULL,
-  `ScreeningStrategySubWedge_axisStart` tinyint NOT NULL,
-  `Shipping_shippingId` tinyint NOT NULL,
-  `Shipping_shippingName` tinyint NOT NULL,
-  `Shipping_shippingStatus` tinyint NOT NULL,
-  `diffractionPlanId` tinyint NOT NULL,
-  `experimentKind` tinyint NOT NULL,
-  `observedResolution` tinyint NOT NULL,
-  `minimalResolution` tinyint NOT NULL,
-  `exposureTime` tinyint NOT NULL,
-  `oscillationRange` tinyint NOT NULL,
-  `maximalResolution` tinyint NOT NULL,
-  `screeningResolution` tinyint NOT NULL,
-  `radiationSensitivity` tinyint NOT NULL,
-  `anomalousScatterer` tinyint NOT NULL,
-  `preferredBeamSizeX` tinyint NOT NULL,
-  `preferredBeamSizeY` tinyint NOT NULL,
-  `preferredBeamDiameter` tinyint NOT NULL,
-  `DiffractipnPlan_comments` tinyint NOT NULL,
-  `aimedCompleteness` tinyint NOT NULL,
-  `aimedIOverSigmaAtHighestRes` tinyint NOT NULL,
-  `aimedMultiplicity` tinyint NOT NULL,
-  `aimedResolution` tinyint NOT NULL,
-  `anomalousData` tinyint NOT NULL,
-  `complexity` tinyint NOT NULL,
-  `estimateRadiationDamage` tinyint NOT NULL,
-  `forcedSpaceGroup` tinyint NOT NULL,
-  `requiredCompleteness` tinyint NOT NULL,
-  `requiredMultiplicity` tinyint NOT NULL,
-  `requiredResolution` tinyint NOT NULL,
-  `strategyOption` tinyint NOT NULL,
-  `kappaStrategyOption` tinyint NOT NULL,
-  `numberOfPositions` tinyint NOT NULL,
-  `minDimAccrossSpindleAxis` tinyint NOT NULL,
-  `maxDimAccrossSpindleAxis` tinyint NOT NULL,
-  `radiationSensitivityBeta` tinyint NOT NULL,
-  `radiationSensitivityGamma` tinyint NOT NULL,
-  `minOscWidth` tinyint NOT NULL,
-  `Detector_detectorType` tinyint NOT NULL,
-  `Detector_detectorManufacturer` tinyint NOT NULL,
-  `Detector_detectorModel` tinyint NOT NULL,
-  `Detector_detectorPixelSizeHorizontal` tinyint NOT NULL,
-  `Detector_detectorPixelSizeVertical` tinyint NOT NULL,
-  `Detector_detectorSerialNumber` tinyint NOT NULL,
-  `Detector_detectorDistanceMin` tinyint NOT NULL,
-  `Detector_detectorDistanceMax` tinyint NOT NULL,
-  `Detector_trustedPixelValueRangeLower` tinyint NOT NULL,
-  `Detector_trustedPixelValueRangeUpper` tinyint NOT NULL,
-  `Detector_sensorThickness` tinyint NOT NULL,
-  `Detector_overload` tinyint NOT NULL,
-  `Detector_XGeoCorr` tinyint NOT NULL,
-  `Detector_YGeoCorr` tinyint NOT NULL,
-  `Detector_detectorMode` tinyint NOT NULL,
-  `BeamLineSetup_undulatorType1` tinyint NOT NULL,
-  `BeamLineSetup_undulatorType2` tinyint NOT NULL,
-  `BeamLineSetup_undulatorType3` tinyint NOT NULL,
-  `BeamLineSetup_synchrotronName` tinyint NOT NULL,
-  `BeamLineSetup_synchrotronMode` tinyint NOT NULL,
-  `BeamLineSetup_polarisation` tinyint NOT NULL,
-  `BeamLineSetup_focusingOptic` tinyint NOT NULL,
-  `BeamLineSetup_beamDivergenceHorizontal` tinyint NOT NULL,
-  `BeamLineSetup_beamDivergenceVertical` tinyint NOT NULL,
-  `BeamLineSetup_monochromatorType` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_datacollection_summary` AS SELECT
+ 1 AS `DataCollectionGroup_dataCollectionGroupId`,
+  1 AS `DataCollectionGroup_blSampleId`,
+  1 AS `DataCollectionGroup_sessionId`,
+  1 AS `DataCollectionGroup_workflowId`,
+  1 AS `DataCollectionGroup_experimentType`,
+  1 AS `DataCollectionGroup_startTime`,
+  1 AS `DataCollectionGroup_endTime`,
+  1 AS `DataCollectionGroup_comments`,
+  1 AS `DataCollectionGroup_actualSampleBarcode`,
+  1 AS `DataCollectionGroup_xtalSnapshotFullPath`,
+  1 AS `DataCollectionGroup_crystalClass`,
+  1 AS `BLSample_blSampleId`,
+  1 AS `BLSample_crystalId`,
+  1 AS `BLSample_name`,
+  1 AS `BLSample_code`,
+  1 AS `BLSample_location`,
+  1 AS `BLSample_blSampleStatus`,
+  1 AS `BLSample_comments`,
+  1 AS `Container_containerId`,
+  1 AS `BLSession_sessionId`,
+  1 AS `BLSession_proposalId`,
+  1 AS `BLSession_protectedData`,
+  1 AS `Dewar_dewarId`,
+  1 AS `Dewar_code`,
+  1 AS `Dewar_storageLocation`,
+  1 AS `Container_containerType`,
+  1 AS `Container_code`,
+  1 AS `Container_capacity`,
+  1 AS `Container_beamlineLocation`,
+  1 AS `Container_sampleChangerLocation`,
+  1 AS `Protein_proteinId`,
+  1 AS `Protein_name`,
+  1 AS `Protein_acronym`,
+  1 AS `DataCollection_dataCollectionId`,
+  1 AS `DataCollection_dataCollectionGroupId`,
+  1 AS `DataCollection_startTime`,
+  1 AS `DataCollection_endTime`,
+  1 AS `DataCollection_runStatus`,
+  1 AS `DataCollection_numberOfImages`,
+  1 AS `DataCollection_startImageNumber`,
+  1 AS `DataCollection_numberOfPasses`,
+  1 AS `DataCollection_exposureTime`,
+  1 AS `DataCollection_imageDirectory`,
+  1 AS `DataCollection_wavelength`,
+  1 AS `DataCollection_resolution`,
+  1 AS `DataCollection_detectorDistance`,
+  1 AS `DataCollection_xBeam`,
+  1 AS `transmission`,
+  1 AS `DataCollection_yBeam`,
+  1 AS `DataCollection_imagePrefix`,
+  1 AS `DataCollection_comments`,
+  1 AS `DataCollection_xtalSnapshotFullPath1`,
+  1 AS `DataCollection_xtalSnapshotFullPath2`,
+  1 AS `DataCollection_xtalSnapshotFullPath3`,
+  1 AS `DataCollection_xtalSnapshotFullPath4`,
+  1 AS `DataCollection_phiStart`,
+  1 AS `DataCollection_kappaStart`,
+  1 AS `DataCollection_omegaStart`,
+  1 AS `DataCollection_flux`,
+  1 AS `DataCollection_flux_end`,
+  1 AS `DataCollection_resolutionAtCorner`,
+  1 AS `DataCollection_bestWilsonPlotPath`,
+  1 AS `DataCollection_dataCollectionNumber`,
+  1 AS `DataCollection_axisRange`,
+  1 AS `DataCollection_axisStart`,
+  1 AS `DataCollection_axisEnd`,
+  1 AS `DataCollection_rotationAxis`,
+  1 AS `DataCollection_undulatorGap1`,
+  1 AS `DataCollection_undulatorGap2`,
+  1 AS `DataCollection_undulatorGap3`,
+  1 AS `beamSizeAtSampleX`,
+  1 AS `beamSizeAtSampleY`,
+  1 AS `DataCollection_slitGapVertical`,
+  1 AS `DataCollection_slitGapHorizontal`,
+  1 AS `DataCollection_beamShape`,
+  1 AS `DataCollection_voltage`,
+  1 AS `DataCollection_xBeamPix`,
+  1 AS `Workflow_workflowTitle`,
+  1 AS `Workflow_workflowType`,
+  1 AS `Workflow_status`,
+  1 AS `Workflow_workflowId`,
+  1 AS `AutoProcIntegration_dataCollectionId`,
+  1 AS `autoProcScalingId`,
+  1 AS `cell_a`,
+  1 AS `cell_b`,
+  1 AS `cell_c`,
+  1 AS `cell_alpha`,
+  1 AS `cell_beta`,
+  1 AS `cell_gamma`,
+  1 AS `anomalous`,
+  1 AS `scalingStatisticsType`,
+  1 AS `resolutionLimitHigh`,
+  1 AS `resolutionLimitLow`,
+  1 AS `completeness`,
+  1 AS `AutoProc_spaceGroup`,
+  1 AS `autoProcId`,
+  1 AS `rMerge`,
+  1 AS `AutoProcIntegration_autoProcIntegrationId`,
+  1 AS `AutoProcProgram_processingPrograms`,
+  1 AS `AutoProcProgram_processingStatus`,
+  1 AS `AutoProcProgram_autoProcProgramId`,
+  1 AS `Screening_screeningId`,
+  1 AS `Screening_dataCollectionId`,
+  1 AS `Screening_dataCollectionGroupId`,
+  1 AS `ScreeningOutput_strategySuccess`,
+  1 AS `ScreeningOutput_indexingSuccess`,
+  1 AS `ScreeningOutput_rankingResolution`,
+  1 AS `ScreeningOutput_mosaicity`,
+  1 AS `ScreeningOutputLattice_spaceGroup`,
+  1 AS `ScreeningOutputLattice_unitCell_a`,
+  1 AS `ScreeningOutputLattice_unitCell_b`,
+  1 AS `ScreeningOutputLattice_unitCell_c`,
+  1 AS `ScreeningOutputLattice_unitCell_alpha`,
+  1 AS `ScreeningOutputLattice_unitCell_beta`,
+  1 AS `ScreeningOutputLattice_unitCell_gamma`,
+  1 AS `ScreeningOutput_totalExposureTime`,
+  1 AS `ScreeningOutput_totalRotationRange`,
+  1 AS `ScreeningOutput_totalNumberOfImages`,
+  1 AS `ScreeningStrategySubWedge_exposureTime`,
+  1 AS `ScreeningStrategySubWedge_transmission`,
+  1 AS `ScreeningStrategySubWedge_oscillationRange`,
+  1 AS `ScreeningStrategySubWedge_numberOfImages`,
+  1 AS `ScreeningStrategySubWedge_multiplicity`,
+  1 AS `ScreeningStrategySubWedge_completeness`,
+  1 AS `ScreeningStrategySubWedge_axisStart`,
+  1 AS `Shipping_shippingId`,
+  1 AS `Shipping_shippingName`,
+  1 AS `Shipping_shippingStatus`,
+  1 AS `diffractionPlanId`,
+  1 AS `experimentKind`,
+  1 AS `observedResolution`,
+  1 AS `minimalResolution`,
+  1 AS `exposureTime`,
+  1 AS `oscillationRange`,
+  1 AS `maximalResolution`,
+  1 AS `screeningResolution`,
+  1 AS `radiationSensitivity`,
+  1 AS `anomalousScatterer`,
+  1 AS `preferredBeamSizeX`,
+  1 AS `preferredBeamSizeY`,
+  1 AS `preferredBeamDiameter`,
+  1 AS `DiffractipnPlan_comments`,
+  1 AS `aimedCompleteness`,
+  1 AS `aimedIOverSigmaAtHighestRes`,
+  1 AS `aimedMultiplicity`,
+  1 AS `aimedResolution`,
+  1 AS `anomalousData`,
+  1 AS `complexity`,
+  1 AS `estimateRadiationDamage`,
+  1 AS `forcedSpaceGroup`,
+  1 AS `requiredCompleteness`,
+  1 AS `requiredMultiplicity`,
+  1 AS `requiredResolution`,
+  1 AS `strategyOption`,
+  1 AS `kappaStrategyOption`,
+  1 AS `numberOfPositions`,
+  1 AS `minDimAccrossSpindleAxis`,
+  1 AS `maxDimAccrossSpindleAxis`,
+  1 AS `radiationSensitivityBeta`,
+  1 AS `radiationSensitivityGamma`,
+  1 AS `minOscWidth`,
+  1 AS `Detector_detectorType`,
+  1 AS `Detector_detectorManufacturer`,
+  1 AS `Detector_detectorModel`,
+  1 AS `Detector_detectorPixelSizeHorizontal`,
+  1 AS `Detector_detectorPixelSizeVertical`,
+  1 AS `Detector_detectorSerialNumber`,
+  1 AS `Detector_detectorDistanceMin`,
+  1 AS `Detector_detectorDistanceMax`,
+  1 AS `Detector_trustedPixelValueRangeLower`,
+  1 AS `Detector_trustedPixelValueRangeUpper`,
+  1 AS `Detector_sensorThickness`,
+  1 AS `Detector_overload`,
+  1 AS `Detector_XGeoCorr`,
+  1 AS `Detector_YGeoCorr`,
+  1 AS `Detector_detectorMode`,
+  1 AS `BeamLineSetup_undulatorType1`,
+  1 AS `BeamLineSetup_undulatorType2`,
+  1 AS `BeamLineSetup_undulatorType3`,
+  1 AS `BeamLineSetup_synchrotronName`,
+  1 AS `BeamLineSetup_synchrotronMode`,
+  1 AS `BeamLineSetup_polarisation`,
+  1 AS `BeamLineSetup_focusingOptic`,
+  1 AS `BeamLineSetup_beamDivergenceHorizontal`,
+  1 AS `BeamLineSetup_beamDivergenceVertical`,
+  1 AS `BeamLineSetup_monochromatorType` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5265,33 +5278,32 @@ DROP TABLE IF EXISTS `v_datacollection_summary_autoprocintegration`;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection_summary_autoprocintegration`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_datacollection_summary_autoprocintegration` (
-  `AutoProcIntegration_dataCollectionId` tinyint NOT NULL,
-  `cell_a` tinyint NOT NULL,
-  `cell_b` tinyint NOT NULL,
-  `cell_c` tinyint NOT NULL,
-  `cell_alpha` tinyint NOT NULL,
-  `cell_beta` tinyint NOT NULL,
-  `cell_gamma` tinyint NOT NULL,
-  `anomalous` tinyint NOT NULL,
-  `AutoProcIntegration_autoProcIntegrationId` tinyint NOT NULL,
-  `v_datacollection_summary_autoprocintegration_processingPrograms` tinyint NOT NULL,
-  `AutoProcProgram_autoProcProgramId` tinyint NOT NULL,
-  `v_datacollection_summary_autoprocintegration_processingStatus` tinyint NOT NULL,
-  `AutoProcIntegration_phasing_dataCollectionId` tinyint NOT NULL,
-  `PhasingStep_phasing_phasingStepType` tinyint NOT NULL,
-  `SpaceGroup_spaceGroupShortName` tinyint NOT NULL,
-  `autoProcId` tinyint NOT NULL,
-  `AutoProc_spaceGroup` tinyint NOT NULL,
-  `scalingStatisticsType` tinyint NOT NULL,
-  `resolutionLimitHigh` tinyint NOT NULL,
-  `resolutionLimitLow` tinyint NOT NULL,
-  `rMerge` tinyint NOT NULL,
-  `meanIOverSigI` tinyint NOT NULL,
-  `ccHalf` tinyint NOT NULL,
-  `completeness` tinyint NOT NULL,
-  `autoProcScalingId` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_datacollection_summary_autoprocintegration` AS SELECT
+ 1 AS `AutoProcIntegration_dataCollectionId`,
+  1 AS `cell_a`,
+  1 AS `cell_b`,
+  1 AS `cell_c`,
+  1 AS `cell_alpha`,
+  1 AS `cell_beta`,
+  1 AS `cell_gamma`,
+  1 AS `anomalous`,
+  1 AS `AutoProcIntegration_autoProcIntegrationId`,
+  1 AS `v_datacollection_summary_autoprocintegration_processingPrograms`,
+  1 AS `AutoProcProgram_autoProcProgramId`,
+  1 AS `v_datacollection_summary_autoprocintegration_processingStatus`,
+  1 AS `AutoProcIntegration_phasing_dataCollectionId`,
+  1 AS `PhasingStep_phasing_phasingStepType`,
+  1 AS `SpaceGroup_spaceGroupShortName`,
+  1 AS `autoProcId`,
+  1 AS `AutoProc_spaceGroup`,
+  1 AS `scalingStatisticsType`,
+  1 AS `resolutionLimitHigh`,
+  1 AS `resolutionLimitLow`,
+  1 AS `rMerge`,
+  1 AS `meanIOverSigI`,
+  1 AS `ccHalf`,
+  1 AS `completeness`,
+  1 AS `autoProcScalingId` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5302,60 +5314,59 @@ DROP TABLE IF EXISTS `v_datacollection_summary_datacollectiongroup`;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection_summary_datacollectiongroup`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_datacollection_summary_datacollectiongroup` (
-  `DataCollectionGroup_dataCollectionGroupId` tinyint NOT NULL,
-  `DataCollectionGroup_blSampleId` tinyint NOT NULL,
-  `DataCollectionGroup_sessionId` tinyint NOT NULL,
-  `DataCollectionGroup_workflowId` tinyint NOT NULL,
-  `DataCollectionGroup_experimentType` tinyint NOT NULL,
-  `DataCollectionGroup_startTime` tinyint NOT NULL,
-  `DataCollectionGroup_endTime` tinyint NOT NULL,
-  `DataCollectionGroup_comments` tinyint NOT NULL,
-  `DataCollectionGroup_actualSampleBarcode` tinyint NOT NULL,
-  `DataCollectionGroup_xtalSnapshotFullPath` tinyint NOT NULL,
-  `BLSample_blSampleId` tinyint NOT NULL,
-  `BLSample_crystalId` tinyint NOT NULL,
-  `BLSample_name` tinyint NOT NULL,
-  `BLSample_code` tinyint NOT NULL,
-  `BLSession_sessionId` tinyint NOT NULL,
-  `BLSession_proposalId` tinyint NOT NULL,
-  `BLSession_protectedData` tinyint NOT NULL,
-  `Protein_proteinId` tinyint NOT NULL,
-  `Protein_name` tinyint NOT NULL,
-  `Protein_acronym` tinyint NOT NULL,
-  `DataCollection_dataCollectionId` tinyint NOT NULL,
-  `DataCollection_dataCollectionGroupId` tinyint NOT NULL,
-  `DataCollection_startTime` tinyint NOT NULL,
-  `DataCollection_endTime` tinyint NOT NULL,
-  `DataCollection_runStatus` tinyint NOT NULL,
-  `DataCollection_numberOfImages` tinyint NOT NULL,
-  `DataCollection_startImageNumber` tinyint NOT NULL,
-  `DataCollection_numberOfPasses` tinyint NOT NULL,
-  `DataCollection_exposureTime` tinyint NOT NULL,
-  `DataCollection_imageDirectory` tinyint NOT NULL,
-  `DataCollection_wavelength` tinyint NOT NULL,
-  `DataCollection_resolution` tinyint NOT NULL,
-  `DataCollection_detectorDistance` tinyint NOT NULL,
-  `DataCollection_xBeam` tinyint NOT NULL,
-  `DataCollection_yBeam` tinyint NOT NULL,
-  `DataCollection_comments` tinyint NOT NULL,
-  `DataCollection_xtalSnapshotFullPath1` tinyint NOT NULL,
-  `DataCollection_xtalSnapshotFullPath2` tinyint NOT NULL,
-  `DataCollection_xtalSnapshotFullPath3` tinyint NOT NULL,
-  `DataCollection_xtalSnapshotFullPath4` tinyint NOT NULL,
-  `DataCollection_phiStart` tinyint NOT NULL,
-  `DataCollection_kappaStart` tinyint NOT NULL,
-  `DataCollection_omegaStart` tinyint NOT NULL,
-  `DataCollection_resolutionAtCorner` tinyint NOT NULL,
-  `DataCollection_bestWilsonPlotPath` tinyint NOT NULL,
-  `DataCollection_dataCollectionNumber` tinyint NOT NULL,
-  `DataCollection_axisRange` tinyint NOT NULL,
-  `DataCollection_axisStart` tinyint NOT NULL,
-  `DataCollection_axisEnd` tinyint NOT NULL,
-  `Workflow_workflowTitle` tinyint NOT NULL,
-  `Workflow_workflowType` tinyint NOT NULL,
-  `Workflow_status` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_datacollection_summary_datacollectiongroup` AS SELECT
+ 1 AS `DataCollectionGroup_dataCollectionGroupId`,
+  1 AS `DataCollectionGroup_blSampleId`,
+  1 AS `DataCollectionGroup_sessionId`,
+  1 AS `DataCollectionGroup_workflowId`,
+  1 AS `DataCollectionGroup_experimentType`,
+  1 AS `DataCollectionGroup_startTime`,
+  1 AS `DataCollectionGroup_endTime`,
+  1 AS `DataCollectionGroup_comments`,
+  1 AS `DataCollectionGroup_actualSampleBarcode`,
+  1 AS `DataCollectionGroup_xtalSnapshotFullPath`,
+  1 AS `BLSample_blSampleId`,
+  1 AS `BLSample_crystalId`,
+  1 AS `BLSample_name`,
+  1 AS `BLSample_code`,
+  1 AS `BLSession_sessionId`,
+  1 AS `BLSession_proposalId`,
+  1 AS `BLSession_protectedData`,
+  1 AS `Protein_proteinId`,
+  1 AS `Protein_name`,
+  1 AS `Protein_acronym`,
+  1 AS `DataCollection_dataCollectionId`,
+  1 AS `DataCollection_dataCollectionGroupId`,
+  1 AS `DataCollection_startTime`,
+  1 AS `DataCollection_endTime`,
+  1 AS `DataCollection_runStatus`,
+  1 AS `DataCollection_numberOfImages`,
+  1 AS `DataCollection_startImageNumber`,
+  1 AS `DataCollection_numberOfPasses`,
+  1 AS `DataCollection_exposureTime`,
+  1 AS `DataCollection_imageDirectory`,
+  1 AS `DataCollection_wavelength`,
+  1 AS `DataCollection_resolution`,
+  1 AS `DataCollection_detectorDistance`,
+  1 AS `DataCollection_xBeam`,
+  1 AS `DataCollection_yBeam`,
+  1 AS `DataCollection_comments`,
+  1 AS `DataCollection_xtalSnapshotFullPath1`,
+  1 AS `DataCollection_xtalSnapshotFullPath2`,
+  1 AS `DataCollection_xtalSnapshotFullPath3`,
+  1 AS `DataCollection_xtalSnapshotFullPath4`,
+  1 AS `DataCollection_phiStart`,
+  1 AS `DataCollection_kappaStart`,
+  1 AS `DataCollection_omegaStart`,
+  1 AS `DataCollection_resolutionAtCorner`,
+  1 AS `DataCollection_bestWilsonPlotPath`,
+  1 AS `DataCollection_dataCollectionNumber`,
+  1 AS `DataCollection_axisRange`,
+  1 AS `DataCollection_axisStart`,
+  1 AS `DataCollection_axisEnd`,
+  1 AS `Workflow_workflowTitle`,
+  1 AS `Workflow_workflowType`,
+  1 AS `Workflow_status` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5366,25 +5377,24 @@ DROP TABLE IF EXISTS `v_datacollection_summary_phasing`;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection_summary_phasing`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_datacollection_summary_phasing` (
-  `v_datacollection_summary_phasing_autoProcIntegrationId` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_dataCollectionId` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_cell_a` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_cell_b` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_cell_c` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_cell_alpha` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_cell_beta` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_cell_gamma` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_anomalous` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_autoproc_space_group` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_autoproc_autoprocId` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_autoProcScalingId` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_processingPrograms` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_autoProcProgramId` tinyint NOT NULL,
-  `v_datacollection_summary_phasing_processingStatus` tinyint NOT NULL,
-  `v_datacollection_summary_session_sessionId` tinyint NOT NULL,
-  `v_datacollection_summary_session_proposalId` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_datacollection_summary_phasing` AS SELECT
+ 1 AS `v_datacollection_summary_phasing_autoProcIntegrationId`,
+  1 AS `v_datacollection_summary_phasing_dataCollectionId`,
+  1 AS `v_datacollection_summary_phasing_cell_a`,
+  1 AS `v_datacollection_summary_phasing_cell_b`,
+  1 AS `v_datacollection_summary_phasing_cell_c`,
+  1 AS `v_datacollection_summary_phasing_cell_alpha`,
+  1 AS `v_datacollection_summary_phasing_cell_beta`,
+  1 AS `v_datacollection_summary_phasing_cell_gamma`,
+  1 AS `v_datacollection_summary_phasing_anomalous`,
+  1 AS `v_datacollection_summary_phasing_autoproc_space_group`,
+  1 AS `v_datacollection_summary_phasing_autoproc_autoprocId`,
+  1 AS `v_datacollection_summary_phasing_autoProcScalingId`,
+  1 AS `v_datacollection_summary_phasing_processingPrograms`,
+  1 AS `v_datacollection_summary_phasing_autoProcProgramId`,
+  1 AS `v_datacollection_summary_phasing_processingStatus`,
+  1 AS `v_datacollection_summary_session_sessionId`,
+  1 AS `v_datacollection_summary_session_proposalId` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5395,35 +5405,34 @@ DROP TABLE IF EXISTS `v_datacollection_summary_screening`;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection_summary_screening`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_datacollection_summary_screening` (
-  `Screening_screeningId` tinyint NOT NULL,
-  `Screening_dataCollectionId` tinyint NOT NULL,
-  `Screening_dataCollectionGroupId` tinyint NOT NULL,
-  `ScreeningOutput_strategySuccess` tinyint NOT NULL,
-  `ScreeningOutput_indexingSuccess` tinyint NOT NULL,
-  `ScreeningOutput_rankingResolution` tinyint NOT NULL,
-  `ScreeningOutput_mosaicityEstimated` tinyint NOT NULL,
-  `ScreeningOutput_mosaicity` tinyint NOT NULL,
-  `ScreeningOutput_totalExposureTime` tinyint NOT NULL,
-  `ScreeningOutput_totalRotationRange` tinyint NOT NULL,
-  `ScreeningOutput_totalNumberOfImages` tinyint NOT NULL,
-  `ScreeningOutputLattice_spaceGroup` tinyint NOT NULL,
-  `ScreeningOutputLattice_unitCell_a` tinyint NOT NULL,
-  `ScreeningOutputLattice_unitCell_b` tinyint NOT NULL,
-  `ScreeningOutputLattice_unitCell_c` tinyint NOT NULL,
-  `ScreeningOutputLattice_unitCell_alpha` tinyint NOT NULL,
-  `ScreeningOutputLattice_unitCell_beta` tinyint NOT NULL,
-  `ScreeningOutputLattice_unitCell_gamma` tinyint NOT NULL,
-  `ScreeningStrategySubWedge_exposureTime` tinyint NOT NULL,
-  `ScreeningStrategySubWedge_transmission` tinyint NOT NULL,
-  `ScreeningStrategySubWedge_oscillationRange` tinyint NOT NULL,
-  `ScreeningStrategySubWedge_numberOfImages` tinyint NOT NULL,
-  `ScreeningStrategySubWedge_multiplicity` tinyint NOT NULL,
-  `ScreeningStrategySubWedge_completeness` tinyint NOT NULL,
-  `ScreeningStrategySubWedge_axisStart` tinyint NOT NULL,
-  `ScreeningStrategySubWedge_axisEnd` tinyint NOT NULL,
-  `ScreeningStrategySubWedge_rotationAxis` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_datacollection_summary_screening` AS SELECT
+ 1 AS `Screening_screeningId`,
+  1 AS `Screening_dataCollectionId`,
+  1 AS `Screening_dataCollectionGroupId`,
+  1 AS `ScreeningOutput_strategySuccess`,
+  1 AS `ScreeningOutput_indexingSuccess`,
+  1 AS `ScreeningOutput_rankingResolution`,
+  1 AS `ScreeningOutput_mosaicityEstimated`,
+  1 AS `ScreeningOutput_mosaicity`,
+  1 AS `ScreeningOutput_totalExposureTime`,
+  1 AS `ScreeningOutput_totalRotationRange`,
+  1 AS `ScreeningOutput_totalNumberOfImages`,
+  1 AS `ScreeningOutputLattice_spaceGroup`,
+  1 AS `ScreeningOutputLattice_unitCell_a`,
+  1 AS `ScreeningOutputLattice_unitCell_b`,
+  1 AS `ScreeningOutputLattice_unitCell_c`,
+  1 AS `ScreeningOutputLattice_unitCell_alpha`,
+  1 AS `ScreeningOutputLattice_unitCell_beta`,
+  1 AS `ScreeningOutputLattice_unitCell_gamma`,
+  1 AS `ScreeningStrategySubWedge_exposureTime`,
+  1 AS `ScreeningStrategySubWedge_transmission`,
+  1 AS `ScreeningStrategySubWedge_oscillationRange`,
+  1 AS `ScreeningStrategySubWedge_numberOfImages`,
+  1 AS `ScreeningStrategySubWedge_multiplicity`,
+  1 AS `ScreeningStrategySubWedge_completeness`,
+  1 AS `ScreeningStrategySubWedge_axisStart`,
+  1 AS `ScreeningStrategySubWedge_axisEnd`,
+  1 AS `ScreeningStrategySubWedge_rotationAxis` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5434,24 +5443,23 @@ DROP TABLE IF EXISTS `v_dewar`;
 /*!50001 DROP VIEW IF EXISTS `v_dewar`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_dewar` (
-  `proposalId` tinyint NOT NULL,
-  `shippingId` tinyint NOT NULL,
-  `shippingName` tinyint NOT NULL,
-  `dewarId` tinyint NOT NULL,
-  `dewarName` tinyint NOT NULL,
-  `dewarStatus` tinyint NOT NULL,
-  `proposalCode` tinyint NOT NULL,
-  `proposalNumber` tinyint NOT NULL,
-  `creationDate` tinyint NOT NULL,
-  `shippingType` tinyint NOT NULL,
-  `barCode` tinyint NOT NULL,
-  `shippingStatus` tinyint NOT NULL,
-  `beamLineName` tinyint NOT NULL,
-  `nbEvents` tinyint NOT NULL,
-  `storesin` tinyint NOT NULL,
-  `nbSamples` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_dewar` AS SELECT
+ 1 AS `proposalId`,
+  1 AS `shippingId`,
+  1 AS `shippingName`,
+  1 AS `dewarId`,
+  1 AS `dewarName`,
+  1 AS `dewarStatus`,
+  1 AS `proposalCode`,
+  1 AS `proposalNumber`,
+  1 AS `creationDate`,
+  1 AS `shippingType`,
+  1 AS `barCode`,
+  1 AS `shippingStatus`,
+  1 AS `beamLineName`,
+  1 AS `nbEvents`,
+  1 AS `storesin`,
+  1 AS `nbSamples` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5462,10 +5470,9 @@ DROP TABLE IF EXISTS `v_dewarBeamline`;
 /*!50001 DROP VIEW IF EXISTS `v_dewarBeamline`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_dewarBeamline` (
-  `beamLineName` tinyint NOT NULL,
-  `COUNT(*)` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_dewarBeamline` AS SELECT
+ 1 AS `beamLineName`,
+  1 AS `COUNT(*)` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5476,13 +5483,12 @@ DROP TABLE IF EXISTS `v_dewarBeamlineByWeek`;
 /*!50001 DROP VIEW IF EXISTS `v_dewarBeamlineByWeek`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_dewarBeamlineByWeek` (
-  `Week` tinyint NOT NULL,
-  `ID14` tinyint NOT NULL,
-  `ID23` tinyint NOT NULL,
-  `ID29` tinyint NOT NULL,
-  `BM14` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_dewarBeamlineByWeek` AS SELECT
+ 1 AS `Week`,
+  1 AS `ID14`,
+  1 AS `ID23`,
+  1 AS `ID29`,
+  1 AS `BM14` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5493,11 +5499,10 @@ DROP TABLE IF EXISTS `v_dewarByWeek`;
 /*!50001 DROP VIEW IF EXISTS `v_dewarByWeek`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_dewarByWeek` (
-  `Week` tinyint NOT NULL,
-  `Dewars Tracked` tinyint NOT NULL,
-  `Dewars Non-Tracked` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_dewarByWeek` AS SELECT
+ 1 AS `Week`,
+  1 AS `Dewars Tracked`,
+  1 AS `Dewars Non-Tracked` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5508,12 +5513,11 @@ DROP TABLE IF EXISTS `v_dewarByWeekTotal`;
 /*!50001 DROP VIEW IF EXISTS `v_dewarByWeekTotal`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_dewarByWeekTotal` (
-  `Week` tinyint NOT NULL,
-  `Dewars Tracked` tinyint NOT NULL,
-  `Dewars Non-Tracked` tinyint NOT NULL,
-  `Total` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_dewarByWeekTotal` AS SELECT
+ 1 AS `Week`,
+  1 AS `Dewars Tracked`,
+  1 AS `Dewars Non-Tracked`,
+  1 AS `Total` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5524,18 +5528,17 @@ DROP TABLE IF EXISTS `v_dewarList`;
 /*!50001 DROP VIEW IF EXISTS `v_dewarList`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_dewarList` (
-  `proposal` tinyint NOT NULL,
-  `shippingName` tinyint NOT NULL,
-  `dewarName` tinyint NOT NULL,
-  `barCode` tinyint NOT NULL,
-  `creationDate` tinyint NOT NULL,
-  `shippingType` tinyint NOT NULL,
-  `nbEvents` tinyint NOT NULL,
-  `dewarStatus` tinyint NOT NULL,
-  `shippingStatus` tinyint NOT NULL,
-  `nbSamples` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_dewarList` AS SELECT
+ 1 AS `proposal`,
+  1 AS `shippingName`,
+  1 AS `dewarName`,
+  1 AS `barCode`,
+  1 AS `creationDate`,
+  1 AS `shippingType`,
+  1 AS `nbEvents`,
+  1 AS `dewarStatus`,
+  1 AS `shippingStatus`,
+  1 AS `nbSamples` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5546,10 +5549,9 @@ DROP TABLE IF EXISTS `v_dewarProposalCode`;
 /*!50001 DROP VIEW IF EXISTS `v_dewarProposalCode`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_dewarProposalCode` (
-  `proposalCode` tinyint NOT NULL,
-  `COUNT(*)` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_dewarProposalCode` AS SELECT
+ 1 AS `proposalCode`,
+  1 AS `COUNT(*)` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5560,15 +5562,14 @@ DROP TABLE IF EXISTS `v_dewarProposalCodeByWeek`;
 /*!50001 DROP VIEW IF EXISTS `v_dewarProposalCodeByWeek`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_dewarProposalCodeByWeek` (
-  `Week` tinyint NOT NULL,
-  `MX` tinyint NOT NULL,
-  `FX` tinyint NOT NULL,
-  `BM14U` tinyint NOT NULL,
-  `BM161` tinyint NOT NULL,
-  `BM162` tinyint NOT NULL,
-  `Others` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_dewarProposalCodeByWeek` AS SELECT
+ 1 AS `Week`,
+  1 AS `MX`,
+  1 AS `FX`,
+  1 AS `BM14U`,
+  1 AS `BM161`,
+  1 AS `BM162`,
+  1 AS `Others` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5579,54 +5580,53 @@ DROP TABLE IF EXISTS `v_dewar_summary`;
 /*!50001 DROP VIEW IF EXISTS `v_dewar_summary`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_dewar_summary` (
-  `shippingName` tinyint NOT NULL,
-  `deliveryAgent_agentName` tinyint NOT NULL,
-  `deliveryAgent_shippingDate` tinyint NOT NULL,
-  `deliveryAgent_deliveryDate` tinyint NOT NULL,
-  `deliveryAgent_agentCode` tinyint NOT NULL,
-  `deliveryAgent_flightCode` tinyint NOT NULL,
-  `shippingStatus` tinyint NOT NULL,
-  `bltimeStamp` tinyint NOT NULL,
-  `laboratoryId` tinyint NOT NULL,
-  `isStorageShipping` tinyint NOT NULL,
-  `creationDate` tinyint NOT NULL,
-  `Shipping_comments` tinyint NOT NULL,
-  `sendingLabContactId` tinyint NOT NULL,
-  `returnLabContactId` tinyint NOT NULL,
-  `returnCourier` tinyint NOT NULL,
-  `dateOfShippingToUser` tinyint NOT NULL,
-  `shippingType` tinyint NOT NULL,
-  `dewarId` tinyint NOT NULL,
-  `shippingId` tinyint NOT NULL,
-  `dewarCode` tinyint NOT NULL,
-  `comments` tinyint NOT NULL,
-  `storageLocation` tinyint NOT NULL,
-  `dewarStatus` tinyint NOT NULL,
-  `isStorageDewar` tinyint NOT NULL,
-  `barCode` tinyint NOT NULL,
-  `firstExperimentId` tinyint NOT NULL,
-  `customsValue` tinyint NOT NULL,
-  `transportValue` tinyint NOT NULL,
-  `trackingNumberToSynchrotron` tinyint NOT NULL,
-  `trackingNumberFromSynchrotron` tinyint NOT NULL,
-  `type` tinyint NOT NULL,
-  `isReimbursed` tinyint NOT NULL,
-  `sessionId` tinyint NOT NULL,
-  `beamlineName` tinyint NOT NULL,
-  `sessionStartDate` tinyint NOT NULL,
-  `sessionEndDate` tinyint NOT NULL,
-  `beamLineOperator` tinyint NOT NULL,
-  `nbReimbDewars` tinyint NOT NULL,
-  `proposalId` tinyint NOT NULL,
-  `containerId` tinyint NOT NULL,
-  `containerType` tinyint NOT NULL,
-  `capacity` tinyint NOT NULL,
-  `beamlineLocation` tinyint NOT NULL,
-  `sampleChangerLocation` tinyint NOT NULL,
-  `containerStatus` tinyint NOT NULL,
-  `containerCode` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_dewar_summary` AS SELECT
+ 1 AS `shippingName`,
+  1 AS `deliveryAgent_agentName`,
+  1 AS `deliveryAgent_shippingDate`,
+  1 AS `deliveryAgent_deliveryDate`,
+  1 AS `deliveryAgent_agentCode`,
+  1 AS `deliveryAgent_flightCode`,
+  1 AS `shippingStatus`,
+  1 AS `bltimeStamp`,
+  1 AS `laboratoryId`,
+  1 AS `isStorageShipping`,
+  1 AS `creationDate`,
+  1 AS `Shipping_comments`,
+  1 AS `sendingLabContactId`,
+  1 AS `returnLabContactId`,
+  1 AS `returnCourier`,
+  1 AS `dateOfShippingToUser`,
+  1 AS `shippingType`,
+  1 AS `dewarId`,
+  1 AS `shippingId`,
+  1 AS `dewarCode`,
+  1 AS `comments`,
+  1 AS `storageLocation`,
+  1 AS `dewarStatus`,
+  1 AS `isStorageDewar`,
+  1 AS `barCode`,
+  1 AS `firstExperimentId`,
+  1 AS `customsValue`,
+  1 AS `transportValue`,
+  1 AS `trackingNumberToSynchrotron`,
+  1 AS `trackingNumberFromSynchrotron`,
+  1 AS `type`,
+  1 AS `isReimbursed`,
+  1 AS `sessionId`,
+  1 AS `beamlineName`,
+  1 AS `sessionStartDate`,
+  1 AS `sessionEndDate`,
+  1 AS `beamLineOperator`,
+  1 AS `nbReimbDewars`,
+  1 AS `proposalId`,
+  1 AS `containerId`,
+  1 AS `containerType`,
+  1 AS `capacity`,
+  1 AS `beamlineLocation`,
+  1 AS `sampleChangerLocation`,
+  1 AS `containerStatus`,
+  1 AS `containerCode` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5637,16 +5637,15 @@ DROP TABLE IF EXISTS `v_em_2dclassification`;
 /*!50001 DROP VIEW IF EXISTS `v_em_2dclassification`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_em_2dclassification` (
-  `proposalId` tinyint NOT NULL,
-  `sessionId` tinyint NOT NULL,
-  `imageDirectory` tinyint NOT NULL,
-  `particlePickerId` tinyint NOT NULL,
-  `particleClassificationGroupId` tinyint NOT NULL,
-  `particleClassificationId` tinyint NOT NULL,
-  `classNumber` tinyint NOT NULL,
-  `classImageFullPath` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_em_2dclassification` AS SELECT
+ 1 AS `proposalId`,
+  1 AS `sessionId`,
+  1 AS `imageDirectory`,
+  1 AS `particlePickerId`,
+  1 AS `particleClassificationGroupId`,
+  1 AS `particleClassificationId`,
+  1 AS `classNumber`,
+  1 AS `classImageFullPath` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5657,23 +5656,22 @@ DROP TABLE IF EXISTS `v_em_classification`;
 /*!50001 DROP VIEW IF EXISTS `v_em_classification`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_em_classification` (
-  `proposalId` tinyint NOT NULL,
-  `sessionId` tinyint NOT NULL,
-  `imageDirectory` tinyint NOT NULL,
-  `particlePickerId` tinyint NOT NULL,
-  `numberOfParticles` tinyint NOT NULL,
-  `particleClassificationGroupId` tinyint NOT NULL,
-  `particleClassificationId` tinyint NOT NULL,
-  `classNumber` tinyint NOT NULL,
-  `classImageFullPath` tinyint NOT NULL,
-  `particlesPerClass` tinyint NOT NULL,
-  `classDistribution` tinyint NOT NULL,
-  `rotationAccuracy` tinyint NOT NULL,
-  `translationAccuracy` tinyint NOT NULL,
-  `estimatedResolution` tinyint NOT NULL,
-  `overallFourierCompleteness` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_em_classification` AS SELECT
+ 1 AS `proposalId`,
+  1 AS `sessionId`,
+  1 AS `imageDirectory`,
+  1 AS `particlePickerId`,
+  1 AS `numberOfParticles`,
+  1 AS `particleClassificationGroupId`,
+  1 AS `particleClassificationId`,
+  1 AS `classNumber`,
+  1 AS `classImageFullPath`,
+  1 AS `particlesPerClass`,
+  1 AS `classDistribution`,
+  1 AS `rotationAccuracy`,
+  1 AS `translationAccuracy`,
+  1 AS `estimatedResolution`,
+  1 AS `overallFourierCompleteness` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5684,47 +5682,46 @@ DROP TABLE IF EXISTS `v_em_movie`;
 /*!50001 DROP VIEW IF EXISTS `v_em_movie`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_em_movie` (
-  `Movie_movieId` tinyint NOT NULL,
-  `Movie_dataCollectionId` tinyint NOT NULL,
-  `Movie_movieNumber` tinyint NOT NULL,
-  `Movie_movieFullPath` tinyint NOT NULL,
-  `Movie_positionX` tinyint NOT NULL,
-  `Movie_positionY` tinyint NOT NULL,
-  `Movie_micrographFullPath` tinyint NOT NULL,
-  `Movie_micrographSnapshotFullPath` tinyint NOT NULL,
-  `Movie_xmlMetaDataFullPath` tinyint NOT NULL,
-  `Movie_dosePerImage` tinyint NOT NULL,
-  `Movie_createdTimeStamp` tinyint NOT NULL,
-  `MotionCorrection_motionCorrectionId` tinyint NOT NULL,
-  `MotionCorrection_movieId` tinyint NOT NULL,
-  `MotionCorrection_firstFrame` tinyint NOT NULL,
-  `MotionCorrection_lastFrame` tinyint NOT NULL,
-  `MotionCorrection_dosePerFrame` tinyint NOT NULL,
-  `MotionCorrection_doseWeight` tinyint NOT NULL,
-  `MotionCorrection_totalMotion` tinyint NOT NULL,
-  `MotionCorrection_averageMotionPerFrame` tinyint NOT NULL,
-  `MotionCorrection_driftPlotFullPath` tinyint NOT NULL,
-  `MotionCorrection_micrographFullPath` tinyint NOT NULL,
-  `MotionCorrection_micrographSnapshotFullPath` tinyint NOT NULL,
-  `MotionCorrection_correctedDoseMicrographFullPath` tinyint NOT NULL,
-  `MotionCorrection_patchesUsed` tinyint NOT NULL,
-  `MotionCorrection_logFileFullPath` tinyint NOT NULL,
-  `CTF_CTFid` tinyint NOT NULL,
-  `CTF_motionCorrectionId` tinyint NOT NULL,
-  `CTF_spectraImageThumbnailFullPath` tinyint NOT NULL,
-  `CTF_spectraImageFullPath` tinyint NOT NULL,
-  `CTF_defocusU` tinyint NOT NULL,
-  `CTF_defocusV` tinyint NOT NULL,
-  `CTF_angle` tinyint NOT NULL,
-  `CTF_crossCorrelationCoefficient` tinyint NOT NULL,
-  `CTF_resolutionLimit` tinyint NOT NULL,
-  `CTF_estimatedBfactor` tinyint NOT NULL,
-  `CTF_logFilePath` tinyint NOT NULL,
-  `CTF_createdTimeStamp` tinyint NOT NULL,
-  `Proposal_proposalId` tinyint NOT NULL,
-  `BLSession_sessionId` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_em_movie` AS SELECT
+ 1 AS `Movie_movieId`,
+  1 AS `Movie_dataCollectionId`,
+  1 AS `Movie_movieNumber`,
+  1 AS `Movie_movieFullPath`,
+  1 AS `Movie_positionX`,
+  1 AS `Movie_positionY`,
+  1 AS `Movie_micrographFullPath`,
+  1 AS `Movie_micrographSnapshotFullPath`,
+  1 AS `Movie_xmlMetaDataFullPath`,
+  1 AS `Movie_dosePerImage`,
+  1 AS `Movie_createdTimeStamp`,
+  1 AS `MotionCorrection_motionCorrectionId`,
+  1 AS `MotionCorrection_movieId`,
+  1 AS `MotionCorrection_firstFrame`,
+  1 AS `MotionCorrection_lastFrame`,
+  1 AS `MotionCorrection_dosePerFrame`,
+  1 AS `MotionCorrection_doseWeight`,
+  1 AS `MotionCorrection_totalMotion`,
+  1 AS `MotionCorrection_averageMotionPerFrame`,
+  1 AS `MotionCorrection_driftPlotFullPath`,
+  1 AS `MotionCorrection_micrographFullPath`,
+  1 AS `MotionCorrection_micrographSnapshotFullPath`,
+  1 AS `MotionCorrection_correctedDoseMicrographFullPath`,
+  1 AS `MotionCorrection_patchesUsed`,
+  1 AS `MotionCorrection_logFileFullPath`,
+  1 AS `CTF_CTFid`,
+  1 AS `CTF_motionCorrectionId`,
+  1 AS `CTF_spectraImageThumbnailFullPath`,
+  1 AS `CTF_spectraImageFullPath`,
+  1 AS `CTF_defocusU`,
+  1 AS `CTF_defocusV`,
+  1 AS `CTF_angle`,
+  1 AS `CTF_crossCorrelationCoefficient`,
+  1 AS `CTF_resolutionLimit`,
+  1 AS `CTF_estimatedBfactor`,
+  1 AS `CTF_logFilePath`,
+  1 AS `CTF_createdTimeStamp`,
+  1 AS `Proposal_proposalId`,
+  1 AS `BLSession_sessionId` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5735,25 +5732,24 @@ DROP TABLE IF EXISTS `v_em_stats`;
 /*!50001 DROP VIEW IF EXISTS `v_em_stats`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_em_stats` (
-  `proposalId` tinyint NOT NULL,
-  `sessionId` tinyint NOT NULL,
-  `imageDirectory` tinyint NOT NULL,
-  `movieId` tinyint NOT NULL,
-  `movieNumber` tinyint NOT NULL,
-  `createdTimeStamp` tinyint NOT NULL,
-  `motionCorrectionId` tinyint NOT NULL,
-  `dataCollectionId` tinyint NOT NULL,
-  `totalMotion` tinyint NOT NULL,
-  `averageMotionPerFrame` tinyint NOT NULL,
-  `lastFrame` tinyint NOT NULL,
-  `dosePerFrame` tinyint NOT NULL,
-  `defocusU` tinyint NOT NULL,
-  `defocusV` tinyint NOT NULL,
-  `resolutionLimit` tinyint NOT NULL,
-  `estimatedBfactor` tinyint NOT NULL,
-  `angle` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_em_stats` AS SELECT
+ 1 AS `proposalId`,
+  1 AS `sessionId`,
+  1 AS `imageDirectory`,
+  1 AS `movieId`,
+  1 AS `movieNumber`,
+  1 AS `createdTimeStamp`,
+  1 AS `motionCorrectionId`,
+  1 AS `dataCollectionId`,
+  1 AS `totalMotion`,
+  1 AS `averageMotionPerFrame`,
+  1 AS `lastFrame`,
+  1 AS `dosePerFrame`,
+  1 AS `defocusU`,
+  1 AS `defocusV`,
+  1 AS `resolutionLimit`,
+  1 AS `estimatedBfactor`,
+  1 AS `angle` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5764,47 +5760,46 @@ DROP TABLE IF EXISTS `v_energyScan`;
 /*!50001 DROP VIEW IF EXISTS `v_energyScan`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_energyScan` (
-  `energyScanId` tinyint NOT NULL,
-  `sessionId` tinyint NOT NULL,
-  `blSampleId` tinyint NOT NULL,
-  `fluorescenceDetector` tinyint NOT NULL,
-  `scanFileFullPath` tinyint NOT NULL,
-  `choochFileFullPath` tinyint NOT NULL,
-  `jpegChoochFileFullPath` tinyint NOT NULL,
-  `element` tinyint NOT NULL,
-  `startEnergy` tinyint NOT NULL,
-  `endEnergy` tinyint NOT NULL,
-  `transmissionFactor` tinyint NOT NULL,
-  `exposureTime` tinyint NOT NULL,
-  `synchrotronCurrent` tinyint NOT NULL,
-  `temperature` tinyint NOT NULL,
-  `peakEnergy` tinyint NOT NULL,
-  `peakFPrime` tinyint NOT NULL,
-  `peakFDoublePrime` tinyint NOT NULL,
-  `inflectionEnergy` tinyint NOT NULL,
-  `inflectionFPrime` tinyint NOT NULL,
-  `inflectionFDoublePrime` tinyint NOT NULL,
-  `xrayDose` tinyint NOT NULL,
-  `startTime` tinyint NOT NULL,
-  `endTime` tinyint NOT NULL,
-  `edgeEnergy` tinyint NOT NULL,
-  `filename` tinyint NOT NULL,
-  `beamSizeVertical` tinyint NOT NULL,
-  `beamSizeHorizontal` tinyint NOT NULL,
-  `crystalClass` tinyint NOT NULL,
-  `comments` tinyint NOT NULL,
-  `flux` tinyint NOT NULL,
-  `flux_end` tinyint NOT NULL,
-  `remoteEnergy` tinyint NOT NULL,
-  `remoteFPrime` tinyint NOT NULL,
-  `remoteFDoublePrime` tinyint NOT NULL,
-  `BLSample_sampleId` tinyint NOT NULL,
-  `name` tinyint NOT NULL,
-  `code` tinyint NOT NULL,
-  `acronym` tinyint NOT NULL,
-  `BLSession_proposalId` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_energyScan` AS SELECT
+ 1 AS `energyScanId`,
+  1 AS `sessionId`,
+  1 AS `blSampleId`,
+  1 AS `fluorescenceDetector`,
+  1 AS `scanFileFullPath`,
+  1 AS `choochFileFullPath`,
+  1 AS `jpegChoochFileFullPath`,
+  1 AS `element`,
+  1 AS `startEnergy`,
+  1 AS `endEnergy`,
+  1 AS `transmissionFactor`,
+  1 AS `exposureTime`,
+  1 AS `synchrotronCurrent`,
+  1 AS `temperature`,
+  1 AS `peakEnergy`,
+  1 AS `peakFPrime`,
+  1 AS `peakFDoublePrime`,
+  1 AS `inflectionEnergy`,
+  1 AS `inflectionFPrime`,
+  1 AS `inflectionFDoublePrime`,
+  1 AS `xrayDose`,
+  1 AS `startTime`,
+  1 AS `endTime`,
+  1 AS `edgeEnergy`,
+  1 AS `filename`,
+  1 AS `beamSizeVertical`,
+  1 AS `beamSizeHorizontal`,
+  1 AS `crystalClass`,
+  1 AS `comments`,
+  1 AS `flux`,
+  1 AS `flux_end`,
+  1 AS `remoteEnergy`,
+  1 AS `remoteFPrime`,
+  1 AS `remoteFDoublePrime`,
+  1 AS `BLSample_sampleId`,
+  1 AS `name`,
+  1 AS `code`,
+  1 AS `acronym`,
+  1 AS `BLSession_proposalId` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5815,9 +5810,8 @@ DROP TABLE IF EXISTS `v_hour`;
 /*!50001 DROP VIEW IF EXISTS `v_hour`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_hour` (
-  `num` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_hour` AS SELECT
+ 1 AS `num` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5828,11 +5822,10 @@ DROP TABLE IF EXISTS `v_logonByHour`;
 /*!50001 DROP VIEW IF EXISTS `v_logonByHour`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_logonByHour` (
-  `Hour` tinyint NOT NULL,
-  `Distinct logins` tinyint NOT NULL,
-  `Total logins` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_logonByHour` AS SELECT
+ 1 AS `Hour`,
+  1 AS `Distinct logins`,
+  1 AS `Total logins` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5843,11 +5836,10 @@ DROP TABLE IF EXISTS `v_logonByMonthDay`;
 /*!50001 DROP VIEW IF EXISTS `v_logonByMonthDay`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_logonByMonthDay` (
-  `Day` tinyint NOT NULL,
-  `Distinct logins` tinyint NOT NULL,
-  `Total logins` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_logonByMonthDay` AS SELECT
+ 1 AS `Day`,
+  1 AS `Distinct logins`,
+  1 AS `Total logins` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5858,11 +5850,10 @@ DROP TABLE IF EXISTS `v_logonByWeek`;
 /*!50001 DROP VIEW IF EXISTS `v_logonByWeek`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_logonByWeek` (
-  `Week` tinyint NOT NULL,
-  `Distinct logins` tinyint NOT NULL,
-  `Total logins` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_logonByWeek` AS SELECT
+ 1 AS `Week`,
+  1 AS `Distinct logins`,
+  1 AS `Total logins` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5873,11 +5864,10 @@ DROP TABLE IF EXISTS `v_logonByWeekDay`;
 /*!50001 DROP VIEW IF EXISTS `v_logonByWeekDay`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_logonByWeekDay` (
-  `Day` tinyint NOT NULL,
-  `Distinct logins` tinyint NOT NULL,
-  `Total logins` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_logonByWeekDay` AS SELECT
+ 1 AS `Day`,
+  1 AS `Distinct logins`,
+  1 AS `Total logins` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5888,9 +5878,8 @@ DROP TABLE IF EXISTS `v_monthDay`;
 /*!50001 DROP VIEW IF EXISTS `v_monthDay`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_monthDay` (
-  `num` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_monthDay` AS SELECT
+ 1 AS `num` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5901,42 +5890,41 @@ DROP TABLE IF EXISTS `v_mx_autoprocessing_stats`;
 /*!50001 DROP VIEW IF EXISTS `v_mx_autoprocessing_stats`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_mx_autoprocessing_stats` (
-  `autoProcScalingStatisticsId` tinyint NOT NULL,
-  `autoProcScalingId` tinyint NOT NULL,
-  `scalingStatisticsType` tinyint NOT NULL,
-  `resolutionLimitLow` tinyint NOT NULL,
-  `resolutionLimitHigh` tinyint NOT NULL,
-  `rMerge` tinyint NOT NULL,
-  `rMeasWithinIPlusIMinus` tinyint NOT NULL,
-  `rMeasAllIPlusIMinus` tinyint NOT NULL,
-  `rPimWithinIPlusIMinus` tinyint NOT NULL,
-  `rPimAllIPlusIMinus` tinyint NOT NULL,
-  `fractionalPartialBias` tinyint NOT NULL,
-  `nTotalObservations` tinyint NOT NULL,
-  `nTotalUniqueObservations` tinyint NOT NULL,
-  `meanIOverSigI` tinyint NOT NULL,
-  `completeness` tinyint NOT NULL,
-  `multiplicity` tinyint NOT NULL,
-  `anomalousCompleteness` tinyint NOT NULL,
-  `anomalousMultiplicity` tinyint NOT NULL,
-  `recordTimeStamp` tinyint NOT NULL,
-  `anomalous` tinyint NOT NULL,
-  `ccHalf` tinyint NOT NULL,
-  `ccAno` tinyint NOT NULL,
-  `sigAno` tinyint NOT NULL,
-  `ISA` tinyint NOT NULL,
-  `dataCollectionId` tinyint NOT NULL,
-  `strategySubWedgeOrigId` tinyint NOT NULL,
-  `detectorId` tinyint NOT NULL,
-  `blSubSampleId` tinyint NOT NULL,
-  `dataCollectionNumber` tinyint NOT NULL,
-  `startTime` tinyint NOT NULL,
-  `endTime` tinyint NOT NULL,
-  `sessionId` tinyint NOT NULL,
-  `proposalId` tinyint NOT NULL,
-  `beamLineName` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_mx_autoprocessing_stats` AS SELECT
+ 1 AS `autoProcScalingStatisticsId`,
+  1 AS `autoProcScalingId`,
+  1 AS `scalingStatisticsType`,
+  1 AS `resolutionLimitLow`,
+  1 AS `resolutionLimitHigh`,
+  1 AS `rMerge`,
+  1 AS `rMeasWithinIPlusIMinus`,
+  1 AS `rMeasAllIPlusIMinus`,
+  1 AS `rPimWithinIPlusIMinus`,
+  1 AS `rPimAllIPlusIMinus`,
+  1 AS `fractionalPartialBias`,
+  1 AS `nTotalObservations`,
+  1 AS `nTotalUniqueObservations`,
+  1 AS `meanIOverSigI`,
+  1 AS `completeness`,
+  1 AS `multiplicity`,
+  1 AS `anomalousCompleteness`,
+  1 AS `anomalousMultiplicity`,
+  1 AS `recordTimeStamp`,
+  1 AS `anomalous`,
+  1 AS `ccHalf`,
+  1 AS `ccAno`,
+  1 AS `sigAno`,
+  1 AS `ISA`,
+  1 AS `dataCollectionId`,
+  1 AS `strategySubWedgeOrigId`,
+  1 AS `detectorId`,
+  1 AS `blSubSampleId`,
+  1 AS `dataCollectionNumber`,
+  1 AS `startTime`,
+  1 AS `endTime`,
+  1 AS `sessionId`,
+  1 AS `proposalId`,
+  1 AS `beamLineName` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5947,30 +5935,29 @@ DROP TABLE IF EXISTS `v_mx_experiment_stats`;
 /*!50001 DROP VIEW IF EXISTS `v_mx_experiment_stats`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_mx_experiment_stats` (
-  `startTime` tinyint NOT NULL,
-  `Images` tinyint NOT NULL,
-  `Transmission` tinyint NOT NULL,
-  `Res. (corner)` tinyint NOT NULL,
-  `En. (Wave.)` tinyint NOT NULL,
-  `Omega start (total)` tinyint NOT NULL,
-  `Exposure Time` tinyint NOT NULL,
-  `Flux` tinyint NOT NULL,
-  `Flux End` tinyint NOT NULL,
-  `Detector Distance` tinyint NOT NULL,
-  `X Beam` tinyint NOT NULL,
-  `Y Beam` tinyint NOT NULL,
-  `Kappa` tinyint NOT NULL,
-  `Phi` tinyint NOT NULL,
-  `Axis Start` tinyint NOT NULL,
-  `Axis End` tinyint NOT NULL,
-  `Axis Range` tinyint NOT NULL,
-  `Beam Size X` tinyint NOT NULL,
-  `Beam Size Y` tinyint NOT NULL,
-  `beamLineName` tinyint NOT NULL,
-  `comments` tinyint NOT NULL,
-  `proposalNumber` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_mx_experiment_stats` AS SELECT
+ 1 AS `startTime`,
+  1 AS `Images`,
+  1 AS `Transmission`,
+  1 AS `Res. (corner)`,
+  1 AS `En. (Wave.)`,
+  1 AS `Omega start (total)`,
+  1 AS `Exposure Time`,
+  1 AS `Flux`,
+  1 AS `Flux End`,
+  1 AS `Detector Distance`,
+  1 AS `X Beam`,
+  1 AS `Y Beam`,
+  1 AS `Kappa`,
+  1 AS `Phi`,
+  1 AS `Axis Start`,
+  1 AS `Axis End`,
+  1 AS `Axis Range`,
+  1 AS `Beam Size X`,
+  1 AS `Beam Size Y`,
+  1 AS `beamLineName`,
+  1 AS `comments`,
+  1 AS `proposalNumber` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -5981,53 +5968,52 @@ DROP TABLE IF EXISTS `v_mx_sample`;
 /*!50001 DROP VIEW IF EXISTS `v_mx_sample`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_mx_sample` (
-  `BLSample_blSampleId` tinyint NOT NULL,
-  `BLSample_diffractionPlanId` tinyint NOT NULL,
-  `BLSample_crystalId` tinyint NOT NULL,
-  `BLSample_containerId` tinyint NOT NULL,
-  `BLSample_name` tinyint NOT NULL,
-  `BLSample_code` tinyint NOT NULL,
-  `BLSample_location` tinyint NOT NULL,
-  `BLSample_holderLength` tinyint NOT NULL,
-  `BLSample_loopLength` tinyint NOT NULL,
-  `BLSample_loopType` tinyint NOT NULL,
-  `BLSample_wireWidth` tinyint NOT NULL,
-  `BLSample_comments` tinyint NOT NULL,
-  `BLSample_completionStage` tinyint NOT NULL,
-  `BLSample_structureStage` tinyint NOT NULL,
-  `BLSample_publicationStage` tinyint NOT NULL,
-  `BLSample_publicationComments` tinyint NOT NULL,
-  `BLSample_blSampleStatus` tinyint NOT NULL,
-  `BLSample_isInSampleChanger` tinyint NOT NULL,
-  `BLSample_lastKnownCenteringPosition` tinyint NOT NULL,
-  `BLSample_recordTimeStamp` tinyint NOT NULL,
-  `BLSample_SMILES` tinyint NOT NULL,
-  `Protein_proteinId` tinyint NOT NULL,
-  `Protein_name` tinyint NOT NULL,
-  `Protein_acronym` tinyint NOT NULL,
-  `Protein_proteinType` tinyint NOT NULL,
-  `Protein_proposalId` tinyint NOT NULL,
-  `Person_personId` tinyint NOT NULL,
-  `Person_familyName` tinyint NOT NULL,
-  `Person_givenName` tinyint NOT NULL,
-  `Person_emailAddress` tinyint NOT NULL,
-  `Container_containerId` tinyint NOT NULL,
-  `Container_code` tinyint NOT NULL,
-  `Container_containerType` tinyint NOT NULL,
-  `Container_containerStatus` tinyint NOT NULL,
-  `Container_beamlineLocation` tinyint NOT NULL,
-  `Container_sampleChangerLocation` tinyint NOT NULL,
-  `Dewar_code` tinyint NOT NULL,
-  `Dewar_dewarId` tinyint NOT NULL,
-  `Dewar_storageLocation` tinyint NOT NULL,
-  `Dewar_dewarStatus` tinyint NOT NULL,
-  `Dewar_barCode` tinyint NOT NULL,
-  `Shipping_shippingId` tinyint NOT NULL,
-  `sessionId` tinyint NOT NULL,
-  `BLSession_startDate` tinyint NOT NULL,
-  `BLSession_beamLineName` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_mx_sample` AS SELECT
+ 1 AS `BLSample_blSampleId`,
+  1 AS `BLSample_diffractionPlanId`,
+  1 AS `BLSample_crystalId`,
+  1 AS `BLSample_containerId`,
+  1 AS `BLSample_name`,
+  1 AS `BLSample_code`,
+  1 AS `BLSample_location`,
+  1 AS `BLSample_holderLength`,
+  1 AS `BLSample_loopLength`,
+  1 AS `BLSample_loopType`,
+  1 AS `BLSample_wireWidth`,
+  1 AS `BLSample_comments`,
+  1 AS `BLSample_completionStage`,
+  1 AS `BLSample_structureStage`,
+  1 AS `BLSample_publicationStage`,
+  1 AS `BLSample_publicationComments`,
+  1 AS `BLSample_blSampleStatus`,
+  1 AS `BLSample_isInSampleChanger`,
+  1 AS `BLSample_lastKnownCenteringPosition`,
+  1 AS `BLSample_recordTimeStamp`,
+  1 AS `BLSample_SMILES`,
+  1 AS `Protein_proteinId`,
+  1 AS `Protein_name`,
+  1 AS `Protein_acronym`,
+  1 AS `Protein_proteinType`,
+  1 AS `Protein_proposalId`,
+  1 AS `Person_personId`,
+  1 AS `Person_familyName`,
+  1 AS `Person_givenName`,
+  1 AS `Person_emailAddress`,
+  1 AS `Container_containerId`,
+  1 AS `Container_code`,
+  1 AS `Container_containerType`,
+  1 AS `Container_containerStatus`,
+  1 AS `Container_beamlineLocation`,
+  1 AS `Container_sampleChangerLocation`,
+  1 AS `Dewar_code`,
+  1 AS `Dewar_dewarId`,
+  1 AS `Dewar_storageLocation`,
+  1 AS `Dewar_dewarStatus`,
+  1 AS `Dewar_barCode`,
+  1 AS `Shipping_shippingId`,
+  1 AS `sessionId`,
+  1 AS `BLSession_startDate`,
+  1 AS `BLSession_beamLineName` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -6038,128 +6024,127 @@ DROP TABLE IF EXISTS `v_phasing`;
 /*!50001 DROP VIEW IF EXISTS `v_phasing`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_phasing` (
-  `BLSample_blSampleId` tinyint NOT NULL,
-  `AutoProcIntegration_autoProcIntegrationId` tinyint NOT NULL,
-  `AutoProcIntegration_dataCollectionId` tinyint NOT NULL,
-  `AutoProcIntegration_autoProcProgramId` tinyint NOT NULL,
-  `AutoProcIntegration_startImageNumber` tinyint NOT NULL,
-  `AutoProcIntegration_endImageNumber` tinyint NOT NULL,
-  `AutoProcIntegration_refinedDetectorDistance` tinyint NOT NULL,
-  `AutoProcIntegration_refinedXBeam` tinyint NOT NULL,
-  `AutoProcIntegration_refinedYBeam` tinyint NOT NULL,
-  `AutoProcIntegration_rotationAxisX` tinyint NOT NULL,
-  `AutoProcIntegration_rotationAxisY` tinyint NOT NULL,
-  `AutoProcIntegration_rotationAxisZ` tinyint NOT NULL,
-  `AutoProcIntegration_beamVectorX` tinyint NOT NULL,
-  `AutoProcIntegration_beamVectorY` tinyint NOT NULL,
-  `AutoProcIntegration_beamVectorZ` tinyint NOT NULL,
-  `AutoProcIntegration_cell_a` tinyint NOT NULL,
-  `AutoProcIntegration_cell_b` tinyint NOT NULL,
-  `AutoProcIntegration_cell_c` tinyint NOT NULL,
-  `AutoProcIntegration_cell_alpha` tinyint NOT NULL,
-  `AutoProcIntegration_cell_beta` tinyint NOT NULL,
-  `AutoProcIntegration_cell_gamma` tinyint NOT NULL,
-  `AutoProcIntegration_recordTimeStamp` tinyint NOT NULL,
-  `AutoProcIntegration_anomalous` tinyint NOT NULL,
-  `SpaceGroup_spaceGroupId` tinyint NOT NULL,
-  `SpaceGroup_geometryClassnameId` tinyint NOT NULL,
-  `SpaceGroup_spaceGroupNumber` tinyint NOT NULL,
-  `SpaceGroup_spaceGroupShortName` tinyint NOT NULL,
-  `SpaceGroup_spaceGroupName` tinyint NOT NULL,
-  `SpaceGroup_bravaisLattice` tinyint NOT NULL,
-  `SpaceGroup_bravaisLatticeName` tinyint NOT NULL,
-  `SpaceGroup_pointGroup` tinyint NOT NULL,
-  `SpaceGroup_MX_used` tinyint NOT NULL,
-  `PhasingStep_phasingStepId` tinyint NOT NULL,
-  `PhasingStep_previousPhasingStepId` tinyint NOT NULL,
-  `PhasingStep_programRunId` tinyint NOT NULL,
-  `PhasingStep_spaceGroupId` tinyint NOT NULL,
-  `PhasingStep_autoProcScalingId` tinyint NOT NULL,
-  `PhasingStep_phasingAnalysisId` tinyint NOT NULL,
-  `PhasingStep_phasingStepType` tinyint NOT NULL,
-  `PhasingStep_method` tinyint NOT NULL,
-  `PhasingStep_solventContent` tinyint NOT NULL,
-  `PhasingStep_enantiomorph` tinyint NOT NULL,
-  `PhasingStep_lowRes` tinyint NOT NULL,
-  `PhasingStep_highRes` tinyint NOT NULL,
-  `PhasingStep_recordTimeStamp` tinyint NOT NULL,
-  `DataCollection_dataCollectionId` tinyint NOT NULL,
-  `DataCollection_dataCollectionGroupId` tinyint NOT NULL,
-  `DataCollection_strategySubWedgeOrigId` tinyint NOT NULL,
-  `DataCollection_detectorId` tinyint NOT NULL,
-  `DataCollection_blSubSampleId` tinyint NOT NULL,
-  `DataCollection_dataCollectionNumber` tinyint NOT NULL,
-  `DataCollection_startTime` tinyint NOT NULL,
-  `DataCollection_endTime` tinyint NOT NULL,
-  `DataCollection_runStatus` tinyint NOT NULL,
-  `DataCollection_axisStart` tinyint NOT NULL,
-  `DataCollection_axisEnd` tinyint NOT NULL,
-  `DataCollection_axisRange` tinyint NOT NULL,
-  `DataCollection_overlap` tinyint NOT NULL,
-  `DataCollection_numberOfImages` tinyint NOT NULL,
-  `DataCollection_startImageNumber` tinyint NOT NULL,
-  `DataCollection_numberOfPasses` tinyint NOT NULL,
-  `DataCollection_exposureTime` tinyint NOT NULL,
-  `DataCollection_imageDirectory` tinyint NOT NULL,
-  `DataCollection_imagePrefix` tinyint NOT NULL,
-  `DataCollection_imageSuffix` tinyint NOT NULL,
-  `DataCollection_fileTemplate` tinyint NOT NULL,
-  `DataCollection_wavelength` tinyint NOT NULL,
-  `DataCollection_resolution` tinyint NOT NULL,
-  `DataCollection_detectorDistance` tinyint NOT NULL,
-  `DataCollection_xBeam` tinyint NOT NULL,
-  `DataCollection_yBeam` tinyint NOT NULL,
-  `DataCollection_xBeamPix` tinyint NOT NULL,
-  `DataCollection_yBeamPix` tinyint NOT NULL,
-  `DataCollection_comments` tinyint NOT NULL,
-  `DataCollection_printableForReport` tinyint NOT NULL,
-  `DataCollection_slitGapVertical` tinyint NOT NULL,
-  `DataCollection_slitGapHorizontal` tinyint NOT NULL,
-  `DataCollection_transmission` tinyint NOT NULL,
-  `DataCollection_synchrotronMode` tinyint NOT NULL,
-  `DataCollection_xtalSnapshotFullPath1` tinyint NOT NULL,
-  `DataCollection_xtalSnapshotFullPath2` tinyint NOT NULL,
-  `DataCollection_xtalSnapshotFullPath3` tinyint NOT NULL,
-  `DataCollection_xtalSnapshotFullPath4` tinyint NOT NULL,
-  `DataCollection_rotationAxis` tinyint NOT NULL,
-  `DataCollection_phiStart` tinyint NOT NULL,
-  `DataCollection_kappaStart` tinyint NOT NULL,
-  `DataCollection_omegaStart` tinyint NOT NULL,
-  `DataCollection_resolutionAtCorner` tinyint NOT NULL,
-  `DataCollection_detector2Theta` tinyint NOT NULL,
-  `DataCollection_undulatorGap1` tinyint NOT NULL,
-  `DataCollection_undulatorGap2` tinyint NOT NULL,
-  `DataCollection_undulatorGap3` tinyint NOT NULL,
-  `DataCollection_beamSizeAtSampleX` tinyint NOT NULL,
-  `DataCollection_beamSizeAtSampleY` tinyint NOT NULL,
-  `DataCollection_centeringMethod` tinyint NOT NULL,
-  `DataCollection_averageTemperature` tinyint NOT NULL,
-  `DataCollection_actualCenteringPosition` tinyint NOT NULL,
-  `DataCollection_beamShape` tinyint NOT NULL,
-  `DataCollection_flux` tinyint NOT NULL,
-  `DataCollection_flux_end` tinyint NOT NULL,
-  `DataCollection_totalAbsorbedDose` tinyint NOT NULL,
-  `DataCollection_bestWilsonPlotPath` tinyint NOT NULL,
-  `DataCollection_imageQualityIndicatorsPlotPath` tinyint NOT NULL,
-  `DataCollection_imageQualityIndicatorsCSVPath` tinyint NOT NULL,
-  `PhasingProgramRun_phasingProgramRunId` tinyint NOT NULL,
-  `PhasingProgramRun_phasingCommandLine` tinyint NOT NULL,
-  `PhasingProgramRun_phasingPrograms` tinyint NOT NULL,
-  `PhasingProgramRun_phasingStatus` tinyint NOT NULL,
-  `PhasingProgramRun_phasingMessage` tinyint NOT NULL,
-  `PhasingProgramRun_phasingStartTime` tinyint NOT NULL,
-  `PhasingProgramRun_phasingEndTime` tinyint NOT NULL,
-  `PhasingProgramRun_phasingEnvironment` tinyint NOT NULL,
-  `PhasingProgramRun_phasingDirectory` tinyint NOT NULL,
-  `PhasingProgramRun_recordTimeStamp` tinyint NOT NULL,
-  `Protein_proteinId` tinyint NOT NULL,
-  `BLSession_sessionId` tinyint NOT NULL,
-  `BLSession_proposalId` tinyint NOT NULL,
-  `PhasingStatistics_phasingStatisticsId` tinyint NOT NULL,
-  `PhasingStatistics_metric` tinyint NOT NULL,
-  `PhasingStatistics_statisticsValue` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_phasing` AS SELECT
+ 1 AS `BLSample_blSampleId`,
+  1 AS `AutoProcIntegration_autoProcIntegrationId`,
+  1 AS `AutoProcIntegration_dataCollectionId`,
+  1 AS `AutoProcIntegration_autoProcProgramId`,
+  1 AS `AutoProcIntegration_startImageNumber`,
+  1 AS `AutoProcIntegration_endImageNumber`,
+  1 AS `AutoProcIntegration_refinedDetectorDistance`,
+  1 AS `AutoProcIntegration_refinedXBeam`,
+  1 AS `AutoProcIntegration_refinedYBeam`,
+  1 AS `AutoProcIntegration_rotationAxisX`,
+  1 AS `AutoProcIntegration_rotationAxisY`,
+  1 AS `AutoProcIntegration_rotationAxisZ`,
+  1 AS `AutoProcIntegration_beamVectorX`,
+  1 AS `AutoProcIntegration_beamVectorY`,
+  1 AS `AutoProcIntegration_beamVectorZ`,
+  1 AS `AutoProcIntegration_cell_a`,
+  1 AS `AutoProcIntegration_cell_b`,
+  1 AS `AutoProcIntegration_cell_c`,
+  1 AS `AutoProcIntegration_cell_alpha`,
+  1 AS `AutoProcIntegration_cell_beta`,
+  1 AS `AutoProcIntegration_cell_gamma`,
+  1 AS `AutoProcIntegration_recordTimeStamp`,
+  1 AS `AutoProcIntegration_anomalous`,
+  1 AS `SpaceGroup_spaceGroupId`,
+  1 AS `SpaceGroup_geometryClassnameId`,
+  1 AS `SpaceGroup_spaceGroupNumber`,
+  1 AS `SpaceGroup_spaceGroupShortName`,
+  1 AS `SpaceGroup_spaceGroupName`,
+  1 AS `SpaceGroup_bravaisLattice`,
+  1 AS `SpaceGroup_bravaisLatticeName`,
+  1 AS `SpaceGroup_pointGroup`,
+  1 AS `SpaceGroup_MX_used`,
+  1 AS `PhasingStep_phasingStepId`,
+  1 AS `PhasingStep_previousPhasingStepId`,
+  1 AS `PhasingStep_programRunId`,
+  1 AS `PhasingStep_spaceGroupId`,
+  1 AS `PhasingStep_autoProcScalingId`,
+  1 AS `PhasingStep_phasingAnalysisId`,
+  1 AS `PhasingStep_phasingStepType`,
+  1 AS `PhasingStep_method`,
+  1 AS `PhasingStep_solventContent`,
+  1 AS `PhasingStep_enantiomorph`,
+  1 AS `PhasingStep_lowRes`,
+  1 AS `PhasingStep_highRes`,
+  1 AS `PhasingStep_recordTimeStamp`,
+  1 AS `DataCollection_dataCollectionId`,
+  1 AS `DataCollection_dataCollectionGroupId`,
+  1 AS `DataCollection_strategySubWedgeOrigId`,
+  1 AS `DataCollection_detectorId`,
+  1 AS `DataCollection_blSubSampleId`,
+  1 AS `DataCollection_dataCollectionNumber`,
+  1 AS `DataCollection_startTime`,
+  1 AS `DataCollection_endTime`,
+  1 AS `DataCollection_runStatus`,
+  1 AS `DataCollection_axisStart`,
+  1 AS `DataCollection_axisEnd`,
+  1 AS `DataCollection_axisRange`,
+  1 AS `DataCollection_overlap`,
+  1 AS `DataCollection_numberOfImages`,
+  1 AS `DataCollection_startImageNumber`,
+  1 AS `DataCollection_numberOfPasses`,
+  1 AS `DataCollection_exposureTime`,
+  1 AS `DataCollection_imageDirectory`,
+  1 AS `DataCollection_imagePrefix`,
+  1 AS `DataCollection_imageSuffix`,
+  1 AS `DataCollection_fileTemplate`,
+  1 AS `DataCollection_wavelength`,
+  1 AS `DataCollection_resolution`,
+  1 AS `DataCollection_detectorDistance`,
+  1 AS `DataCollection_xBeam`,
+  1 AS `DataCollection_yBeam`,
+  1 AS `DataCollection_xBeamPix`,
+  1 AS `DataCollection_yBeamPix`,
+  1 AS `DataCollection_comments`,
+  1 AS `DataCollection_printableForReport`,
+  1 AS `DataCollection_slitGapVertical`,
+  1 AS `DataCollection_slitGapHorizontal`,
+  1 AS `DataCollection_transmission`,
+  1 AS `DataCollection_synchrotronMode`,
+  1 AS `DataCollection_xtalSnapshotFullPath1`,
+  1 AS `DataCollection_xtalSnapshotFullPath2`,
+  1 AS `DataCollection_xtalSnapshotFullPath3`,
+  1 AS `DataCollection_xtalSnapshotFullPath4`,
+  1 AS `DataCollection_rotationAxis`,
+  1 AS `DataCollection_phiStart`,
+  1 AS `DataCollection_kappaStart`,
+  1 AS `DataCollection_omegaStart`,
+  1 AS `DataCollection_resolutionAtCorner`,
+  1 AS `DataCollection_detector2Theta`,
+  1 AS `DataCollection_undulatorGap1`,
+  1 AS `DataCollection_undulatorGap2`,
+  1 AS `DataCollection_undulatorGap3`,
+  1 AS `DataCollection_beamSizeAtSampleX`,
+  1 AS `DataCollection_beamSizeAtSampleY`,
+  1 AS `DataCollection_centeringMethod`,
+  1 AS `DataCollection_averageTemperature`,
+  1 AS `DataCollection_actualCenteringPosition`,
+  1 AS `DataCollection_beamShape`,
+  1 AS `DataCollection_flux`,
+  1 AS `DataCollection_flux_end`,
+  1 AS `DataCollection_totalAbsorbedDose`,
+  1 AS `DataCollection_bestWilsonPlotPath`,
+  1 AS `DataCollection_imageQualityIndicatorsPlotPath`,
+  1 AS `DataCollection_imageQualityIndicatorsCSVPath`,
+  1 AS `PhasingProgramRun_phasingProgramRunId`,
+  1 AS `PhasingProgramRun_phasingCommandLine`,
+  1 AS `PhasingProgramRun_phasingPrograms`,
+  1 AS `PhasingProgramRun_phasingStatus`,
+  1 AS `PhasingProgramRun_phasingMessage`,
+  1 AS `PhasingProgramRun_phasingStartTime`,
+  1 AS `PhasingProgramRun_phasingEndTime`,
+  1 AS `PhasingProgramRun_phasingEnvironment`,
+  1 AS `PhasingProgramRun_phasingDirectory`,
+  1 AS `PhasingProgramRun_recordTimeStamp`,
+  1 AS `Protein_proteinId`,
+  1 AS `BLSession_sessionId`,
+  1 AS `BLSession_proposalId`,
+  1 AS `PhasingStatistics_phasingStatisticsId`,
+  1 AS `PhasingStatistics_metric`,
+  1 AS `PhasingStatistics_statisticsValue` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -6170,19 +6155,18 @@ DROP TABLE IF EXISTS `v_sample`;
 /*!50001 DROP VIEW IF EXISTS `v_sample`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_sample` (
-  `proposalId` tinyint NOT NULL,
-  `shippingId` tinyint NOT NULL,
-  `dewarId` tinyint NOT NULL,
-  `containerId` tinyint NOT NULL,
-  `blSampleId` tinyint NOT NULL,
-  `proposalCode` tinyint NOT NULL,
-  `proposalNumber` tinyint NOT NULL,
-  `creationDate` tinyint NOT NULL,
-  `shippingType` tinyint NOT NULL,
-  `barCode` tinyint NOT NULL,
-  `shippingStatus` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_sample` AS SELECT
+ 1 AS `proposalId`,
+  1 AS `shippingId`,
+  1 AS `dewarId`,
+  1 AS `containerId`,
+  1 AS `blSampleId`,
+  1 AS `proposalCode`,
+  1 AS `proposalNumber`,
+  1 AS `creationDate`,
+  1 AS `shippingType`,
+  1 AS `barCode`,
+  1 AS `shippingStatus` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -6193,10 +6177,9 @@ DROP TABLE IF EXISTS `v_sampleByWeek`;
 /*!50001 DROP VIEW IF EXISTS `v_sampleByWeek`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_sampleByWeek` (
-  `Week` tinyint NOT NULL,
-  `Samples` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_sampleByWeek` AS SELECT
+ 1 AS `Week`,
+  1 AS `Samples` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -6207,134 +6190,133 @@ DROP TABLE IF EXISTS `v_saxs_datacollection`;
 /*!50001 DROP VIEW IF EXISTS `v_saxs_datacollection`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_saxs_datacollection` (
-  `Subtraction_subtractionId` tinyint NOT NULL,
-  `MeasurementToDataCollection_dataCollectionId` tinyint NOT NULL,
-  `MeasurementToDataCollection_dataCollectionOrder` tinyint NOT NULL,
-  `MeasurementToDataCollection_measurementToDataCollectionId` tinyint NOT NULL,
-  `Specimen_specimenId` tinyint NOT NULL,
-  `Measurement_code` tinyint NOT NULL,
-  `Measurement_measurementId` tinyint NOT NULL,
-  `Buffer_bufferId` tinyint NOT NULL,
-  `Buffer_proposalId` tinyint NOT NULL,
-  `Buffer_safetyLevelId` tinyint NOT NULL,
-  `Buffer_name` tinyint NOT NULL,
-  `Buffer_acronym` tinyint NOT NULL,
-  `Buffer_pH` tinyint NOT NULL,
-  `Buffer_composition` tinyint NOT NULL,
-  `Buffer_comments` tinyint NOT NULL,
-  `Macromolecule_macromoleculeId` tinyint NOT NULL,
-  `Macromolecule_proposalId` tinyint NOT NULL,
-  `Macromolecule_safetyLevelId` tinyint NOT NULL,
-  `Macromolecule_name` tinyint NOT NULL,
-  `Macromolecule_acronym` tinyint NOT NULL,
-  `Macromolecule_extintionCoefficient` tinyint NOT NULL,
-  `Macromolecule_molecularMass` tinyint NOT NULL,
-  `Macromolecule_sequence` tinyint NOT NULL,
-  `Macromolecule_contactsDescriptionFilePath` tinyint NOT NULL,
-  `Macromolecule_symmetry` tinyint NOT NULL,
-  `Macromolecule_comments` tinyint NOT NULL,
-  `Macromolecule_refractiveIndex` tinyint NOT NULL,
-  `Macromolecule_solventViscosity` tinyint NOT NULL,
-  `Macromolecule_creationDate` tinyint NOT NULL,
-  `Specimen_experimentId` tinyint NOT NULL,
-  `Specimen_bufferId` tinyint NOT NULL,
-  `Specimen_samplePlatePositionId` tinyint NOT NULL,
-  `Specimen_safetyLevelId` tinyint NOT NULL,
-  `Specimen_stockSolutionId` tinyint NOT NULL,
-  `Specimen_code` tinyint NOT NULL,
-  `Specimen_concentration` tinyint NOT NULL,
-  `Specimen_volume` tinyint NOT NULL,
-  `Specimen_comments` tinyint NOT NULL,
-  `SamplePlatePosition_samplePlatePositionId` tinyint NOT NULL,
-  `SamplePlatePosition_samplePlateId` tinyint NOT NULL,
-  `SamplePlatePosition_rowNumber` tinyint NOT NULL,
-  `SamplePlatePosition_columnNumber` tinyint NOT NULL,
-  `SamplePlatePosition_volume` tinyint NOT NULL,
-  `samplePlateId` tinyint NOT NULL,
-  `experimentId` tinyint NOT NULL,
-  `plateGroupId` tinyint NOT NULL,
-  `plateTypeId` tinyint NOT NULL,
-  `instructionSetId` tinyint NOT NULL,
-  `SamplePlate_boxId` tinyint NOT NULL,
-  `SamplePlate_name` tinyint NOT NULL,
-  `SamplePlate_slotPositionRow` tinyint NOT NULL,
-  `SamplePlate_slotPositionColumn` tinyint NOT NULL,
-  `SamplePlate_storageTemperature` tinyint NOT NULL,
-  `Experiment_experimentId` tinyint NOT NULL,
-  `Experiment_sessionId` tinyint NOT NULL,
-  `Experiment_proposalId` tinyint NOT NULL,
-  `Experiment_name` tinyint NOT NULL,
-  `Experiment_creationDate` tinyint NOT NULL,
-  `Experiment_experimentType` tinyint NOT NULL,
-  `Experiment_sourceFilePath` tinyint NOT NULL,
-  `Experiment_dataAcquisitionFilePath` tinyint NOT NULL,
-  `Experiment_status` tinyint NOT NULL,
-  `Experiment_comments` tinyint NOT NULL,
-  `Measurement_priorityLevelId` tinyint NOT NULL,
-  `Measurement_exposureTemperature` tinyint NOT NULL,
-  `Measurement_viscosity` tinyint NOT NULL,
-  `Measurement_flow` tinyint NOT NULL,
-  `Measurement_extraFlowTime` tinyint NOT NULL,
-  `Measurement_volumeToLoad` tinyint NOT NULL,
-  `Measurement_waitTime` tinyint NOT NULL,
-  `Measurement_transmission` tinyint NOT NULL,
-  `Measurement_comments` tinyint NOT NULL,
-  `Measurement_imageDirectory` tinyint NOT NULL,
-  `Run_runId` tinyint NOT NULL,
-  `Run_timePerFrame` tinyint NOT NULL,
-  `Run_timeStart` tinyint NOT NULL,
-  `Run_timeEnd` tinyint NOT NULL,
-  `Run_storageTemperature` tinyint NOT NULL,
-  `Run_exposureTemperature` tinyint NOT NULL,
-  `Run_spectrophotometer` tinyint NOT NULL,
-  `Run_energy` tinyint NOT NULL,
-  `Run_creationDate` tinyint NOT NULL,
-  `Run_frameAverage` tinyint NOT NULL,
-  `Run_frameCount` tinyint NOT NULL,
-  `Run_transmission` tinyint NOT NULL,
-  `Run_beamCenterX` tinyint NOT NULL,
-  `Run_beamCenterY` tinyint NOT NULL,
-  `Run_pixelSizeX` tinyint NOT NULL,
-  `Run_pixelSizeY` tinyint NOT NULL,
-  `Run_radiationRelative` tinyint NOT NULL,
-  `Run_radiationAbsolute` tinyint NOT NULL,
-  `Run_normalization` tinyint NOT NULL,
-  `Merge_mergeId` tinyint NOT NULL,
-  `Merge_measurementId` tinyint NOT NULL,
-  `Merge_frameListId` tinyint NOT NULL,
-  `Merge_discardedFrameNameList` tinyint NOT NULL,
-  `Merge_averageFilePath` tinyint NOT NULL,
-  `Merge_framesCount` tinyint NOT NULL,
-  `Merge_framesMerge` tinyint NOT NULL,
-  `Merge_creationDate` tinyint NOT NULL,
-  `Subtraction_dataCollectionId` tinyint NOT NULL,
-  `Subtraction_rg` tinyint NOT NULL,
-  `Subtraction_rgStdev` tinyint NOT NULL,
-  `Subtraction_I0` tinyint NOT NULL,
-  `Subtraction_I0Stdev` tinyint NOT NULL,
-  `Subtraction_firstPointUsed` tinyint NOT NULL,
-  `Subtraction_lastPointUsed` tinyint NOT NULL,
-  `Subtraction_quality` tinyint NOT NULL,
-  `Subtraction_isagregated` tinyint NOT NULL,
-  `Subtraction_concentration` tinyint NOT NULL,
-  `Subtraction_gnomFilePath` tinyint NOT NULL,
-  `Subtraction_rgGuinier` tinyint NOT NULL,
-  `Subtraction_rgGnom` tinyint NOT NULL,
-  `Subtraction_dmax` tinyint NOT NULL,
-  `Subtraction_total` tinyint NOT NULL,
-  `Subtraction_volume` tinyint NOT NULL,
-  `Subtraction_creationTime` tinyint NOT NULL,
-  `Subtraction_kratkyFilePath` tinyint NOT NULL,
-  `Subtraction_scatteringFilePath` tinyint NOT NULL,
-  `Subtraction_guinierFilePath` tinyint NOT NULL,
-  `Subtraction_substractedFilePath` tinyint NOT NULL,
-  `Subtraction_gnomFilePathOutput` tinyint NOT NULL,
-  `Subtraction_sampleOneDimensionalFiles` tinyint NOT NULL,
-  `Subtraction_bufferOnedimensionalFiles` tinyint NOT NULL,
-  `Subtraction_sampleAverageFilePath` tinyint NOT NULL,
-  `Subtraction_bufferAverageFilePath` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_saxs_datacollection` AS SELECT
+ 1 AS `Subtraction_subtractionId`,
+  1 AS `MeasurementToDataCollection_dataCollectionId`,
+  1 AS `MeasurementToDataCollection_dataCollectionOrder`,
+  1 AS `MeasurementToDataCollection_measurementToDataCollectionId`,
+  1 AS `Specimen_specimenId`,
+  1 AS `Measurement_code`,
+  1 AS `Measurement_measurementId`,
+  1 AS `Buffer_bufferId`,
+  1 AS `Buffer_proposalId`,
+  1 AS `Buffer_safetyLevelId`,
+  1 AS `Buffer_name`,
+  1 AS `Buffer_acronym`,
+  1 AS `Buffer_pH`,
+  1 AS `Buffer_composition`,
+  1 AS `Buffer_comments`,
+  1 AS `Macromolecule_macromoleculeId`,
+  1 AS `Macromolecule_proposalId`,
+  1 AS `Macromolecule_safetyLevelId`,
+  1 AS `Macromolecule_name`,
+  1 AS `Macromolecule_acronym`,
+  1 AS `Macromolecule_extintionCoefficient`,
+  1 AS `Macromolecule_molecularMass`,
+  1 AS `Macromolecule_sequence`,
+  1 AS `Macromolecule_contactsDescriptionFilePath`,
+  1 AS `Macromolecule_symmetry`,
+  1 AS `Macromolecule_comments`,
+  1 AS `Macromolecule_refractiveIndex`,
+  1 AS `Macromolecule_solventViscosity`,
+  1 AS `Macromolecule_creationDate`,
+  1 AS `Specimen_experimentId`,
+  1 AS `Specimen_bufferId`,
+  1 AS `Specimen_samplePlatePositionId`,
+  1 AS `Specimen_safetyLevelId`,
+  1 AS `Specimen_stockSolutionId`,
+  1 AS `Specimen_code`,
+  1 AS `Specimen_concentration`,
+  1 AS `Specimen_volume`,
+  1 AS `Specimen_comments`,
+  1 AS `SamplePlatePosition_samplePlatePositionId`,
+  1 AS `SamplePlatePosition_samplePlateId`,
+  1 AS `SamplePlatePosition_rowNumber`,
+  1 AS `SamplePlatePosition_columnNumber`,
+  1 AS `SamplePlatePosition_volume`,
+  1 AS `samplePlateId`,
+  1 AS `experimentId`,
+  1 AS `plateGroupId`,
+  1 AS `plateTypeId`,
+  1 AS `instructionSetId`,
+  1 AS `SamplePlate_boxId`,
+  1 AS `SamplePlate_name`,
+  1 AS `SamplePlate_slotPositionRow`,
+  1 AS `SamplePlate_slotPositionColumn`,
+  1 AS `SamplePlate_storageTemperature`,
+  1 AS `Experiment_experimentId`,
+  1 AS `Experiment_sessionId`,
+  1 AS `Experiment_proposalId`,
+  1 AS `Experiment_name`,
+  1 AS `Experiment_creationDate`,
+  1 AS `Experiment_experimentType`,
+  1 AS `Experiment_sourceFilePath`,
+  1 AS `Experiment_dataAcquisitionFilePath`,
+  1 AS `Experiment_status`,
+  1 AS `Experiment_comments`,
+  1 AS `Measurement_priorityLevelId`,
+  1 AS `Measurement_exposureTemperature`,
+  1 AS `Measurement_viscosity`,
+  1 AS `Measurement_flow`,
+  1 AS `Measurement_extraFlowTime`,
+  1 AS `Measurement_volumeToLoad`,
+  1 AS `Measurement_waitTime`,
+  1 AS `Measurement_transmission`,
+  1 AS `Measurement_comments`,
+  1 AS `Measurement_imageDirectory`,
+  1 AS `Run_runId`,
+  1 AS `Run_timePerFrame`,
+  1 AS `Run_timeStart`,
+  1 AS `Run_timeEnd`,
+  1 AS `Run_storageTemperature`,
+  1 AS `Run_exposureTemperature`,
+  1 AS `Run_spectrophotometer`,
+  1 AS `Run_energy`,
+  1 AS `Run_creationDate`,
+  1 AS `Run_frameAverage`,
+  1 AS `Run_frameCount`,
+  1 AS `Run_transmission`,
+  1 AS `Run_beamCenterX`,
+  1 AS `Run_beamCenterY`,
+  1 AS `Run_pixelSizeX`,
+  1 AS `Run_pixelSizeY`,
+  1 AS `Run_radiationRelative`,
+  1 AS `Run_radiationAbsolute`,
+  1 AS `Run_normalization`,
+  1 AS `Merge_mergeId`,
+  1 AS `Merge_measurementId`,
+  1 AS `Merge_frameListId`,
+  1 AS `Merge_discardedFrameNameList`,
+  1 AS `Merge_averageFilePath`,
+  1 AS `Merge_framesCount`,
+  1 AS `Merge_framesMerge`,
+  1 AS `Merge_creationDate`,
+  1 AS `Subtraction_dataCollectionId`,
+  1 AS `Subtraction_rg`,
+  1 AS `Subtraction_rgStdev`,
+  1 AS `Subtraction_I0`,
+  1 AS `Subtraction_I0Stdev`,
+  1 AS `Subtraction_firstPointUsed`,
+  1 AS `Subtraction_lastPointUsed`,
+  1 AS `Subtraction_quality`,
+  1 AS `Subtraction_isagregated`,
+  1 AS `Subtraction_concentration`,
+  1 AS `Subtraction_gnomFilePath`,
+  1 AS `Subtraction_rgGuinier`,
+  1 AS `Subtraction_rgGnom`,
+  1 AS `Subtraction_dmax`,
+  1 AS `Subtraction_total`,
+  1 AS `Subtraction_volume`,
+  1 AS `Subtraction_creationTime`,
+  1 AS `Subtraction_kratkyFilePath`,
+  1 AS `Subtraction_scatteringFilePath`,
+  1 AS `Subtraction_guinierFilePath`,
+  1 AS `Subtraction_substractedFilePath`,
+  1 AS `Subtraction_gnomFilePathOutput`,
+  1 AS `Subtraction_sampleOneDimensionalFiles`,
+  1 AS `Subtraction_bufferOnedimensionalFiles`,
+  1 AS `Subtraction_sampleAverageFilePath`,
+  1 AS `Subtraction_bufferAverageFilePath` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -6345,39 +6327,38 @@ DROP TABLE IF EXISTS `v_session`;
 /*!50001 DROP VIEW IF EXISTS `v_session`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_session` (
-  `sessionId` tinyint NOT NULL,
-  `expSessionPk` tinyint NOT NULL,
-  `beamLineSetupId` tinyint NOT NULL,
-  `proposalId` tinyint NOT NULL,
-  `projectCode` tinyint NOT NULL,
-  `BLSession_startDate` tinyint NOT NULL,
-  `BLSession_endDate` tinyint NOT NULL,
-  `beamLineName` tinyint NOT NULL,
-  `scheduled` tinyint NOT NULL,
-  `nbShifts` tinyint NOT NULL,
-  `comments` tinyint NOT NULL,
-  `beamLineOperator` tinyint NOT NULL,
-  `visit_number` tinyint NOT NULL,
-  `bltimeStamp` tinyint NOT NULL,
-  `usedFlag` tinyint NOT NULL,
-  `sessionTitle` tinyint NOT NULL,
-  `structureDeterminations` tinyint NOT NULL,
-  `dewarTransport` tinyint NOT NULL,
-  `databackupFrance` tinyint NOT NULL,
-  `databackupEurope` tinyint NOT NULL,
-  `operatorSiteNumber` tinyint NOT NULL,
-  `BLSession_lastUpdate` tinyint NOT NULL,
-  `BLSession_protectedData` tinyint NOT NULL,
-  `Proposal_title` tinyint NOT NULL,
-  `Proposal_proposalCode` tinyint NOT NULL,
-  `Proposal_ProposalNumber` tinyint NOT NULL,
-  `Proposal_ProposalType` tinyint NOT NULL,
-  `Person_personId` tinyint NOT NULL,
-  `Person_familyName` tinyint NOT NULL,
-  `Person_givenName` tinyint NOT NULL,
-  `Person_emailAddress` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_session` AS SELECT
+ 1 AS `sessionId`,
+  1 AS `expSessionPk`,
+  1 AS `beamLineSetupId`,
+  1 AS `proposalId`,
+  1 AS `projectCode`,
+  1 AS `BLSession_startDate`,
+  1 AS `BLSession_endDate`,
+  1 AS `beamLineName`,
+  1 AS `scheduled`,
+  1 AS `nbShifts`,
+  1 AS `comments`,
+  1 AS `beamLineOperator`,
+  1 AS `visit_number`,
+  1 AS `bltimeStamp`,
+  1 AS `usedFlag`,
+  1 AS `sessionTitle`,
+  1 AS `structureDeterminations`,
+  1 AS `dewarTransport`,
+  1 AS `databackupFrance`,
+  1 AS `databackupEurope`,
+  1 AS `operatorSiteNumber`,
+  1 AS `BLSession_lastUpdate`,
+  1 AS `BLSession_protectedData`,
+  1 AS `Proposal_title`,
+  1 AS `Proposal_proposalCode`,
+  1 AS `Proposal_ProposalNumber`,
+  1 AS `Proposal_ProposalType`,
+  1 AS `Person_personId`,
+  1 AS `Person_familyName`,
+  1 AS `Person_givenName`,
+  1 AS `Person_emailAddress` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -6388,30 +6369,29 @@ DROP TABLE IF EXISTS `v_tracking_shipment_history`;
 /*!50001 DROP VIEW IF EXISTS `v_tracking_shipment_history`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_tracking_shipment_history` (
-  `Dewar_dewarId` tinyint NOT NULL,
-  `Dewar_code` tinyint NOT NULL,
-  `Dewar_comments` tinyint NOT NULL,
-  `Dewar_dewarStatus` tinyint NOT NULL,
-  `Dewar_barCode` tinyint NOT NULL,
-  `Dewar_firstExperimentId` tinyint NOT NULL,
-  `Dewar_trackingNumberToSynchrotron` tinyint NOT NULL,
-  `Dewar_trackingNumberFromSynchrotron` tinyint NOT NULL,
-  `Dewar_type` tinyint NOT NULL,
-  `Shipping_shippingId` tinyint NOT NULL,
-  `Shipping_proposalId` tinyint NOT NULL,
-  `Shipping_shippingName` tinyint NOT NULL,
-  `deliveryAgent_agentName` tinyint NOT NULL,
-  `Shipping_deliveryAgent_shippingDate` tinyint NOT NULL,
-  `Shipping_deliveryAgent_deliveryDate` tinyint NOT NULL,
-  `Shipping_shippingStatus` tinyint NOT NULL,
-  `Shipping_returnCourier` tinyint NOT NULL,
-  `Shipping_dateOfShippingToUser` tinyint NOT NULL,
-  `DewarTransportHistory_DewarTransportHistoryId` tinyint NOT NULL,
-  `DewarTransportHistory_dewarStatus` tinyint NOT NULL,
-  `DewarTransportHistory_storageLocation` tinyint NOT NULL,
-  `DewarTransportHistory_arrivalDate` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_tracking_shipment_history` AS SELECT
+ 1 AS `Dewar_dewarId`,
+  1 AS `Dewar_code`,
+  1 AS `Dewar_comments`,
+  1 AS `Dewar_dewarStatus`,
+  1 AS `Dewar_barCode`,
+  1 AS `Dewar_firstExperimentId`,
+  1 AS `Dewar_trackingNumberToSynchrotron`,
+  1 AS `Dewar_trackingNumberFromSynchrotron`,
+  1 AS `Dewar_type`,
+  1 AS `Shipping_shippingId`,
+  1 AS `Shipping_proposalId`,
+  1 AS `Shipping_shippingName`,
+  1 AS `deliveryAgent_agentName`,
+  1 AS `Shipping_deliveryAgent_shippingDate`,
+  1 AS `Shipping_deliveryAgent_deliveryDate`,
+  1 AS `Shipping_shippingStatus`,
+  1 AS `Shipping_returnCourier`,
+  1 AS `Shipping_dateOfShippingToUser`,
+  1 AS `DewarTransportHistory_DewarTransportHistoryId`,
+  1 AS `DewarTransportHistory_dewarStatus`,
+  1 AS `DewarTransportHistory_storageLocation`,
+  1 AS `DewarTransportHistory_arrivalDate` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -6422,9 +6402,8 @@ DROP TABLE IF EXISTS `v_week`;
 /*!50001 DROP VIEW IF EXISTS `v_week`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_week` (
-  `num` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_week` AS SELECT
+ 1 AS `num` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -6435,9 +6414,8 @@ DROP TABLE IF EXISTS `v_weekDay`;
 /*!50001 DROP VIEW IF EXISTS `v_weekDay`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_weekDay` (
-  `day` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_weekDay` AS SELECT
+ 1 AS `day` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -6448,37 +6426,35 @@ DROP TABLE IF EXISTS `v_xfeFluorescenceSpectrum`;
 /*!50001 DROP VIEW IF EXISTS `v_xfeFluorescenceSpectrum`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `v_xfeFluorescenceSpectrum` (
-  `xfeFluorescenceSpectrumId` tinyint NOT NULL,
-  `sessionId` tinyint NOT NULL,
-  `blSampleId` tinyint NOT NULL,
-  `fittedDataFileFullPath` tinyint NOT NULL,
-  `scanFileFullPath` tinyint NOT NULL,
-  `jpegScanFileFullPath` tinyint NOT NULL,
-  `startTime` tinyint NOT NULL,
-  `endTime` tinyint NOT NULL,
-  `filename` tinyint NOT NULL,
-  `energy` tinyint NOT NULL,
-  `exposureTime` tinyint NOT NULL,
-  `beamTransmission` tinyint NOT NULL,
-  `annotatedPymcaXfeSpectrum` tinyint NOT NULL,
-  `beamSizeVertical` tinyint NOT NULL,
-  `beamSizeHorizontal` tinyint NOT NULL,
-  `crystalClass` tinyint NOT NULL,
-  `comments` tinyint NOT NULL,
-  `flux` tinyint NOT NULL,
-  `flux_end` tinyint NOT NULL,
-  `workingDirectory` tinyint NOT NULL,
-  `BLSample_sampleId` tinyint NOT NULL,
-  `BLSession_proposalId` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `v_xfeFluorescenceSpectrum` AS SELECT
+ 1 AS `xfeFluorescenceSpectrumId`,
+  1 AS `sessionId`,
+  1 AS `blSampleId`,
+  1 AS `fittedDataFileFullPath`,
+  1 AS `scanFileFullPath`,
+  1 AS `jpegScanFileFullPath`,
+  1 AS `startTime`,
+  1 AS `endTime`,
+  1 AS `filename`,
+  1 AS `energy`,
+  1 AS `exposureTime`,
+  1 AS `beamTransmission`,
+  1 AS `annotatedPymcaXfeSpectrum`,
+  1 AS `beamSizeVertical`,
+  1 AS `beamSizeHorizontal`,
+  1 AS `crystalClass`,
+  1 AS `comments`,
+  1 AS `flux`,
+  1 AS `flux_end`,
+  1 AS `workingDirectory`,
+  1 AS `BLSample_sampleId`,
+  1 AS `BLSession_proposalId` */;
 SET character_set_client = @saved_cs_client;
 
 --
 -- Final view structure for view `V_AnalysisInfo`
 --
 
-/*!50001 DROP TABLE IF EXISTS `V_AnalysisInfo`*/;
 /*!50001 DROP VIEW IF EXISTS `V_AnalysisInfo`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6497,7 +6473,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_Log4Stat`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_Log4Stat`*/;
 /*!50001 DROP VIEW IF EXISTS `v_Log4Stat`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6516,7 +6491,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_datacollection`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_datacollection`*/;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6535,7 +6509,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_datacollection_autoprocintegration`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_datacollection_autoprocintegration`*/;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection_autoprocintegration`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6554,7 +6527,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_datacollection_phasing`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_datacollection_phasing`*/;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection_phasing`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6573,7 +6545,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_datacollection_phasing_program_run`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_datacollection_phasing_program_run`*/;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection_phasing_program_run`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6592,7 +6563,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_datacollection_summary`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_datacollection_summary`*/;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection_summary`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6611,7 +6581,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_datacollection_summary_autoprocintegration`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_datacollection_summary_autoprocintegration`*/;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection_summary_autoprocintegration`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6630,7 +6599,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_datacollection_summary_datacollectiongroup`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_datacollection_summary_datacollectiongroup`*/;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection_summary_datacollectiongroup`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6649,7 +6617,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_datacollection_summary_phasing`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_datacollection_summary_phasing`*/;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection_summary_phasing`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6668,7 +6635,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_datacollection_summary_screening`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_datacollection_summary_screening`*/;
 /*!50001 DROP VIEW IF EXISTS `v_datacollection_summary_screening`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6687,7 +6653,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_dewar`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_dewar`*/;
 /*!50001 DROP VIEW IF EXISTS `v_dewar`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6706,7 +6671,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_dewarBeamline`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_dewarBeamline`*/;
 /*!50001 DROP VIEW IF EXISTS `v_dewarBeamline`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6725,7 +6689,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_dewarBeamlineByWeek`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_dewarBeamlineByWeek`*/;
 /*!50001 DROP VIEW IF EXISTS `v_dewarBeamlineByWeek`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6744,7 +6707,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_dewarByWeek`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_dewarByWeek`*/;
 /*!50001 DROP VIEW IF EXISTS `v_dewarByWeek`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6763,7 +6725,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_dewarByWeekTotal`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_dewarByWeekTotal`*/;
 /*!50001 DROP VIEW IF EXISTS `v_dewarByWeekTotal`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6782,7 +6743,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_dewarList`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_dewarList`*/;
 /*!50001 DROP VIEW IF EXISTS `v_dewarList`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6801,7 +6761,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_dewarProposalCode`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_dewarProposalCode`*/;
 /*!50001 DROP VIEW IF EXISTS `v_dewarProposalCode`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6820,7 +6779,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_dewarProposalCodeByWeek`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_dewarProposalCodeByWeek`*/;
 /*!50001 DROP VIEW IF EXISTS `v_dewarProposalCodeByWeek`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6839,7 +6797,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_dewar_summary`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_dewar_summary`*/;
 /*!50001 DROP VIEW IF EXISTS `v_dewar_summary`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6858,7 +6815,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_em_2dclassification`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_em_2dclassification`*/;
 /*!50001 DROP VIEW IF EXISTS `v_em_2dclassification`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6877,7 +6833,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_em_classification`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_em_classification`*/;
 /*!50001 DROP VIEW IF EXISTS `v_em_classification`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6896,7 +6851,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_em_movie`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_em_movie`*/;
 /*!50001 DROP VIEW IF EXISTS `v_em_movie`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6915,7 +6869,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_em_stats`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_em_stats`*/;
 /*!50001 DROP VIEW IF EXISTS `v_em_stats`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6934,7 +6887,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_energyScan`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_energyScan`*/;
 /*!50001 DROP VIEW IF EXISTS `v_energyScan`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6953,7 +6905,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_hour`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_hour`*/;
 /*!50001 DROP VIEW IF EXISTS `v_hour`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6972,7 +6923,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_logonByHour`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_logonByHour`*/;
 /*!50001 DROP VIEW IF EXISTS `v_logonByHour`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -6991,7 +6941,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_logonByMonthDay`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_logonByMonthDay`*/;
 /*!50001 DROP VIEW IF EXISTS `v_logonByMonthDay`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -7010,7 +6959,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_logonByWeek`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_logonByWeek`*/;
 /*!50001 DROP VIEW IF EXISTS `v_logonByWeek`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -7029,7 +6977,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_logonByWeekDay`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_logonByWeekDay`*/;
 /*!50001 DROP VIEW IF EXISTS `v_logonByWeekDay`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -7048,7 +6995,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_monthDay`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_monthDay`*/;
 /*!50001 DROP VIEW IF EXISTS `v_monthDay`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -7067,7 +7013,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_mx_autoprocessing_stats`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_mx_autoprocessing_stats`*/;
 /*!50001 DROP VIEW IF EXISTS `v_mx_autoprocessing_stats`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -7086,7 +7031,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_mx_experiment_stats`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_mx_experiment_stats`*/;
 /*!50001 DROP VIEW IF EXISTS `v_mx_experiment_stats`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -7105,7 +7049,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_mx_sample`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_mx_sample`*/;
 /*!50001 DROP VIEW IF EXISTS `v_mx_sample`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -7124,7 +7067,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_phasing`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_phasing`*/;
 /*!50001 DROP VIEW IF EXISTS `v_phasing`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -7143,7 +7085,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_sample`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_sample`*/;
 /*!50001 DROP VIEW IF EXISTS `v_sample`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -7162,7 +7103,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_sampleByWeek`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_sampleByWeek`*/;
 /*!50001 DROP VIEW IF EXISTS `v_sampleByWeek`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -7181,7 +7121,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_saxs_datacollection`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_saxs_datacollection`*/;
 /*!50001 DROP VIEW IF EXISTS `v_saxs_datacollection`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -7200,7 +7139,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_session`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_session`*/;
 /*!50001 DROP VIEW IF EXISTS `v_session`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -7219,7 +7157,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_tracking_shipment_history`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_tracking_shipment_history`*/;
 /*!50001 DROP VIEW IF EXISTS `v_tracking_shipment_history`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -7238,7 +7175,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_week`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_week`*/;
 /*!50001 DROP VIEW IF EXISTS `v_week`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -7257,7 +7193,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_weekDay`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_weekDay`*/;
 /*!50001 DROP VIEW IF EXISTS `v_weekDay`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -7276,7 +7211,6 @@ SET character_set_client = @saved_cs_client;
 -- Final view structure for view `v_xfeFluorescenceSpectrum`
 --
 
-/*!50001 DROP TABLE IF EXISTS `v_xfeFluorescenceSpectrum`*/;
 /*!50001 DROP VIEW IF EXISTS `v_xfeFluorescenceSpectrum`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
