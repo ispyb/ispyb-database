@@ -38,7 +38,7 @@ CREATE TABLE `ProcessingJobParameter` (
 
 ALTER TABLE `AutoProcProgram`
     ADD `processingJobId` int(11) unsigned DEFAULT NULL,
-    KEY `AutoProcProgram_FK2` (`processingJobId`),
-    CONSTRAINT `AutoProcProgram_FK2` FOREIGN KEY (`processingJobId`) REFERENCES `ProcessingJob` (`processingJobId`);
+    ADD KEY `AutoProcProgram_FK2` (`processingJobId`),
+    ADD CONSTRAINT `AutoProcProgram_FK2` FOREIGN KEY (`processingJobId`) REFERENCES `ProcessingJob` (`processingJobId`);
 
 UPDATE SchemaStatus SET schemaStatus = 'DONE' WHERE scriptName = '2022_10_06_ProcessingJob.sql';
