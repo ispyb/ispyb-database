@@ -1,4 +1,4 @@
-INSERT INTO SchemaStatus (ScriptName, SchemaStatus) VALUES ('2022_10_06_ProcessingJob.sql', 'ONGOING');
+INSERT INTO SchemaStatus (scriptName, schemaStatus) VALUES ('2022_10_06_ProcessingJob.sql', 'ONGOING');
 
 CREATE TABLE `ProcessingJob` (
   `processingJobId` int(11) unsigned NOT NULL AUTO_INCREMENT,
