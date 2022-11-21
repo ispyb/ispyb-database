@@ -1,10 +1,4 @@
-INSERT INTO
-    SchemaStatus (scriptName, schemaStatus)
-VALUES
-    (
-        '2022_11_21_SSX_experiment.sql',
-        'ONGOING'
-    );
+INSERT INTO SchemaStatus (scriptName, schemaStatus) VALUES ('2022_11_21_SSX_experiment.sql', 'ONGOING');
 
 CREATE TABLE `SSXDataCollection`(
     `dataCollectionId` int(11) unsigned PRIMARY KEY,
@@ -127,9 +121,5 @@ CREATE TABLE `Event` (
     FOREIGN KEY (`eventTypeId`) REFERENCES `EventType`(`eventTypeId`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 0 DEFAULT CHARSET = utf8mb4;
 
-UPDATE
-    SchemaStatus
-SET
-    schemaStatus = 'DONE'
-WHERE
-    scriptName = '2022_11_21_SSX_experiment.sql';
+UPDATE SchemaStatus SET schemaStatus = 'DONE' WHERE scriptName = '2022_11_21_SSX_experiment.sql';
+
