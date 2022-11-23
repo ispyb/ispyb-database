@@ -55,7 +55,6 @@ CREATE TABLE `Component` (
     `proposalId` int(10) unsigned DEFAULT NULL,
     `name` varchar (255) NOT NULL,
     `composition` varchar(255) DEFAULT NULL,
-    `concentration` float DEFAULT NULL,
     FOREIGN KEY (`componentTypeId`) REFERENCES `ComponentType`(`componentTypeId`),
     FOREIGN KEY (`proposalId`) REFERENCES `Proposal`(`proposalId`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB AUTO_INCREMENT = 0 DEFAULT CHARSET = utf8mb4;
