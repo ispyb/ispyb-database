@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.8.6-MariaDB, for Linux (x86_64)
+-- MariaDB dump 10.19  Distrib 10.8.3-MariaDB, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: ispyb_build
 -- ------------------------------------------------------
--- Server version	10.8.6-MariaDB-1:10.8.6+maria~ubu2204
+-- Server version	10.8.3-MariaDB-1:10.8.3+maria~jammy
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -318,13 +318,6 @@ INSERT INTO `BLSubSample` (`blSubSampleId`, `blSampleId`, `diffractionPlanId`, `
 /*!40000 ALTER TABLE `CalendarHash` ENABLE KEYS */;
 
 --
--- Dumping data for table `Component`
---
-
-/*!40000 ALTER TABLE `Component` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Component` ENABLE KEYS */;
-
---
 -- Dumping data for table `Component_has_SubType`
 --
 
@@ -385,13 +378,6 @@ INSERT INTO `ContainerQueueSample` (`containerQueueSampleId`, `containerQueueId`
 /*!40000 ALTER TABLE `Crystal` DISABLE KEYS */;
 INSERT INTO `Crystal` (`crystalId`, `diffractionPlanId`, `proteinId`, `crystalUUID`, `name`, `spaceGroup`, `morphology`, `color`, `size_X`, `size_Y`, `size_Z`, `cell_a`, `cell_b`, `cell_c`, `cell_alpha`, `cell_beta`, `cell_gamma`, `comments`, `pdbFileName`, `pdbFilePath`, `recordTimeStamp`, `abundance`, `packingFraction`) VALUES (1,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2020-06-16 13:42:44',NULL,NULL);
 /*!40000 ALTER TABLE `Crystal` ENABLE KEYS */;
-
---
--- Dumping data for table `CrystalComposition`
---
-
-/*!40000 ALTER TABLE `CrystalComposition` DISABLE KEYS */;
-/*!40000 ALTER TABLE `CrystalComposition` ENABLE KEYS */;
 
 --
 -- Dumping data for table `Crystal_has_UUID`
@@ -515,31 +501,6 @@ INSERT INTO `DiffractionPlan` (`diffractionPlanId`, `xmlDocumentId`, `experiment
 
 /*!40000 ALTER TABLE `EnergyScan` DISABLE KEYS */;
 /*!40000 ALTER TABLE `EnergyScan` ENABLE KEYS */;
-
---
--- Dumping data for table `Event`
---
-
-/*!40000 ALTER TABLE `Event` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Event` ENABLE KEYS */;
-
---
--- Dumping data for table `EventChain`
---
-
-/*!40000 ALTER TABLE `EventChain` DISABLE KEYS */;
-/*!40000 ALTER TABLE `EventChain` ENABLE KEYS */;
-
---
--- Dumping data for table `EventType`
---
-
-/*!40000 ALTER TABLE `EventType` DISABLE KEYS */;
-INSERT INTO `EventType` (`eventTypeId`, `name`) VALUES (3,'LaserExcitation'),
-(4,'ReactionTrigger'),
-(1,'XrayDetection'),
-(2,'XrayExposure');
-/*!40000 ALTER TABLE `EventType` ENABLE KEYS */;
 
 --
 -- Dumping data for table `Experiment`
@@ -1085,13 +1046,6 @@ INSERT INTO `Protein` (`proteinId`, `proposalId`, `name`, `acronym`, `descriptio
 /*!40000 ALTER TABLE `Run` ENABLE KEYS */;
 
 --
--- Dumping data for table `SSXDataCollection`
---
-
-/*!40000 ALTER TABLE `SSXDataCollection` DISABLE KEYS */;
-/*!40000 ALTER TABLE `SSXDataCollection` ENABLE KEYS */;
-
---
 -- Dumping data for table `SW_onceToken`
 --
 
@@ -1104,13 +1058,6 @@ INSERT INTO `Protein` (`proteinId`, `proposalId`, `name`, `acronym`, `descriptio
 
 /*!40000 ALTER TABLE `SafetyLevel` DISABLE KEYS */;
 /*!40000 ALTER TABLE `SafetyLevel` ENABLE KEYS */;
-
---
--- Dumping data for table `SampleComposition`
---
-
-/*!40000 ALTER TABLE `SampleComposition` DISABLE KEYS */;
-/*!40000 ALTER TABLE `SampleComposition` ENABLE KEYS */;
 
 --
 -- Dumping data for table `SamplePlate`
