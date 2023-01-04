@@ -2026,7 +2026,7 @@ DROP TABLE IF EXISTS `EventType`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `EventType` (
   `eventTypeId` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(30) NOT NULL,
   PRIMARY KEY (`eventTypeId`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Defines the list of event types which can occur during a data collection.';
