@@ -94,7 +94,7 @@ CREATE TABLE `EventChain` (
 
 CREATE TABLE `EventType` (
     `eventTypeId` int(11) unsigned PRIMARY KEY AUTO_INCREMENT,
-    `name` varchar(255) UNIQUE NOT NULL
+    `name` varchar(30) UNIQUE NOT NULL
 ) ENGINE = InnoDB AUTO_INCREMENT = 0 DEFAULT CHARSET = utf8mb4 COMMENT = 'Defines the list of event types which can occur during a data collection.';
 
 INSERT INTO
