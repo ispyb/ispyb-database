@@ -1,4 +1,4 @@
-INSERT IGNORE INTO SchemaStatus (scriptName, schemaStatus) VALUES ('2023_01_16_Tomogram_new_cols.sql', 'ONGOING');
+INSERT INTO SchemaStatus (scriptName, schemaStatus) VALUES ('2023_01_16_Tomogram_new_cols.sql', 'ONGOING');
 
 ALTER TABLE Tomogram
   ADD fileDirectory varchar(255) DEFAULT NULL COMMENT 'Directory path for files referenced by this table',
