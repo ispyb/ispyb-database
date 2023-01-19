@@ -26,7 +26,7 @@ CREATE TABLE Tomogram (
 COMMENT 'For storing per-sample, per-position data analysis results (reconstruction)';
 
 CREATE TABLE TiltImageAlignment (
-  movieId int(11) unsigned NOT NULL COMMENT 'FK to Movie table',
+  movieId int(11) NOT NULL COMMENT 'FK to Movie table',
   tomogramId int(11) unsigned NOT NULL COMMENT 'FK to Tomogram table; tuple (movieID, tomogramID) is unique',
   defocusU float COMMENT 'unit: Angstroms',
   defocusV float COMMENT 'unit: Angstroms',
