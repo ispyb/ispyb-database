@@ -7,7 +7,7 @@ ALTER TABLE Movie
 
 CREATE TABLE Tomogram (
   tomogramId int(11) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  dataCollectionId int(11) unsigned COMMENT 'FK to DataCollection table',
+  dataCollectionId int(10) unsigned COMMENT 'FK to DataCollection table',
   autoProcProgramId int(10) unsigned COMMENT 'FK, gives processing times/status and software information',
   volumeFile varchar(255) COMMENT '.mrc file representing the reconstructed tomogram volume',
   stackFile varchar(255) NULL DEFAULT NULL COMMENT '.mrc file containing the motion corrected images ordered by angle used as input for the reconstruction',
