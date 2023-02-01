@@ -7,9 +7,7 @@ ALTER TABLE Tomogram
   ADD xyShiftPlot varchar(255) DEFAULT NULL COMMENT 'XY shift plot file',
   ADD projXY varchar(255) DEFAULT NULL COMMENT 'XY projection file',
   ADD projXZ varchar(255) DEFAULT NULL COMMENT 'XZ projection file',
-  ADD processingJobId int(11) unsigned DEFAULT NULL,
-  ADD recordTimeStamp datetime DEFAULT current_timestamp() COMMENT 'Creation or last update date/time',
-  ADD CONSTRAINT Tomogram_fk_processingJobId FOREIGN KEY (processingJobId) REFERENCES ProcessingJob (processingJobId);
+  ADD recordTimeStamp datetime DEFAULT current_timestamp() COMMENT 'Creation or last update date/time';
 
 /*
 -- Undo changes
@@ -20,9 +18,7 @@ ALTER TABLE Tomogram
   DROP IF EXISTS xyShiftPlot,
   DROP IF EXISTS projXY,
   DROP IF EXISTS projXZ,
-  DROP IF EXISTS processingJobId,
-  DROP IF EXISTS recordTimeStamp,
-  DROP CONSTRAINT IF EXISTS Tomogram_FK_processingJobId;
+  DROP IF EXISTS recordTimeStamp;
 */
 
 UPDATE SchemaStatus SET schemaStatus = 'DONE' WHERE scriptName = '2023_01_16_Tomogram_new_cols.sql';
