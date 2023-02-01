@@ -114,7 +114,9 @@ INSERT INTO `SchemaStatus` (`schemaStatusId`, `scriptName`, `schemaStatus`, `rec
 (107,'2021_08_25_New_column_for_Structure.sql','DONE','2021-08-25 10:44:17'),
 (108,'2022_08_17_AdminVar_bump_version.sql','DONE','2022-08-17 08:47:30'),
 (109,'2022_08_17_User_Portal_Sync_permission.sql','DONE','2022-08-17 13:13:52'),
-(110,'2022_11_21_SSX_experiment.sql','DONE','2023-01-04 12:40:19');
+(110,'2022_11_21_SSX_experiment.sql','DONE','2023-01-04 12:40:19'),
+(111,'2022_06_22_cryo-ET_tables.sql','DONE','2023-02-01 12:29:40'),
+(112,'2023_01_16_Tomogram_new_cols.sql','DONE','2023-02-01 12:29:40');
 /*!40000 ALTER TABLE `SchemaStatus` ENABLE KEYS */;
 
 --

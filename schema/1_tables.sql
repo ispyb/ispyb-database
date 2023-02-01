@@ -936,6 +936,7 @@ CREATE TABLE `BeamLineSetup` (
   `minTransmission` double DEFAULT NULL,
   `CS` float DEFAULT NULL,
   `recordTimeStamp` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Creation or last update date/time',
+  `amplitudeContrast` float DEFAULT NULL COMMENT 'Needed for cryo-ET',
   PRIMARY KEY (`beamLineSetupId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -2889,6 +2890,9 @@ CREATE TABLE `Movie` (
   `xmlMetaDataFullPath` varchar(255) DEFAULT NULL,
   `dosePerImage` varchar(45) DEFAULT NULL,
   `createdTimeStamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `angle` float DEFAULT NULL COMMENT 'unit: degrees relative to perpendicular to beam',
+  `fluence` float DEFAULT NULL COMMENT 'accumulated electron fluence from start to end of acquisition of this movie (commonly, but incorrectly, referred to as ‘dose’)',
+  `numberOfFrames` int(11) unsigned DEFAULT NULL COMMENT 'number of frames per movie. This should be equivalent to the number of MotionCorrectionDrift entries, but the latter is a property of data analysis, whereas the number of frames is an intrinsic property of acquisition.',
   PRIMARY KEY (`movieId`),
   KEY `dataCollectionToMovie_idx` (`dataCollectionId`),
   KEY `movieFullPath_idx` (`movieFullPath`(191)),
@@ -4650,6 +4654,69 @@ CREATE TABLE `Superposition` (
   PRIMARY KEY (`superpositionId`),
   KEY `fk_Superposition_1` (`subtractionId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `TiltImageAlignment`
+--
+
+DROP TABLE IF EXISTS `TiltImageAlignment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `TiltImageAlignment` (
+  `movieId` int(11) NOT NULL COMMENT 'FK to Movie table',
+  `tomogramId` int(11) unsigned NOT NULL COMMENT 'FK to Tomogram table; tuple (movieID, tomogramID) is unique',
+  `defocusU` float DEFAULT NULL COMMENT 'unit: Angstroms',
+  `defocusV` float DEFAULT NULL COMMENT 'unit: Angstroms',
+  `psdFile` varchar(255) DEFAULT NULL,
+  `resolution` float DEFAULT NULL COMMENT 'unit: Angstroms',
+  `fitQuality` float DEFAULT NULL,
+  `refinedMagnification` float DEFAULT NULL COMMENT 'unitless',
+  `refinedTiltAngle` float DEFAULT NULL COMMENT 'units: degrees',
+  `refinedTiltAxis` float DEFAULT NULL COMMENT 'units: degrees',
+  `residualError` float DEFAULT NULL COMMENT 'Residual error, unit: nm',
+  PRIMARY KEY (`movieId`,`tomogramId`),
+  KEY `TiltImageAlignment_fk_tomogramId` (`tomogramId`),
+  CONSTRAINT `TiltImageAlignment_fk_movieId` FOREIGN KEY (`movieId`) REFERENCES `Movie` (`movieId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `TiltImageAlignment_fk_tomogramId` FOREIGN KEY (`tomogramId`) REFERENCES `Tomogram` (`tomogramId`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='For storing per-movie analysis results (reconstruction)';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Tomogram`
+--
+
+DROP TABLE IF EXISTS `Tomogram`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Tomogram` (
+  `tomogramId` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `dataCollectionId` int(10) unsigned DEFAULT NULL COMMENT 'FK to DataCollection table',
+  `autoProcProgramId` int(10) unsigned DEFAULT NULL COMMENT 'FK, gives processing times/status and software information',
+  `volumeFile` varchar(255) DEFAULT NULL COMMENT '.mrc file representing the reconstructed tomogram volume',
+  `stackFile` varchar(255) DEFAULT NULL COMMENT '.mrc file containing the motion corrected images ordered by angle used as input for the reconstruction',
+  `sizeX` int(11) unsigned DEFAULT NULL COMMENT 'unit: pixels',
+  `sizeY` int(11) unsigned DEFAULT NULL COMMENT 'unit: pixels',
+  `sizeZ` int(11) unsigned DEFAULT NULL COMMENT 'unit: pixels',
+  `pixelSpacing` float DEFAULT NULL COMMENT 'Angstrom/pixel conversion factor',
+  `residualErrorMean` float DEFAULT NULL COMMENT 'Alignment error, unit: nm',
+  `residualErrorSD` float DEFAULT NULL COMMENT 'Standard deviation of the alignment error, unit: nm',
+  `xAxisCorrection` float DEFAULT NULL COMMENT 'X axis angle (etomo), unit: degrees',
+  `tiltAngleOffset` float DEFAULT NULL COMMENT 'tilt Axis offset (etomo), unit: degrees',
+  `zShift` float DEFAULT NULL COMMENT 'shift to center volumen in Z (etomo)',
+  `fileDirectory` varchar(255) DEFAULT NULL COMMENT 'Directory path for files referenced by this table',
+  `centralSliceImage` varchar(255) DEFAULT NULL COMMENT 'Tomogram central slice file',
+  `tomogramMovie` varchar(255) DEFAULT NULL COMMENT 'Movie traversing the tomogram across an axis',
+  `xyShiftPlot` varchar(255) DEFAULT NULL COMMENT 'XY shift plot file',
+  `projXY` varchar(255) DEFAULT NULL COMMENT 'XY projection file',
+  `projXZ` varchar(255) DEFAULT NULL COMMENT 'XZ projection file',
+  `recordTimeStamp` datetime DEFAULT current_timestamp() COMMENT 'Creation or last update date/time',
+  PRIMARY KEY (`tomogramId`),
+  KEY `Tomogram_fk_dataCollectionId` (`dataCollectionId`),
+  KEY `Tomogram_fk_autoProcProgramId` (`autoProcProgramId`),
+  CONSTRAINT `Tomogram_fk_autoProcProgramId` FOREIGN KEY (`autoProcProgramId`) REFERENCES `AutoProcProgram` (`autoProcProgramId`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `Tomogram_fk_dataCollectionId` FOREIGN KEY (`dataCollectionId`) REFERENCES `DataCollection` (`dataCollectionId`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='For storing per-sample, per-position data analysis results (reconstruction)';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

@@ -1311,6 +1311,20 @@ INSERT INTO `Shipping` (`shippingId`, `proposalId`, `shippingName`, `deliveryAge
 /*!40000 ALTER TABLE `Superposition` ENABLE KEYS */;
 
 --
+-- Dumping data for table `TiltImageAlignment`
+--
+
+/*!40000 ALTER TABLE `TiltImageAlignment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `TiltImageAlignment` ENABLE KEYS */;
+
+--
+-- Dumping data for table `Tomogram`
+--
+
+/*!40000 ALTER TABLE `Tomogram` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Tomogram` ENABLE KEYS */;
+
+--
 -- Dumping data for table `UntrustedRegion`
 --
 
